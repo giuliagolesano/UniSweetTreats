@@ -80,25 +80,6 @@ class DatabaseHelper{
     // Function to get the best seller for each product type
     public function getBestSellers(){
         $stmt = $this->db->prepare("
-            SELECT p.nomeTip, p.codProd, SUM(o.quantita) as total_quantity
-            FROM prodotto p
-            JOIN ordine o ON p.codProd = o.codProd
-            GROUP BY p.nomeTip, p.codProd
-            ORDER BY p.nomeTip, total_quantity DESC
-        ");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $bestSellers = [];
-        while ($row = $result->fetch_assoc()) {
-            if (!isset($bestSellers[$row['nomeTip']])) {
-                $bestSellers[$row['nomeTip']] = $row;
-            }
-        }
-        return $bestSellers;
-    }
-    // Function to get the best seller for each product type
-    public function getBestSellers(){
-        $stmt = $this->db->prepare("
             SELECT p.nomeTip, p.codProd, MAX(total_quantity) as total_quantity
             FROM (
                 SELECT p.nomeTip, p.codProd, SUM(o.quantita) as total_quantity
