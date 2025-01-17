@@ -9,11 +9,10 @@
 <body>
     <div>
         <div>
-            <img src="resources/sharkGummyNoBG.png" alt="Decorative Image">
+            <img src="resources/bountyCakeNoBG.png" alt="Decorative Image">
         </div>
         <diV>
-            <h2>Login</h2>
-            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+            <h2>Sign Up</h2>
             <form action="login.php" method="POST">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
@@ -21,6 +20,15 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password" required>
                 <br>
+                <label for="name">Name:</label>
+                <input type="name" id="name" name="name" required>
+                <br>
+                <label for="surname">Surname:</label>
+                <input type="surname" id="surname" name="surname" required>
+                <label for="consent">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    I want to receive a newsletter!
+                </label>
                 <button type="submit">Login</button>
             </form>
         </div>
