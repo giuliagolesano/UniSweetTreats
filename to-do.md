@@ -6,3 +6,26 @@
 - UNA VOLTA FATTA LA PAGINA HTML DELL'ABOUT US VA UTILIZZATA PER ABOUTUSCONTENT.PHP CHE VIENE CHIAMATO DA ABOUTUS.PHP
 - query per creare ordine
 
+
+
+
+
+
+
+
+
+**COSE GIA' IMPLEMENTATE NELLE PAGINE:**
+asterisco se lo abbiamo implementato
+- HOME (**mockup**, **html**, php, css, js)
+- LOGIN (**mockup**, **html**, php, css, js)
+- REGISTRAZIONE (**mockup**, **html**, php, css, js)
+- ABOUT US (**mockup**, html, php, css, js)
+- ORDINI (**mockup**, html, php, css, js)
+- CARRELLO (**mockup**, html, php, css, js)
+- NOTIFICHE (**mockup**, html, php, css, js)
+- SHOP (**mockup**, html, php, css, js)
+- BEST SELLER (**mockup**, html, php, css, js)
+- SINGOLO ARTICOLO (**mockup**, html, php, css, js)
+- SINGOLO ARTICOLO PERSONALIZZABILE ? (**mockup**, html, php, css, js)
+- REVIEW (**mockup**, html, php, css, js)
+- RICETTE (**mockup**, html, php, css, js)
