@@ -40,4 +40,4 @@ asterisco se lo abbiamo implementato
 - SINGOLO ARTICOLO (**mockup**, **html**, php, css, js)
 - SINGOLO ARTICOLO PERSONALIZZABILE ? (**mockup**, **html**, php, css, js)
 - REVIEW (**mockup**, **html**, php, css, js)
-- RICETTE (**mockup**, html, php, css, js)
+- RICETTE (**mockup**, **html**, php, css, js)
