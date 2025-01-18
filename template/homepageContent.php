@@ -1,8 +1,8 @@
 <section>
     <div>
-        <img src="./resources/chocolateCupcake.png" alt="chocolateCupcake">
-        <img src="./resources/blueberryCupcake.png" alt="blueberryCupcake">
-        <img src="./resources/OreoCake.png" alt="OreoCake">
+        <img src="<?php echo CUPCAKES_DIR . 'chocolateCupcake.png';?>" alt="chocolateCupcake">
+        <img src="<?php echo CUPCAKES_DIR . 'blueberryCupcake.png';?>" alt="blueberryCupcake">
+        <img src="<?php echo CAKES_DIR . 'OreoCake.png';?>" alt="OreoCake">
     </div>
     <h1>Freshly made sweets when you need it the most</h1>
     <p>"Fuel your all-nighters with the sweetest energy!"</p>
@@ -23,12 +23,12 @@
 
 <section>
     <div>
-        <img src="./resources/bearGummy.png" alt="bearGummy">
-        <img src="./resources/cocacolaGummy.png" alt="cocacolaGummy">
-        <img src="./resources/frizzyGummy.png" alt="frizzyGummy">
-        <img src="./resources/cherryGummy.png" alt="cherryGummy">
-        <img src="./resources/egsGummy.png" alt="egsGummy">
-        <img src="./resources/sharkGummy.png" alt="sharkGummy">
+        <img src="<?php echo GUMMIES_DIR . 'bearGummy.png';?>" alt="bearGummy">
+        <img src="<?php echo GUMMIES_DIR . 'cocacolaGummy.png';?>" alt="cocacolaGummy">
+        <img src="<?php echo GUMMIES_DIR . 'frizzyGummy.png';?>" alt="frizzyGummy">
+        <img src="<?php echo GUMMIES_DIR . 'cherryGummy.png';?>" alt="cherryGummy">
+        <img src="<?php echo GUMMIES_DIR . 'egsGummy.png';?>" alt="egsGummy">
+        <img src="<?php echo GUMMIES_DIR . 'sharkGummy.png';?>" alt="sharkGummy">
     </div>
 </section>
 
