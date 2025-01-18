@@ -3,6 +3,7 @@
     <?php if(isset($templateParams["errore"])): ?>
         <p><?php echo $templateParams["errore"]; ?></p>
     <?php endif; ?>
+
     <ul>
         <li>
             <label for="username">Username:</label><input type="text" id="username" name="username" />
