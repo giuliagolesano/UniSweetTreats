@@ -10,6 +10,8 @@
 - dobbiamo implementare un js per le funzioni dell'admin
 - sistemare alcuni sfondi NOBG che restano macchie
 - ritagliare bene simboli search, account, cart..
+- FAR SI CHE LE PARTI DI STILE DEL LOGIN.CSS SIANO APPLICABILI TRAMITE STYLE.CSS 
+
 
 
 
@@ -24,8 +26,8 @@
 
 **COSE GIA' IMPLEMENTATE NELLE PAGINE:**
 asterisco se lo abbiamo implementato
-- HOME (**mockup**, **html**, **php**, css, js)
-- LOGIN (**mockup**, **html**, php, css, js)
+- HOME (**mockup**, **html**, **php**, **css**, js)
+- LOGIN (**mockup**, **html**, **php**, css, js)
 - REGISTRAZIONE (**mockup**, **html**, php, css, js)
 - ABOUT US (**mockup**, html, php, css, js)
 - ORDINI (**mockup**, **html**, php, css, js)

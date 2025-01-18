@@ -1,3 +1,5 @@
+/* Debug: CSS file loaded */
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -13,7 +15,7 @@ header {
     justify-content: space-between;
 }
 
-header img {
+img {
     max-width: 200px;
     height: auto;
 }
@@ -148,4 +150,85 @@ footer h2 {
 
 footer p {
     margin: 5px 0;
+}
+
+#signin_img img {
+    max-width: 200px; 
+    height: auto;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* da login.css */
+#login-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 30px;
+}
+
+#login-page img {
+    max-width: 200px;
+    height: auto;
+}
+
+#login-page h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+#login-page p {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+#login-page p a {
+    color: #FF69B4;
+    text-decoration: underline;
+}
+
+#login-page form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+#login-page form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#login-page form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #FF69B4;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#login-page form button:hover {
+    background-color: #FF85C0;
+}
+
+#login-page label {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+#login-page label input[type="checkbox"] {
+    margin: 0;
+    vertical-align: middle;
 }

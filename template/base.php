@@ -21,7 +21,7 @@
         <nav>
             <ul>
                 <li><a href="#search"><img src="<?php echo ICONS_DIR . 'search.png'; ?>" alt="Search"></a></li>
-                <li><a href="#login"><img src="<?php echo ICONS_DIR . 'account.png'; ?>" alt="Login"></a></li>
+                <li><a href="login.php"><img src="<?php echo ICONS_DIR . 'account.png'; ?>" alt="Login"></a></li>
                 <li><a href="#cart"><img src="<?php echo ICONS_DIR . 'cart.png'; ?>" alt="Cart"></a></li>
             </ul>
         </nav>
