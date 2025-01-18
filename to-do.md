@@ -8,6 +8,9 @@
 - quali funzioni js ci servono per il carrello?
 - quali funzioni js ci servono per le notifiche?
 - dobbiamo implementare un js per le funzioni dell'admin
+- sistemare alcuni sfondi NOBG che restano macchie
+- ritagliare bene simboli search, account, cart..
+
 
 
 
@@ -21,7 +24,7 @@
 
 **COSE GIA' IMPLEMENTATE NELLE PAGINE:**
 asterisco se lo abbiamo implementato
-- HOME (**mockup**, **html**, php, css, js)
+- HOME (**mockup**, **html**, **php**, css, js)
 - LOGIN (**mockup**, **html**, php, css, js)
 - REGISTRAZIONE (**mockup**, **html**, php, css, js)
 - ABOUT US (**mockup**, html, php, css, js)
