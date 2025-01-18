@@ -3,4 +3,5 @@
 - query per iscrivere la email alla newsletter che cerca l'utente 
 - nella query signUpUser aggiungere il consenso tra i parametri
 - controlliamo che esista già l'utente che cerca di registrarsi? in quel caso aggiungere query che cerca una determinata email nel db 
-- 
+- UNA VOLTA FATTA LA PAGINA HTML DELL'ABOUT US VA UTILIZZATA PER ABOUTUSCONTENT.PHP CHE VIENE CHIAMATO DA ABOUTUS.PHP
+-
