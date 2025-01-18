@@ -1,8 +1,8 @@
 <section>
     <div>
-        <img src="../resources/chocolateCupcake.png" alt="Product 1">
-        <img src="../resources/blueberryCupcake.png" alt="Product 2">
-        <img src="../resources/OreoCake.png" alt="Product 3">
+        <img src="./resources/chocolateCupcake.png" alt="chocolateCupcake">
+        <img src="./resources/blueberryCupcake.png" alt="blueberryCupcake">
+        <img src="./resources/OreoCake.png" alt="OreoCake">
     </div>
     <h1>Freshly made sweets when you need it the most</h1>
     <p>"Fuel your all-nighters with the sweetest energy!"</p>
@@ -23,12 +23,12 @@
 
 <section>
     <div>
-        <img src="../resources/bearGummy.png" alt="">
-        <img src="../resources/cocacolaGummy.png" alt="">
-        <img src="../resources/frizzyGummy.png" alt="">
-        <img src="../resources/cherryGummy.png" alt="">
-        <img src="../resources/egsGummy.png" alt="">
-        <img src="../resources/sharkGummy.png" alt="">
+        <img src="./resources/bearGummy.png" alt="bearGummy">
+        <img src="./resources/cocacolaGummy.png" alt="cocacolaGummy">
+        <img src="./resources/frizzyGummy.png" alt="frizzyGummy">
+        <img src="./resources/cherryGummy.png" alt="cherryGummy">
+        <img src="./resources/egsGummy.png" alt="egsGummy">
+        <img src="./resources/sharkGummy.png" alt="sharkGummy">
     </div>
 </section>
 

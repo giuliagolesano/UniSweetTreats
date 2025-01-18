@@ -28,7 +28,7 @@
     </header>
 
     <main>
-        <?php echo $templateParams["nome"]; ?>
+        <?php require($templateParams["nome"]); ?>
     </main>
 
     <footer>
