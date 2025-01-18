@@ -46,6 +46,11 @@ header nav ul li a:hover {
     background-color: #FFC8DD;
 }
 
+header nav ul li a img {
+    width: 20px;
+    height: 20px;
+}
+
 main {
     line-height: 1.6;
     margin: 20px;
