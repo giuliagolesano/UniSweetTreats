@@ -20,7 +20,7 @@ asterisco se lo abbiamo implementato
 - LOGIN (**mockup**, **html**, php, css, js)
 - REGISTRAZIONE (**mockup**, **html**, php, css, js)
 - ABOUT US (**mockup**, html, php, css, js)
-- ORDINI (**mockup**, html, php, css, js)
+- ORDINI (**mockup**, **html**, php, css, js)
 - CARRELLO (**mockup**, html, php, css, js)
 - NOTIFICHE (**mockup**, html, php, css, js)
 - SHOP (**mockup**, html, php, css, js)
