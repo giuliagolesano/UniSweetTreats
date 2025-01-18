@@ -1,5 +1,5 @@
 <?php
 require_once("db/database.php");
-$dbh = new DatabaseHelper("localhost", "root", "", "", 3306);
+$db = new DatabaseHelper("localhost", "root", "", "E_commerce_Dolci_Logico", 3306);
 define("UPLOAD_DIR", "./upload/")
 ?>
