@@ -1,0 +1,117 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:#BDE0FE;
+    color: #333;
+}
+
+header {
+    background-color: #CDB4DB;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    padding: 0 5%;
+}
+
+header img {
+    max-width: 200px;
+    height: auto;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 15px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: white;
+    background-color: #FFAFCC;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+header nav ul li a:hover {
+    background-color: #FFC8DD;
+}
+
+main {
+    line-height: 1.6; 
+    margin: 20px 5%
+}
+
+main form {
+    background-color: #FFAFCC;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+main form ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+main form ul li {
+    margin-bottom: 20px;
+}
+
+main form ul li label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+main form ul li textarea {
+    width: 100%;
+    height: 150px;
+    resize: both; /* Permette di ridimensionare sia in orizzontale che in verticale */
+    max-width: 100%; /* Limita la larghezza massima al 100% del contenitore */
+    max-height: 300px; /* Imposta un'altezza massima */
+}
+
+main form div {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+main form div input {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    color: #fff;
+    background-color: #be78e6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+  
+main form div input:hover {
+    background-color: #CDB4DB;
+}
+
+footer {
+    background-color: #CDB4DB;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+footer h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
