@@ -8,9 +8,10 @@ body {
 
 header {
     background-color: #CDB4DB;
-    display: flex;
-    align-items: center;
+    display: flex; 
+    align-items: center; 
     justify-content: space-between;
+    padding: 0 5%;
 }
 
 header img {
@@ -41,64 +42,64 @@ header nav ul li a:hover {
 
 main {
     line-height: 1.6; 
-    margin: 20px;
-  }
+    margin: 20px 5%;
+}
 
   
-  section {
+main section {
     background-color: #FFAFCC;
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 20px;
     max-width: 600px;
-    margin: 20px auto;
+    margin: 20px auto; 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
+}
   
-  section > h2 {
+main section > h2 {
     font-size: 1.5em;
     margin-bottom: 10px;
-  }
+}
   
-  section > p {
+main section > p {
     margin: 5px 0;
     font-size: 1em;
     color: #333;
-  }
+}
   
-  section > div {
+main section > div {
     display: flex;
     align-items: flex-start;
     margin-bottom: 20px;
-  }
+}
   
-  section > div > img {
+main section > div > img {
     width: 100px;
     height: 100px;
     object-fit: cover;
     border-radius: 8px;
     margin-right: 20px;
-  }
+}
   
-  section > div > div {
+main section > div > div {
     flex: 1;
     display: flex;
     flex-direction: column;
     position: relative;
-  }
+}
   
-  section > div > div > h3 {
+main  section > div > div > h3 {
     margin: 0 0 10px;
     font-size: 1.2em;
-  }
+}
   
-  section > div > div > p {
+main section > div > div > p {
     margin: 5px 0;
     font-size: 0.9em;
     color: #555;
-  }
+}
   
-  section > div > div > button {
+main section > div > div > button {
     padding: 8px 12px;
     font-size: 0.9em;
     color: #fff;
@@ -107,31 +108,31 @@ main {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
-  }
+}
   
-  section > div > div > button:hover {
+main section > div > div > button:hover {
     background-color: #CDB4DB;
-  }
+}
   
   /* Modifica layout per schermi più grandi */
-  @media screen and (min-width: 768px) {
-    section > div {
+@media screen and (min-width: 768px) {
+    main section > div {
       justify-content: space-between;
     }
   
-    section > div > div {
+    main section > div > div {
       flex-direction: column;
       align-items: flex-start;
     }
   
-    section > div > div > button {
+    main section > div > div > button {
       margin-top: 0;
       align-self: flex-end; /* Sposta il bottone alla destra */
     }
-  }
+}
 
 
-  footer {
+footer {
     background-color: #CDB4DB;
     padding: 20px;
     text-align: center;
