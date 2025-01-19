@@ -190,7 +190,7 @@ values ('giulia.golesano@studio.unibo.it', 'Delicious and rich flavor, loved it!
 -- Creazione delle newsletter
 insert into NEWSLETTER (codNews, testo, giorno, ora, titolo)
 values ('news1', 'We are starting production for Carnevale sweets! Get ready for some festive treats!', '2025-01-25', '10:00:00', 'Carnevale Production'),
-       ('news2', 'Valentine\'s Day is approaching! Sweeten up your celebration with our special treats!', '2025-02-01', '10:00:00', 'San Valentino Production');
+       ('news2', 'Valentine Day is approaching! Sweeten up your celebration with our special treats!', '2025-02-01', '10:00:00', 'San Valentino Production');
 
 -- Ricezione delle newsletter per gli utenti
 insert into riceve (codNews, e_mail)
@@ -201,3 +201,10 @@ values ('news1', 'giulia.golesano@studio.unibo.it'),
        ('news2', 'enrico.cornacchia@studio.unibo.it'),
        ('news2', 'sofia.caberletti@studio.unibo.it');
 
+-- Congratulazioni per l'apertura del sito
+insert into AGGIORNAMENTO (codNot, testo, stato, giorno, ora, e_mail)
+values ('not1', 'Congratulations on the launch of the website! We are excited to offer sweet treats to all!', 'A', '2025-01-19', '13:30:00', 'unisweettreats@unibo.it');
+
+-- Informazioni sulla disponibilità di 50 pezzi per prodotto
+insert into AGGIORNAMENTO (codNot, testo, stato, giorno, ora, e_mail)
+values ('not2', 'There are exactly 50 pieces available for each product. Get ready for orders!', 'A', '2025-01-19', '13:35:00', 'unisweettreats@unibo.it');
