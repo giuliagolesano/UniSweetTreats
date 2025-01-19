@@ -118,6 +118,27 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getCostsForOrders($email){
+        $stmt = $this->db->prepare("SELECT O.codOrd AS CodiceOrdine, SUM(T.prezzo) AS CostoTotale FROM UTENTE U
+        INNER JOIN ORDINE O ON U.e_mail = O.e_mail
+        INNER JOIN FORMATO_DA F ON O.codOrd = F.codOrd
+        INNER JOIN PRODOTTO P ON F.codProd = P.codProd
+        INNER JOIN TARIFFARIO T ON P.nomeGusto = T.nomeGusto AND P.nomeTip = T.nomeTip
+        WHERE 
+        U.e_mail = ?
+        GROUP BY 
+        O.codOrd;
+        ");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $costs = [];
+        while ($row = $result->fetch_assoc()) {
+            $costs[$row['CodiceOrdine']] = $row['CostoTotale'];
+        }
+        return $costs;
+    }
+
 }
 
 ?>

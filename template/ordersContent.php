@@ -12,9 +12,9 @@
             <h2>Order <?php echo $ordine["codOrd"]; ?></h2>
             <p>Order Date and Time: <?php echo $ordine["giorno"]; ?>, <?php echo $ordine["ora"]; ?></p>
             <p>Status: <?php echo $ordine["stato"]; ?></p>
-            <p>Total Cost: €75.00</p>
+            <p>Total Cost: €<?php echo $templateParams["costi"][$ordine["codOrd"]]; ?></p>
             <div>
-                <img src="../resources/cakes/cherryCake.png" alt="Product 1 Image">
+                <img src="./resources/cakes/cherryCake.png" alt="Product 1 Image">
                 <div>
                     <h3>Product 1</h3>
                     <p>Quantity: 2</p>
