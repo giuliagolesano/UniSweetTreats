@@ -8,7 +8,7 @@
     </ul>
 </nav>
 <?php foreach($templateParams["ordini"] as $ordine): ?>
-        <section>
+        <div>
             <h2>Customer Order</h2>
             <p>Order Date: January 18, 2025</p>
             <p>Status: Processing</p>
@@ -40,5 +40,5 @@
                     <button>Review Product</button>
                 </div>
             </div>
-        </section>
+        </div>
 <?php endforeach; ?>

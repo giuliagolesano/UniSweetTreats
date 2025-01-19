@@ -36,21 +36,21 @@
 
 **COSE GIA' IMPLEMENTATE NELLE PAGINE:**
 asterisco se lo abbiamo implementato
-- HOME (**mockup**, **html**, **php**, **css**, js) GIULIA
-- LOGIN (**mockup**, **html**, **php**, css, js) GIULIA
+- HOME (**mockup**, **html**, **php**, **css**, js, validatore) GIULIA
+- LOGIN (**mockup**, **html**, **php**, css, js, validatore) GIULIA
 - REGISTRAZIONE (**mockup**, **html**, **php**, css, js) GIULIA
-- ABOUT US (**mockup**, **html**, **php**, css, js) GIULIA 
-- ORDINI (**mockup**, **html**, php, css, js) SOFI
-- CARRELLO (**mockup**, **html**, php, css, js) SOFI
-- NOTIFICHE (**mockup**, **html**, php, css, js) SOFI
-- SHOP (**mockup**, **html**, php, css, js) ICO
-- BEST SELLER (**mockup**, **html**, php, css, js) ICO
-- SINGOLO ARTICOLO (**mockup**, **html**, php, css, js) ICO 
-- SINGOLO ARTICOLO PERSONALIZZABILE ? (**mockup**, **html**, php, css, js) ICO
-- REVIEW (**mockup**, **html**, php, css, js) SOFI
-- RICETTE (**mockup**, **html**, **php**, css, js) GIULIA
-- ADMIN SHOP MODIFICA LISTA (**mockup**, **html**, php, css, js) ICO/GIULIA
-- PAGINA ADD PRODUCT (**mockup**, **html**, **php**, css, js) GIULIA
+- ABOUT US (**mockup**, **html**, **php**, css, js, validatore) GIULIA 
+- ORDINI (**mockup**, **html**, php, css, js, validatore) SOFI
+- CARRELLO (**mockup**, **html**, php, css, js, validatore) SOFI
+- NOTIFICHE (**mockup**, **html**, php, css, js, validatore) SOFI
+- SHOP (**mockup**, **html**, php, css, js, validatore) ICO
+- BEST SELLER (**mockup**, **html**, php, css, js, validatore) ICO
+- SINGOLO ARTICOLO (**mockup**, **html**, php, css, js, validatore) ICO 
+- SINGOLO ARTICOLO PERSONALIZZABILE ? (**mockup**, **html**, php, css, js, validatore) ICO
+- REVIEW (**mockup**, **html**, php, css, js, validatore) SOFI
+- RICETTE (**mockup**, **html**, **php**, css, js, validatore) GIULIA
+- ADMIN SHOP MODIFICA LISTA (**mockup**, **html**, php, css, js, validatore) ICO/GIULIA
+- PAGINA ADD PRODUCT (**mockup**, **html**, **php**, css, js, validatore) GIULIA
 - 
 
 

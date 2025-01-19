@@ -1,5 +1,5 @@
 <main>
-    <section>
+    <div>
         <div>
             <img  src="<?php echo ICONS_DIR . 'aboutUs.png'; ?>" alt="About Us">
         </div>
@@ -12,5 +12,5 @@
             <img src="<?php echo CUPCAKES_DIR . 'berriesCupcake.png'; ?>" alt="berriesCupcake">
             <img src="<?php echo GUMMIES_DIR . 'galatineGummy.png'; ?>" alt="galatineGummy">
         </div>
-    </section>
+    </div>
 </main>
