@@ -111,7 +111,7 @@ class DatabaseHelper{
 
     // Function to get all orders for a specific user email
     public function getOrdersByEmail($email){
-        $stmt = $this->db->prepare("SELECT * FROM ORDINE WHERE e_mail = ?");
+        $stmt = $this->db->prepare("SELECT * FROM ORDINE WHERE e_mail = ? ORDER BY giorno DESC, ora DESC");
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
