@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Product</title>
+    <link rel="stylesheet" href="../css/single_product.css">
+</head>
+<body>
+    <header>
+        <div>
+            <img src="../resources/icons/menu.png" alt="Menu Icon" />
+        </div>
+        <div>
+            <h2>Uni Sweet Treats</h2>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#search"><img src="../resources/icons/search.png" alt="Search Icon" /></a></li>
+                <li><a href="#cart"><img src="../resources/icons/cart.png" alt="Cart Icon" /></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <img src="../resources/cakes/OreoCake.png" alt="Oreo Cake" />
+        <section>
+            <h1>Oreo Cake</h1>
+            <p>Product description goes here</p>
+            <p>Price: 20€</p>
+            <form action="/submit_order" method="POST" enctype="multipart/form-data">
+                <div>
+                    <label for="custom-text">Customize your cake:</label>
+                    <input type="text" id="custom-text" name="custom-text" placeholder="Write your text here..." />
+                </div>
+                <div>
+                    <label for="upload-photo">Upload a photo:</label>
+                    <input type="file" id="upload-photo" name="upload-photo" />
+                </div>
+                <fieldset>
+                    <legend>Choose your topping:</legend>
+                    <input type="radio" id="sprinkles" name="topping" value="sprinkles" />
+                    <label for="sprinkles">Sprinkles</label><br/>
+                    <input type="radio" id="edible-glitters" name="topping" value="edible-glitters" />
+                    <label for="edible-glitters">Edible glitters</label><br/>
+                    <input type="radio" id="none" name="topping" value="none" />
+                    <label for="none">None</label><br/>
+                </fieldset>
+                <div class="quantity">
+                    <label for="quantity">Quantity:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1" />
+                </div>
+                <button type="submit">Add to cart</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <h2>Contact Us</h2>
+        <p>Email: unisweettreats@unibo.it</p>
+        <p>Phone: +123 456 7890</p>
+        <p>Address: Via Cesare Pavese 50, 47521, FC</p>
+    </footer>
+</body>
+</html>
