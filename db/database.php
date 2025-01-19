@@ -60,9 +60,9 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // Function to get 3 random feedbacks
+    // Function to get 3 random reviews
     public function getRandomFeedbacks(){
-        $stmt = $this->db->prepare("SELECT * FROM feedback ORDER BY RAND() LIMIT 3");
+        $stmt = $this->db->prepare("SELECT * FROM review ORDER BY RAND() LIMIT 3");
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
