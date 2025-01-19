@@ -8,9 +8,6 @@
 </head>
 <body>
     <header>
-        <div>
-            <img src="<?php echo ICONS_DIR . 'logo1.png'; ?>" alt="Uni Sweet Treats Logo">
-        </div>
         <nav>
             <ul>
                 <li><a href="#shop">Shop</a></li>
@@ -18,6 +15,10 @@
                 <li><a href="#about-us">About Us</a></li>
             </ul>
         </nav>
+        <div>
+            <img src="<?php echo ICONS_DIR . 'logo1.png'; ?>" alt="Uni Sweet Treats Logo">
+        </div>
+        
         <nav>
             <ul>
                 <li><a href="#search"><img src="<?php echo ICONS_DIR . 'search.png'; ?>" alt="Search"></a></li>
