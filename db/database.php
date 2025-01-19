@@ -11,8 +11,7 @@ class DatabaseHelper{
     }
 
     // Function to sign up a new user
-    public function signUpUser($email, $nome, $cognome, $password){
-        $consensoNews = '0'; // false
+    public function signUpUser($email, $nome, $cognome, $password, $consensoNews){
         $stmt = $this->db->prepare("INSERT INTO UTENTE (e_mail, nome, cognome, password, consensoNews) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param('sssss', $email, $nome, $cognome, $password, $consensoNews);
         return $stmt->execute();
