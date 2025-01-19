@@ -8,7 +8,7 @@
     </ul>
 </nav>
 <?php foreach($templateParams["ordini"] as $ordine): ?>
-        <section>
+        <div>
             <h2>Order <?php echo $ordine["codOrd"]; ?></h2>
             <p>Order Date and Time: <?php echo $ordine["giorno"]; ?>, <?php echo $ordine["ora"]; ?></p>
             <p>Status: <?php echo $ordine["stato"]; ?></p>
@@ -22,5 +22,5 @@
                     <button>Review Product</button>
                 </div>
             </div>
-        </section>
+        </div>
 <?php endforeach; ?>
