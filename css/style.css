@@ -20,6 +20,11 @@ img {
     height: auto;
 }
 
+#about-us img {
+    max-width: 400px;
+    height: auto;
+}
+
 header nav ul {
     list-style: none;
     padding: 0;

@@ -44,8 +44,8 @@
 asterisco se lo abbiamo implementato
 - HOME (**mockup**, **html**, **php**, **css**, js) GIULIA
 - LOGIN (**mockup**, **html**, **php**, css, js) GIULIA
-- REGISTRAZIONE (**mockup**, **html**, php, css, js) GIULIA
-- ABOUT US (**mockup**, html, php, css, js) GIULIA 
+- REGISTRAZIONE (**mockup**, **html**, **php**, css, js) GIULIA
+- ABOUT US (**mockup**, **html**, php, css, js) GIULIA 
 - ORDINI (**mockup**, **html**, php, css, js) SOFI
 - CARRELLO (**mockup**, **html**, php, css, js) SOFI
 - NOTIFICHE (**mockup**, **html**, php, css, js) SOFI
