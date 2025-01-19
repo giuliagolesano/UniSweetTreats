@@ -61,7 +61,7 @@ class DatabaseHelper{
     }
 
     // Function to get 3 random reviews
-    public function getRandomFeedbacks(){
+    public function getRandomReviews(){
         $stmt = $this->db->prepare("SELECT * FROM review ORDER BY RAND() LIMIT 3");
         $stmt->execute();
         $result = $stmt->get_result();
@@ -78,15 +78,38 @@ class DatabaseHelper{
 
     // Function to get the best seller for each product type
     public function getBestSellers(){
-        $stmt = $this->db->prepare("
-            SELECT p.nomeTip, p.codProd, MAX(total_quantity) as total_quantity
-            FROM (
-                SELECT p.nomeTip, p.codProd, SUM(o.quantita) as total_quantity
-                FROM prodotto p
-                JOIN ordine o ON p.codProd = o.codProd
-                GROUP BY p.nomeTip, p.codProd
-            ) as subquery
-            GROUP BY p.nomeTip
+        $stmt = $this->db->prepare("WITH TotaliProdotti AS (
+                SELECT 
+                    P.nomeTip,
+                    P.codProd,
+                    P.descrizione,
+                    COUNT(*) AS totale_vendite
+                FROM 
+                    PRODOTTO P
+                JOIN 
+                    formato_da F ON P.codProd = F.codProd
+                GROUP BY 
+                    P.nomeTip, P.codProd, P.descrizione
+            ),
+            ClassificaTipologia AS (
+                SELECT 
+                    T.nomeTip,
+                    T.codProd,
+                    T.descrizione,
+                    T.totale_vendite,
+                    ROW_NUMBER() OVER (PARTITION BY T.nomeTip ORDER BY T.totale_vendite DESC) AS posizione
+                FROM 
+                    TotaliProdotti T
+            )
+            SELECT 
+                C.nomeTip,
+                C.codProd,
+                C.descrizione,
+                C.totale_vendite
+            FROM 
+                ClassificaTipologia C
+            WHERE 
+                C.posizione = 1;
         ");
         $stmt->execute();
         $result = $stmt->get_result();
