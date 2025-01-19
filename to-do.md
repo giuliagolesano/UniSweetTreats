@@ -50,7 +50,7 @@ asterisco se lo abbiamo implementato
 - REVIEW (**mockup**, **html**, php, css, js) SOFI
 - RICETTE (**mockup**, **html**, **php**, css, js) GIULIA
 - ADMIN SHOP MODIFICA LISTA (**mockup**, **html**, php, css, js) ICO/GIULIA
-- PAGINA ADD PRODUCT (**mockup**, html, php, css, js) GIULIA
+- PAGINA ADD PRODUCT (**mockup**, **html**, **php**, css, js) GIULIA
 - 
 
 
