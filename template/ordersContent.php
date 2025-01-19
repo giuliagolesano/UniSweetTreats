@@ -1,9 +1,9 @@
 <nav>
     <ul>
         <li>
-            <a href="account_orders.html">Orders</a>
+            <a href="account_orders.php">Orders</a>
         </li><li>
-            <a href="account_notifications.html">Notifications</a>
+            <a href="account_notifications.php">Notifications</a>
         </li>
     </ul>
 </nav>

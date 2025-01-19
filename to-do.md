@@ -26,14 +26,14 @@ asterisco se lo abbiamo implementato
 - LOGIN (**mockup**, **html**, **php**, css, js) GIULIA
 - REGISTRAZIONE (**mockup**, **html**, **php**, css, js) GIULIA
 - ABOUT US (**mockup**, **html**, **php**, css, js) GIULIA 
-- ORDINI (**mockup**, **html**, php, css, js) SOFI
+- ORDINI (**mockup**, **html**, **php**, css, js) SOFI
 - CARRELLO (**mockup**, **html**, php, css, js) SOFI
-- NOTIFICHE (**mockup**, **html**, php, css, js) SOFI
+- NOTIFICHE (**mockup**, **html**, **php**, css, js) SOFI
 - SHOP (**mockup**, **html**, php, css, js) ICO
 - BEST SELLER (**mockup**, **html**, php, css, js) ICO
 - SINGOLO ARTICOLO (**mockup**, **html**, php, css, js) ICO 
 - SINGOLO ARTICOLO PERSONALIZZABILE ? (**mockup**, **html**, php, css, js) ICO
-- REVIEW (**mockup**, **html**, php, css, js) SOFI
+- REVIEW (**mockup**, **html**, **php**, css, js) SOFI
 - RICETTE (**mockup**, **html**, **php**, css, js) GIULIA
 - ADMIN SHOP MODIFICA LISTA (**mockup**, **html**, php, css, js) ICO/GIULIA
 - PAGINA ADD PRODUCT (**mockup**, **html**, **php**, css, js) GIULIA
