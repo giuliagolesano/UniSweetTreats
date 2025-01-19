@@ -6,8 +6,8 @@ if(!isset($_SESSION["email"])) {
     exit;
 }
 
-$templateParams["titolo"] = "Uni Sweet Treats - Write Review";
-$templateParams["nome"] = "writeReviewContent.php";
+$templateParams["titolo"] = "Uni Sweet Treats - Account Notifications";
+$templateParams["nome"] = "notificationsContent.php";
 
 require("template/base.php");
 ?>
