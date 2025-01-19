@@ -15,9 +15,6 @@ $templateParams["titolo"] = "Uni Sweet Treats - Account Orders";
 $templateParams["nome"] = "ordersContent.php";
 $templateParams["ordini"] = $db->getOrdersByEmail($email);
 $templateParams["costi"] = $db->getCostsForOrders($email); 
-var_dump($templateParams["costi"]);
-/*$templateParams["prodotti"] = $db->getProductsForOrders($email);*/
-
-
+$templateParams["prodotti"] = $db->getProductsForOrders($email);
 require("template/base.php");
 ?>

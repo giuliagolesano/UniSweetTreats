@@ -162,6 +162,42 @@ class DatabaseHelper{
         return $costs;
     }
 
+    public function getProductsForOrders($email){
+        $stmt = $this->db->prepare("SELECT 
+        O.codOrd AS CodiceOrdine,
+        P.codProd AS CodiceProdotto,
+        P.descrizione AS DescrizioneProdotto,
+        P.nomeGusto AS NomeGusto,
+        P.nomeTip AS NomeTip,
+        P.foto AS FotoProdotto,
+        F.foto AS FotoAggiunta,
+        F.testo AS TestoAggiunto,
+        F.topping AS ToppingAggiunto,
+        COUNT(F.codProd) AS Quantita,
+        COUNT(F.codProd) * T.prezzo AS PrezzoTotale
+        FROM 
+        UTENTE U
+        INNER JOIN ORDINE O ON U.e_mail = O.e_mail
+        INNER JOIN FORMATO_DA F ON O.codOrd = F.codOrd
+        INNER JOIN PRODOTTO P ON F.codProd = P.codProd
+        INNER JOIN TARIFFARIO T ON P.nomeGusto = T.nomeGusto AND P.nomeTip = T.nomeTip
+        WHERE 
+        U.e_mail = ?
+        GROUP BY 
+        O.codOrd, P.codProd, P.descrizione, P.nomeGusto, P.nomeTip, P.foto, F.foto, F.testo, F.topping, T.prezzo
+        ORDER BY 
+        O.codOrd, P.codProd;
+        ");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $products = [];
+        while ($row = $result->fetch_assoc()) {
+            $products[$row['CodiceOrdine']][$row['CodiceProdotto']] = $row;
+        }
+        return $products;
+    }
+
 }
 
 ?>

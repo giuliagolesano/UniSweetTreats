@@ -13,14 +13,16 @@
             <p>Order Date and Time: <?php echo $ordine["giorno"]; ?>, <?php echo $ordine["ora"]; ?></p>
             <p>Status: <?php echo $ordine["stato"]; ?></p>
             <p>Total Cost: €<?php echo $templateParams["costi"][$ordine["codOrd"]]; ?></p>
-            <div>
-                <img src="./resources/cakes/cherryCake.png" alt="Product 1 Image">
+            <?php foreach($templateParams["prodotti"][$ordine["codOrd"]] as $prodotto): ?>
                 <div>
-                    <h3>Product 1</h3>
-                    <p>Quantity: 2</p>
-                    <p>Total Price: €30.00</p>
-                    <button>Review Product</button>
+                    <img src="<?php echo UPLOAD_DIR . $prodotto["FotoProdotto"]; ?>" alt="Product Image">
+                    <div>
+                        <h3><?php echo $prodotto["NomeGusto"]; ?> <?php echo $prodotto["NomeTip"]; ?></h3>
+                        <p>Quantity: <?php echo $prodotto["Quantita"]; ?></p>
+                        <p>Total Price: €<?php echo $prodotto["PrezzoTotale"]; ?></p>
+                        <a href="writeReview.php?codProd=<?php echo $prodotto["CodiceProdotto"]; ?>">Review Product</a>
+                    </div>
                 </div>
-            </div>
+            <?php endforeach; ?>
         </div>
 <?php endforeach; ?>
