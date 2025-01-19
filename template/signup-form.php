@@ -10,16 +10,16 @@
             <?php endif; ?>
             <ul>
                 <li>
-                    <label for="email">Email:</label><input type="text" id="email" name="email" />
+                    <label for="email">Email:</label><input type="text" id="email" name="email" require/>
                 </li>
                 <li>
-                    <label for="password">Password:</label><input type="password" id="password" name="password" />
+                    <label for="password">Password:</label><input type="password" id="password" name="password" require/>
                 </li>
                 <li>
-                    <label for="name">Name:</label><input type="text" id="name" name="name" />
+                    <label for="name">Name:</label><input type="text" id="name" name="name" require/>
                 </li>
                 <li>
-                    <label for="surname">Surname:</label><input type="surname" id="surname" name="surname" />
+                    <label for="surname">Surname:</label><input type="surname" id="surname" name="surname" require/>
                 </li>
                 <label for="consent">
                     <input type="checkbox" id="consent" name="consent" />
