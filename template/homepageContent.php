@@ -15,11 +15,18 @@
 </section>
 
 <section>
+    <h2>Our Recipes</h2>
+    <p>Discover our delicious recipes and learn how to make your favorite treats at home. From cupcakes to cookies, we have something for everyone. <a href="recipes.php">Read more</a></p>
+</section>
+
+<section>
     <h2>Sweet Slogans</h2>
     <p>"Because bad exam days deserve good desserts!"</p>
     <p>"Every bite brings you closer to happiness!"</p>
     <p>"Study fuel never tasted this good!"</p>
 </section>
+
+
 
 <section>
     <div>
