@@ -1,6 +1,6 @@
 <h3>RECIPES</h3>
 <div>
-    <section class="recipes-page">
+    <div class="recipes-page">
         <h4>CUPCAKE</h4>
         <ul>
             <li>
@@ -8,8 +8,8 @@
                 <p>This is a delicious blueberry cupcake recipe that is perfect for any occasion.</p>
             </li>
         </ul>
-    </section>
-    <section class="recipes-page">
+    </div>
+    <div class="recipes-page">
         <h4>GUMMY</h4>
         <ul>
             <li>
@@ -17,8 +17,8 @@
                 <p>Enjoy these fun and tasty shark gummies, great for kids and adults alike.</p>
             </li>
         </ul>
-    </section>
-    <section class="recipes-page">
+    </div>
+    <div class="recipes-page">
         <h4>CAKE</h4>
         <ul>
             <li>
@@ -26,8 +26,8 @@
                 <p>This Oreo cake is a rich and creamy dessert that will satisfy your sweet tooth.</p>
             </li>
         </ul>
-    </section>
-    <section class="recipes-page">
+    </div>
+    <div class="recipes-page">
         <h4>COOKIE</h4>
         <ul>
             <li>
@@ -35,5 +35,5 @@
                 <p>These chocolate chip cookies are crispy on the outside and chewy on the inside.</p>
             </li>
         </ul>
-    </section>
+    </div>
 </div>
