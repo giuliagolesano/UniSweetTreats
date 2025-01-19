@@ -1,6 +1,6 @@
 <?php
 require_once("db/database.php");
-$db = new DatabaseHelper("localhost", "root", "", "E_commerce_Dolci_Logico", 3306);
+$db = new DatabaseHelper("localhost", "root", "", "Unisweettreats", 3306);
 define("UPLOAD_DIR", "./resources/");
 define("CAKES_DIR", UPLOAD_DIR . "cakes/");
 define("CAKES_NOBG_DIR", CAKES_DIR . "NoBG/");
