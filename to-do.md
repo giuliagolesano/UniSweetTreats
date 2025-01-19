@@ -42,19 +42,27 @@
 
 **COSE GIA' IMPLEMENTATE NELLE PAGINE:**
 asterisco se lo abbiamo implementato
-- HOME (**mockup**, **html**, **php**, **css**, js)
-- LOGIN (**mockup**, **html**, **php**, css, js)
-- REGISTRAZIONE (**mockup**, **html**, php, css, js)
-- ABOUT US (**mockup**, html, php, css, js)
-- ORDINI (**mockup**, **html**, php, css, js)
-- CARRELLO (**mockup**, **html**, php, css, js)
-- NOTIFICHE (**mockup**, **html**, php, css, js)
-- SHOP (**mockup**, **html**, php, css, js)
-- BEST SELLER (**mockup**, **html**, php, css, js)
-- SINGOLO ARTICOLO (**mockup**, **html**, php, css, js)
-- SINGOLO ARTICOLO PERSONALIZZABILE ? (**mockup**, **html**, php, css, js)
-- REVIEW (**mockup**, **html**, php, css, js)
-- RICETTE (**mockup**, html, php, css, js)
-- ADMIN SHOP MODIFICA LISTA (mockup, html, php, css, js)
-- PAGINA ADD PRODUCT (mockup, html, php, css, js)
+- HOME (**mockup**, **html**, **php**, **css**, js) GIULIA
+- LOGIN (**mockup**, **html**, **php**, css, js) GIULIA
+- REGISTRAZIONE (**mockup**, **html**, php, css, js) GIULIA
+- ABOUT US (**mockup**, html, php, css, js) GIULIA 
+- ORDINI (**mockup**, **html**, php, css, js) SOFI
+- CARRELLO (**mockup**, **html**, php, css, js) SOFI
+- NOTIFICHE (**mockup**, **html**, php, css, js) SOFI
+- SHOP (**mockup**, **html**, php, css, js) ICO
+- BEST SELLER (**mockup**, **html**, php, css, js) ICO
+- SINGOLO ARTICOLO (**mockup**, **html**, php, css, js) ICO 
+- SINGOLO ARTICOLO PERSONALIZZABILE ? (**mockup**, **html**, php, css, js) ICO
+- REVIEW (**mockup**, **html**, php, css, js) SOFI
+- RICETTE (**mockup**, html, php, css, js) GIULIA
+- ADMIN SHOP MODIFICA LISTA (mockup, html, php, css, js) ICO/GIULIA
+- PAGINA ADD PRODUCT (mockup, html, php, css, js) GIULIA
 - 
+
+
+**COSE DA FARE:**
+- OGGI PHP
+- ogni giorno verifiche pagine
+- filtri cerca espansione
+- 20/01 sistemare css e funzione js e query
+- header mobile 

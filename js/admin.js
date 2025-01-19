@@ -6,3 +6,8 @@ function deleteProduct() {
     
 }
 
+function modifyProduct() {
+    
+}
+
+
