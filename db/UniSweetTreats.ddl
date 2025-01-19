@@ -29,9 +29,9 @@ create table ADMIN (
 create table AGGIORNAMENTO (
      codNot varchar(10) not null,
      testo varchar(200) not null,
-     stato char(1) not null,
-     giorno char(1) not null,
-     ora char(1) not null,
+     stato varchar(10) not null,
+     giorno DATE not null,
+     ora TIME not null,
      e_mail varchar(100) not null,
      constraint ID_AGGIORNAMENTO_ID primary key (codNot));
 
@@ -50,17 +50,17 @@ create table formato_da (
 create table NEWSLETTER (
      codNews varchar(10) not null,
      testo varchar(200) not null,
-     giorno char(1) not null,
-     ora char(1) not null,
-     titolo char(1) not null,
+     giorno DATE not null,
+     ora TIME not null,
+     titolo varchar(20) not null,
      constraint ID_NEWSLETTER_ID primary key (codNews));
 
 create table NOTIFICA (
      codNot varchar(10) not null,
      testo varchar(200) not null,
-     stato char(1) not null,
-     giorno char(1) not null,
-     ora char(1) not null,
+     stato varchar(20) not null,
+     giorno DATE not null,
+     ora TIME not null,
      e_mail varchar(100) not null,
      codOrd varchar(10) not null,
      constraint ID_NOTIFICA_ID primary key (codNot));
@@ -76,15 +76,15 @@ create table ORDINE (
 create table PRODOTTO (
      codProd varchar(10) not null,
      quantita float(5) not null,
-     descrizione char(1) not null,
-     foto char(1) not null,
+     descrizione varchar(50) not null,
+     foto varchar(50) not null,
      nomeGusto varchar(30) not null,
      nomeTip varchar(25) not null,
      constraint ID_PRODOTTO_ID primary key (codProd));
 
 create table review (
      e_mail varchar(100) not null,
-     testo char(1),
+     testo varchar(200),
      valutazione int not null,
      codProd varchar(10) not null,
      constraint FKrev_UTE_ID primary key (e_mail));
