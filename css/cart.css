@@ -64,7 +64,7 @@ main > div {
     border-radius: 8px;
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin: 20px 5%;
     padding: 15px;
     justify-content: space-between; /* Aggiunto per distribuire gli spazi tra immagine e contenuti */
 }
