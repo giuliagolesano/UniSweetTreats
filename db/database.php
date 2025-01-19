@@ -109,6 +109,15 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    // Function to get all orders for a specific user email
+    public function getOrdersByEmail($email){
+        $stmt = $this->db->prepare("SELECT * FROM ORDINE WHERE e_mail = ?");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 
 ?>
