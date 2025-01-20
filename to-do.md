@@ -14,6 +14,8 @@
 - query per le FAQ's
 - query per la review e caricarla db ???
 
+- stati notifiche sono in italiano sul sito, dobbiamo fare uno switch che li traduce dal db sul sito in eng?
+
 **MOBILE:**
 - header : barre lateriale (shop, best seller, about us, login in basso) + al centro il nome + a destra lente e carrello
 
