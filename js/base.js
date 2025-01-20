@@ -25,3 +25,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+    const searchToggle = document.getElementById("searchToggle");
+    const searchBar = document.getElementById("searchBar");
+
+    searchToggle.addEventListener("click", function(event) {
+        event.preventDefault();
+        searchBar.style.display = searchBar.style.display === "none" ? "block" : "none";
+    });
+});

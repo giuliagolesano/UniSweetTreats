@@ -44,18 +44,6 @@
         </form>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const searchToggle = document.getElementById("searchToggle");
-            const searchBar = document.getElementById("searchBar");
-
-            searchToggle.addEventListener("click", function(event) {
-                event.preventDefault();
-                searchBar.style.display = searchBar.style.display === "none" ? "block" : "none";
-            });
-        });
-    </script>
-
     <nav id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" tabindex="0">&times;</a>
     <ul>
@@ -76,6 +64,6 @@
         <p>Phone: +123 456 7890</p>
         <p>Address: Via Cesare Pavese 50, 47521, FC</p>
     </footer>
-    <script src="./js/sideMenu.js"></script>
+    <script src="./js/base.js"></script>
 </body>
 </html>
