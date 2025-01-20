@@ -14,6 +14,7 @@
     <header>
         <nav>
             <ul>
+                <li><a href="javascript:void(0);" class="menu-icon" tabindex="0"><img src="<?php echo ICONS_DIR . 'menu.png'; ?>" alt="Menu"></a></li>
                 <li><a href="shop.php">Shop</a></li>
                 <li><a href="bestSeller.php">Best Seller</a></li>
                 <li><a href="aboutUs.php">About Us</a></li>
@@ -22,6 +23,7 @@
         <div>
             <a href="index.php">
             <img src="<?php echo ICONS_DIR . 'logo1.png'; ?>" alt="Uni Sweet Treats Logo">
+            <h1>Uni Sweet Treats</h1>
             </a>
         </div>
         
@@ -32,6 +34,7 @@
                 <li><a href="cart.php"><img src="<?php echo ICONS_DIR . 'cart.png'; ?>" alt="Cart"></a></li>
             </ul>
         </nav>
+
     </header>
 
     <div id="searchBar" style="display: none;">
@@ -53,6 +56,16 @@
         });
     </script>
 
+    <nav id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" tabindex="0">&times;</a>
+    <ul>
+        <li><a href="shop.php">Shop</a></li>
+        <li><a href="bestSeller.php">Best Seller</a></li>
+        <li><a href="aboutUs.php">About Us</a></li>
+        <li><a href="login.php">Login</a></li>
+    </ul>
+</nav>
+
     <main>
         <?php require($templateParams["nome"]); ?>
     </main>
@@ -63,5 +76,6 @@
         <p>Phone: +123 456 7890</p>
         <p>Address: Via Cesare Pavese 50, 47521, FC</p>
     </footer>
+    <script src="./js/sideMenu.js"></script>
 </body>
 </html>
