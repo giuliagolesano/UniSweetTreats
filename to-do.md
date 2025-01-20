@@ -29,7 +29,7 @@ asterisco se lo abbiamo implementato
 - ORDINI (**mockup**, **html**, **php**, css, js) SOFI
 - CARRELLO (**mockup**, **html**, php, css, js) SOFI
 - NOTIFICHE (**mockup**, **html**, **php**, css, js) SOFI
-- SHOP (**mockup**, **html**, php, css, js) ICO
+- SHOP (**mockup**, **html**, **php**, css, js) ICO
 - BEST SELLER (**mockup**, **html**, **php**, css, js) ICO
 - SINGOLO ARTICOLO (**mockup**, **html**, php, css, js) ICO 
 - SINGOLO ARTICOLO PERSONALIZZABILE ? (**mockup**, **html**, php, css, js) ICO
