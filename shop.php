@@ -22,9 +22,10 @@ if (isset($_GET["categorie"]) && is_array($_GET["categorie"])) {
     $filterCategories = $_GET["categorie"];
 }
 
+$searchKey = isset($_GET["search"]) ? trim($_GET["search"]) : "";
+
 $articoliCercati = [];
-if (isset($_GET["ricerca"])) {
-    $searchKey = $_GET["ricerca"];
+if (!empty($searchKey)) {
     $articoliCercati = searchProducts($userParams["articoli"], $searchKey);
 } else {
     $articoliCercati = $userParams["articoli"];

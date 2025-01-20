@@ -33,4 +33,13 @@
         return $filteredArticles;
     }
 
+    function searchProducts($articlesList, $searchKey) {
+        $searchKey = strtolower($searchKey);
+        return array_filter($articlesList, function($article) use ($searchKey) {
+            return strpos(strtolower($article["descrizione"]), $searchKey) !== false || 
+                   strpos(strtolower($article["nomeGusto"]), $searchKey) !== false ||
+                   strpos(strtolower($article["nomeTip"]), $searchKey) !== false;
+        });
+    }
+
 ?>
