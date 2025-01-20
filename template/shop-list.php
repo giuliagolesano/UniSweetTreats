@@ -1,39 +1,33 @@
 <div>
-    <button type="button" class="btn" data-bs-toggle="collapse" data-bs-target="#filterShop" aria-expanded="false" aria-controls="filterShop">
+    <button type="button" class="btn" data-bs-toggle="collapse" data-bs-target="#filterMenu" aria-expanded="false" aria-controls="filterMenu">
         filter
     </button>
-    <div class="collapse" id="filterShop">
-        <form action="shop.php" method="GET">
-            <div>
+    <div class="collapse" id="filterMenu">
+        <form action="shop.php" method="GET" class="bg-light p-4 rounded">
+            <div class="mb-3">
                 <fieldset>
                     <legend>What do you want to include? </legend>
                     <div class="form-check">
                         <label class="form-check-label" for="cakes">Cakes</label>
-                        <input class="form-check-input" type="checkbox" name="include[]" value="cakes" id="cakes" />
+                        <input class="form-check-input" type="checkbox" name="categorie[]" value="cakes" id="cakes" />
                     </div>
                     <div class="form-check">
                         <label class="form-check-label" for="cookies">Cookies</label>
-                        <input class="form-check-input" type="checkbox" name="include[]" value="cookies" id="cookies" />
+                        <input class="form-check-input" type="checkbox" name="categorie[]" value="cookies" id="cookies" />
                     </div>
                     <div class="form-check">
                         <label class="form-check-label" for="gummy">Gummy</label>
-                        <input class="form-check-input" type="checkbox" name="include[]" value="gummy" id="gummy" />
+                        <input class="form-check-input" type="checkbox" name="categorie[]" value="gummy" id="gummy" />
                     </div>
                     <div class="form-check">
                         <label class="form-check-label" for="cupcakes">Cupcakes</label>
-                        <input class="form-check-input" type="checkbox" name="include[]" value="cupcakes" id="cupcakes" />
+                        <input class="form-check-input" type="checkbox" name="categorie[]" value="cupcakes" id="cupcakes" />
                     </div>
-                    <label for="price" class="form-range">What about price:<span id="value"><?php echo $filterPrice; ?></span></label>
-                    <input 
-                    type="range" 
-                    class="form-range" 
-                    name="price" 
-                    min="0" 
-                    max="1000" 
-                    value="<?php echo $filterPrice; ?>" 
-                    id="price" 
-                    oninput="updateRangeValue('price')" 
-                />
+                    <label for="prezzoMin" class="form-label">Prezzo minimo: <span id="prezzoMinValue"><?php echo $filterMinPrice; ?></span></label>
+                    <input type="range" class="form-range" name="prezzoMin" min="0" max="50" value="<?php echo $filterMinPrice; ?>" id="prezzoMin" oninput="updateRangeValue('prezzoMin')" />
+                    <label for="prezzoMax" class="form-label">Prezzo massimo: <span id="prezzoMaxValue"><?php echo $filterMaxPrice; ?></span></label>
+                    <input type="range" class="form-range" name="prezzoMax" min="0" max="50" value="<?php echo $filterMaxPrice; ?>" id="prezzoMax" oninput="updateRangeValue('prezzoMax')" />
+                    <button type="submit">Apply Filter</button>
                 </fieldset>
             </div>
         </form>
@@ -58,25 +52,26 @@
         }*/
         ?>
 
-        <?php
-            $lastCategory = null;
 
-            foreach ($templateParams["prodotti"] as $prodotto): 
-                if ($lastCategory !== $prodotto["nomeTip"]): 
-                    $lastCategory = $prodotto["nomeTip"];
-        ?>
-        <h2><?php echo ucfirst($lastCategory); ?></h2>
-        <?php 
-            endif; 
-        ?>
-        <div>
-            <div>
-                <div>
-                    <img src="<?php echo getImageProduct($prodotto["nomeTip"], $prodotto["nomeGusto"]); ?>" alt="<?php echo $prodotto["descrizione"]; ?>">
-                    <h3><?php echo $prodotto["nomeGusto"]; ?> <?php echo $prodotto["nomeTip"]; ?></h3>
-                </div>
-            </div>
-        </div>
-        <?php endforeach; ?>
+        <?php if (!empty($templateParams["prodotti"])): ?>
+            <?php 
+                $lastCategory = null; 
+                foreach ($templateParams["prodotti"] as $product): 
+                    if ($lastCategory !== $product["nomeTip"]): 
+                        $lastCategory = $product["nomeTip"]; 
+                    ?>
+                        <h2><?php echo ucfirst($lastCategory); ?></h2>
+                    <?php endif; ?>
+                    <div>
+                        <div>
+                            <img src="<?php echo getImageProduct($product["nomeTip"], $product["foto"]); ?>" alt="<?php echo $product["descrizione"]; ?>">
+                            <h3><?php echo $product["descrizione"]; ?></h3>
+                            <p><?php echo $product["quantita"]; ?></p>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+        <?php else: ?>
+            <p>No products found under €<?php echo $filterPrice; ?></p>
+        <?php endif; ?>
     </div>
 </div>

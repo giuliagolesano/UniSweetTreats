@@ -13,4 +13,23 @@
                 die("Category not found");
         }
     }
+
+    function getFilteredArticles($articlesList, $categories, $minPrice, $maxPrice, $db) {
+        $filteredArticles = [];
+    
+        foreach ($articlesList as $article) {
+            
+            $prezzo = $db->getPriceByProduct($article['nomeGusto'], $article['nomeTip']);
+
+            if($prezzo !== null) {
+                if(in_array($article['nomeTip'], $categories) &&
+                $prezzo >= $minPrice &&
+                $prezzo <= $maxPrice ){
+                    $filteredArticles[] = $article;
+                }
+            }
+        }
+        return $filteredArticles;
+    }
+
 ?>

@@ -13,4 +13,10 @@ define("COOKIES_DIR", UPLOAD_DIR . "cookies/");
 define("COOKIES_NOBG_DIR", COOKIES_DIR . "NoBG/");
 define("ICONS_DIR", UPLOAD_DIR . "icons/");
 define("ICONS_NOBG_DIR", ICONS_DIR . "NoBG/");
+
+$templateParams["prodotti"] = $db->getAllProducts();
+$userParams["articoli"] = $db->getAllProducts();
+$templateParams["categorie"] = $db->getCategories();
+
+
 ?>
