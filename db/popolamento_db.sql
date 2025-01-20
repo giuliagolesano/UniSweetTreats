@@ -24,7 +24,7 @@ insert into GUSTO (nomeGusto) values ('redvelvet');
 insert into GUSTO (nomeGusto) values ('sparkle');
 insert into GUSTO (nomeGusto) values ('butter');
 insert into GUSTO (nomeGusto) values ('chinnamon');
-insert into GUSTO (nomeGusto) values ('chocolate chips');
+insert into GUSTO (nomeGusto) values ('chocolateChips');
 insert into GUSTO (nomeGusto) values ('coconut');
 insert into GUSTO (nomeGusto) values ('jam');
 insert into GUSTO (nomeGusto) values ('berries');
@@ -71,7 +71,7 @@ values ('cookie1', 50, 'Butter Cookie', 'butterCookie.png', 'butter', 'cookie');
 insert into PRODOTTO (codProd, quantita, descrizione, foto, nomeGusto, nomeTip)
 values ('cookie2', 50, 'Cinnamon Cookie', 'chinnamonCookie.png', 'chinnamon', 'cookie');
 insert into PRODOTTO (codProd, quantita, descrizione, foto, nomeGusto, nomeTip)
-values ('cookie3', 50, 'Chocolate Chips Cookie', 'chocolateChipsCookie.png', 'chocolate chips', 'cookie');
+values ('cookie3', 50, 'ChocolateChips Cookie', 'chocolateChipsCookie.png', 'chocolateChips', 'cookie');
 insert into PRODOTTO (codProd, quantita, descrizione, foto, nomeGusto, nomeTip)
 values ('cookie4', 50, 'Coconut Cookie', 'coconutCookie.png', 'coconut', 'cookie');
 insert into PRODOTTO (codProd, quantita, descrizione, foto, nomeGusto, nomeTip)
@@ -83,7 +83,7 @@ values ('cupcake1', 50, 'Berries Cupcake', 'berriesCupcake.png', 'berries', 'cup
 insert into PRODOTTO (codProd, quantita, descrizione, foto, nomeGusto, nomeTip)
 values ('cupcake2', 50, 'Blueberry Cupcake', 'blueberryCupcake.png', 'blueberry', 'cupcake');
 insert into PRODOTTO (codProd, quantita, descrizione, foto, nomeGusto, nomeTip)
-values ('cupcake3', 50, 'Chocolate Chips Cupcake', 'chocolateChipsCupcake.png', 'chocolate chips', 'cupcake');
+values ('cupcake3', 50, 'ChocolateChips Cupcake', 'chocolateChipsCupcake.png', 'chocolateChips', 'cupcake');
 insert into PRODOTTO (codProd, quantita, descrizione, foto, nomeGusto, nomeTip)
 values ('cupcake4', 50, 'Chocolate Cupcake', 'chocolateCupcake.png', 'chocolate', 'cupcake');
 
@@ -120,12 +120,12 @@ insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('redvelvet', 'cake',
 insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('sparkle', 'cake', '30');
 insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('butter', 'cookie', '12');
 insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('chinnamon', 'cookie', '13');
-insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('chocolate chips', 'cookie', '14');
+insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('chocolateChips', 'cookie', '14');
 insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('coconut', 'cookie', '15');
 insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('jam', 'cookie', '10');
 insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('berries', 'cupcake', '8');
 insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('blueberry', 'cupcake', '7');
-insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('chocolate chips', 'cupcake', '9');
+insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('chocolateChips', 'cupcake', '9');
 insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('chocolate', 'cupcake', '10');
 insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('bear', 'gummy', '6');
 insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('cherry', 'gummy', '5');
@@ -142,8 +142,8 @@ insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('shark', 'gummy', '6
 insert into ORDINE (codOrd, giorno, ora, stato, e_mail)
 values ('ord1', '2025-01-20', '12:30:00', 'effettuato', 'giulia.golesano@studio.unibo.it');
 insert into formato_da (codOrd, codProd, foto, testo, topping)
-values ('ord1', 'cake1', 'bountyCake.png', 'Delicious Bounty Cake', 'chocolate chips'),
-       ('ord1', 'cookie3', 'chocolateChipsCookie.png', 'Chocolate Chips Cookie', 'vanilla topping');
+values ('ord1', 'cake1', 'bountyCake.png', 'Delicious Bounty Cake', 'chocolateChips'),
+       ('ord1', 'cookie3', 'chocolateChipsCookie.png', 'ChocolateChips Cookie', 'vanilla topping');
 
 -- Enrico
 insert into ORDINE (codOrd, giorno, ora, stato, e_mail)
