@@ -1,4 +1,5 @@
 <?php
+require_once("utils/functions.php");
 require_once("db/database.php");
 $db = new DatabaseHelper("localhost", "root", "", "Unisweettreats", 3306);
 define("UPLOAD_DIR", "./resources/");

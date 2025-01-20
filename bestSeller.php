@@ -2,9 +2,9 @@
 require_once("bootstrap.php");
 
 $templateParams["titolo"] = "Uni Sweet Treats - Best Seller";
-$templateParams["nome"] = "";
+$templateParams["nome"] = "bestSellerContent.php";
 
-$templateParams["feedback"] = $db->getBestSellers();
+$templateParams["bestSellers"] = $db->getBestSellers();
 
 
 require("template/base.php");

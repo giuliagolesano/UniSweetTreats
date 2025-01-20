@@ -80,36 +80,41 @@ class DatabaseHelper{
     public function getBestSellers(){
         $stmt = $this->db->prepare("WITH TotaliProdotti AS (
                 SELECT 
-                    P.nomeTip,
-                    P.codProd,
-                    P.descrizione,
-                    COUNT(*) AS totale_vendite
-                FROM 
-                    PRODOTTO P
-                JOIN 
-                    formato_da F ON P.codProd = F.codProd
-                GROUP BY 
-                    P.nomeTip, P.codProd, P.descrizione
-            ),
-            ClassificaTipologia AS (
-                SELECT 
-                    T.nomeTip,
-                    T.codProd,
-                    T.descrizione,
-                    T.totale_vendite,
-                    ROW_NUMBER() OVER (PARTITION BY T.nomeTip ORDER BY T.totale_vendite DESC) AS posizione
-                FROM 
-                    TotaliProdotti T
-            )
-            SELECT 
-                C.nomeTip,
-                C.codProd,
-                C.descrizione,
-                C.totale_vendite
+                P.nomeTip,
+                P.codProd,
+                P.descrizione,
+                G.nomeGusto,
+                COUNT(*) AS totale_vendite
             FROM 
-                ClassificaTipologia C
-            WHERE 
-                C.posizione = 1;
+                PRODOTTO P
+            JOIN 
+                formato_da F ON P.codProd = F.codProd
+            JOIN 
+                GUSTO G ON P.nomeGusto = G.nomeGusto
+            GROUP BY 
+                P.nomeTip, P.codProd, P.descrizione, G.nomeGusto
+        ),
+        ClassificaTipologia AS (
+            SELECT 
+                T.nomeTip,
+                T.codProd,
+                T.descrizione,
+                T.nomeGusto,
+                T.totale_vendite,
+                ROW_NUMBER() OVER (PARTITION BY T.nomeTip ORDER BY T.totale_vendite DESC) AS posizione
+            FROM 
+                TotaliProdotti T
+        )
+        SELECT 
+            C.nomeTip,
+            C.codProd,
+            C.descrizione,
+            C.nomeGusto,
+            C.totale_vendite
+        FROM 
+            ClassificaTipologia C
+        WHERE 
+            C.posizione = 1;
         ");
         $stmt->execute();
         $result = $stmt->get_result();
