@@ -3,15 +3,35 @@ require_once("bootstrap.php");
 
 $templateParams["titolo"] = "Uni Sweet Treats - Shop";
 $templateParams["nome"] = "shop-list.php";
-$templateParams["prodotti"] = $db->getAllProducts();
 
-// Recupera il prezzo dal filtro
-$filterPrice = isset($_GET['price']) ? intval($_GET['price']) : 1000;
+$filterCategories = [];
+foreach ($templateParams["categorie"] as $categoria) {
+    $filterCategories[] = $categoria["nomeTip"];
+}
+$filterMinPrice = 0;
+$filterMaxPrice = 50;
+$searchKey = "";
 
-// Filtra i prodotti in base al prezzo
-$filteredProducts = array_filter($templateParams["prodotti"], function ($product) use ($filterPrice) {
-    return $product['price'] <= $filterPrice; // Filtra prodotti in base al campo 'price'
-});
+if (isset($_GET["prezzoMin"])) {
+    $filterMinPrice = $_GET["prezzoMin"];
+}
+if (isset($_GET["prezzoMax"])) {
+    $filterMaxPrice = $_GET["prezzoMax"];
+}
+if (isset($_GET["categorie"]) && is_array($_GET["categorie"])) {
+    $filterCategories = $_GET["categorie"];
+}
+
+$articoliCercati = [];
+if (isset($_GET["ricerca"])) {
+    $searchKey = $_GET["ricerca"];
+    $articoliCercati = searchProducts($userParams["articoli"], $searchKey);
+} else {
+    $articoliCercati = $userParams["articoli"];
+}
+
+$userParams["articoliVisualizzati"] = getFilteredArticles($articoliCercati, $filterCategories, $filterMinPrice, $filterMaxPrice, $db);
+
 
 require("template/base.php");
 ?>

@@ -157,6 +157,35 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    // Function to get all the producs cheaper than a price
+    public function getProductsUnderPrice($filterPrice) {
+        $stmt = $this->db->prepare("SELECT p.codProd, p.descrizione, p.foto, t.prezzo, p.nomeGusto, p.nomeTip
+                                        FROM PRODOTTO p
+                                        JOIN TARIFFARIO t ON p.nomeTip = t.nomeTip AND p.nomeGusto = t.nomeGusto
+                                        WHERE t.prezzo <= ? ");
+        $stmt->bind_param('d', $filterPrice);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);       
+    }
+
+    public function getPriceByProduct($nomeGusto, $nomeTip) {
+        $stmt = $this->db->prepare("SELECT prezzo
+                                        FROM TARIFFARIO
+                                        WHERE nomeGusto = ? AND nomeTip = ?;");
+        $stmt->bind_param('ss', $nomeGusto, $nomeTip);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getCategories() {
+        $stmt = $this->db->prepare("SELECT * FROM TIPOLOGIA");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getCostsForOrders($email){
         $stmt = $this->db->prepare("SELECT O.codOrd AS CodiceOrdine, SUM(T.prezzo) AS CostoTotale FROM UTENTE U
         INNER JOIN ORDINE O ON U.e_mail = O.e_mail
