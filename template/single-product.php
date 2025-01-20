@@ -5,15 +5,15 @@
 ?>
     <div class="product">
         <div class="product-image">
-            <img src="<?php echo getImageProduct($prodotto["nome_categoria"], $prodotto["immagine"]); ?>" alt="<?php echo $prodotto["nome"]; ?>">
+            <img src="<?php echo getImageProduct($prodotto["nomeTip"], $prodotto["foto"]); ?>" alt="<?php echo $prodotto["descrizione"]; ?>">
         </div>
         <div class="product-info">
-            <h2><?php echo $prodotto["nome"]; ?></h2>
-            <p><?php echo $prodotto["descrizione"]; ?></p>
+            <h2><?php echo $prodotto["descrizione"]; ?></h2>
             <p>Prezzo: €<?php echo $prodotto["prezzo"]; ?></p>
             <p>Quantità disponibile: <?php echo $prodotto["quantita"]; ?></p>
-            <form action="cart.php" method="POST" onchange="updateQuantity()">
-                <input type="number" name="quantita" value="1" min="1" max="<?php echo $prodotto["quantita"]; ?>">
+            <form action="cart.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="codProd" value="<?php echo htmlspecialchars($prodotto["codProd"]); ?>" />
+                <input type="number" name="quantita" value="1" min="1" max="<?php echo $prodotto["quantita"]; ?>" />
                 <?php if($prodotto["nome_categoria"] == "cake"): ?>
                     <div>
                         <label for="custom-text">Customize your cake:</label>

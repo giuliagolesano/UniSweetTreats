@@ -254,6 +254,43 @@ class DatabaseHelper{
         return $result->fetch_assoc();
     }
 
+    public function getOrderCart($email) {
+        $stmt = $this->db->prepare("SELECT * FROM ORDINE WHERE stato = 'in creazione' AND e_mail = ?");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function createOrder($email) {
+        $result = $this->db->query("SELECT MAX(codOrd) AS maxCodOrd FROM ORDINE"); // get the last order code
+        $row = $result->fetch_assoc(); 
+        $newCodOrd = 'ord' . ((int)substr($row['maxCodOrd'], 3) + 1); // create a new order code increasing the last one
+        $stmt = $this->db->prepare("INSERT INTO ORDINE (codOrd, giorno, ora, stato, e_mail) 
+                                    VALUES (?, CURDATE(), CURTIME(), 'in creazione', ?)");
+        $stmt->bind_param('ss', $newCodOrd, $email);
+        return $stmt->execute();
+    }
+
+    public function addProductToCart($codOrd, $codProd, $quantita, $customText, $photoName, $topping) {
+        $stmt = $this->db->prepare("INSERT INTO FORMATO_DA (codOrd, codProd, foto, testo, topping) 
+                                    VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param('sssss', $codOrd, $codProd, $photoName, $customText, $topping);
+        return $stmt->execute();
+    }
+
+    public function getCartItems($codOrd) {
+        $stmt = $this->db->prepare("SELECT P.codProd, P.descrizione, P.foto, T.prezzo, P.nomeGusto, P.nomeTip, F.foto AS fotoAggiunta, F.testo, F.topping, COUNT(F.codProd) AS quantita
+                                    FROM PRODOTTO P JOIN TARIFFARIO T ON P.nomeGusto = T.nomeGusto AND P.nomeTip = T.nomeTip
+                                    JOIN FORMATO_DA F ON P.codProd = F.codProd
+                                    WHERE F.codOrd = ?
+                                    GROUP BY P.codProd, P.descrizione, P.foto, T.prezzo, P.nomeGusto, P.nomeTip, F.foto, F.testo, F.topping");
+        $stmt->bind_param('s', $codOrd);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 
 ?>

@@ -15,6 +15,7 @@
 - query per la review e caricarla db ???
 
 - stati notifiche sono in italiano sul sito, dobbiamo fare uno switch che li traduce dal db sul sito in eng?
+- VA DIMINUITA QUANTITA PRODOTTO DOPO AVER MESSO NEL CARRELLO (OPPURE DOPO AVERLO EFFETTUATO L'ORDINE PER PERMETTERE RIMOZIONE) PS DECISAMENTE DOPO AVERLO EFFETTUATO, PENSO?
 
 **MOBILE:**
 - header : barre lateriale (shop, best seller, about us, login in basso) + al centro il nome + a destra lente e carrello
