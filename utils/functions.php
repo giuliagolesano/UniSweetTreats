@@ -1,14 +1,14 @@
 <?php
-    function getImageProduct($category, $type) {
+    function getImageProduct($category, $image) {
         switch($category) {
             case "cake":
-                return "resources/cakes" . "/" . $type . "Cake.png";
+                return CAKES_DIR . $image;
             case "cupcake":
-                return "resources/cupcakes" . "/" . $type . "Cupcake.png";
+                return CUPCAKES_DIR . $image;
             case "cookie":
-                return "resources/cookies" . "/" . $type . "Cookie.png";
+                return COOKIES_DIR . $image;
             case "gummy":
-                return "resources/gummies" . "/" . $type . "Gummy.png";
+                return GUMMIES_DIR . $image;
             default:
                 die("Category not found");
         }

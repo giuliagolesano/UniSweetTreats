@@ -79,12 +79,13 @@ class DatabaseHelper{
     // Function to get the best seller for each product type
     public function getBestSellers(){
         $stmt = $this->db->prepare("WITH TotaliProdotti AS (
-                SELECT 
-                P.nomeTip,
-                P.codProd,
-                P.descrizione,
-                G.nomeGusto,
-                COUNT(*) AS totale_vendite
+            SELECT 
+            P.nomeTip,
+            P.codProd,
+            P.descrizione,
+            P.foto,
+            G.nomeGusto,
+            COUNT(*) AS totale_vendite
             FROM 
                 PRODOTTO P
             JOIN 
@@ -92,13 +93,14 @@ class DatabaseHelper{
             JOIN 
                 GUSTO G ON P.nomeGusto = G.nomeGusto
             GROUP BY 
-                P.nomeTip, P.codProd, P.descrizione, G.nomeGusto
+                P.nomeTip, P.codProd, P.descrizione, P.foto, G.nomeGusto
         ),
         ClassificaTipologia AS (
             SELECT 
                 T.nomeTip,
                 T.codProd,
                 T.descrizione,
+                T.foto,
                 T.nomeGusto,
                 T.totale_vendite,
                 ROW_NUMBER() OVER (PARTITION BY T.nomeTip ORDER BY T.totale_vendite DESC) AS posizione
@@ -110,6 +112,7 @@ class DatabaseHelper{
             C.codProd,
             C.descrizione,
             C.nomeGusto,
+            C.foto,
             C.totale_vendite
         FROM 
             ClassificaTipologia C
