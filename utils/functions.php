@@ -42,4 +42,9 @@
         });
     }
 
+    function getPrice($nomeGusto, $nomeTip, $db){
+        $price = $db ->getPriceByProduct($nomeGusto,$nomeTip);
+        return $price;
+    }
+
 ?>

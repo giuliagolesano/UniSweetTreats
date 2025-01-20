@@ -65,8 +65,10 @@
                     <div>
                         <div>
                             <img src="<?php echo getImageProduct($product["nomeTip"], $product["foto"]); ?>" alt="<?php echo $product["descrizione"]; ?>">
-                            <h3><?php echo $product["descrizione"]; ?></h3>
-                            <p><?php echo $product["quantita"]; ?></p>
+                            <h3><?php echo $product["nomeGusto"]; ?> <?php echo $product["nomeTip"]; ?></h3>
+                            <p><?php echo $product["descrizione"]; ?></p>
+                            <?php echo getPrice($product["nomeGusto"], $product["nomeTip"], $db); ?>
+
                         </div>
                     </div>
                 <?php endforeach; ?>

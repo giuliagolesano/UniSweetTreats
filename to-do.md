@@ -43,7 +43,6 @@ asterisco se lo abbiamo implementato
 
 
 **COSE DA FARE:**
-- 19/01 - 20/01 finire tutte pagine php, filtro, barra di ricerca, menu a tendina
 - 20/01 - 21/01 sistemare css, funzioni js e query
 - header mobile 
 
