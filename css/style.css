@@ -13,16 +13,52 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 10px 20px;
 }
 
-img {
-    max-width: 200px;
+header div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    text-align: center;
+}
+
+header div img {
+    display: none;
+    max-width: 150px;
     height: auto;
 }
 
-#about-us img {
-    max-width: 400px;
+header div a {
+    text-decoration: none;
+}
+
+header div a h1 {
+    display: inline;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: black;
+}
+
+header nav {
+    display: flex;
+    gap: 15px;
+}
+
+header nav img {
+    max-width: 20px;
     height: auto;
+}
+
+header nav:first-of-type {
+    flex: 1;
+    justify-content: flex-start;
+}
+
+header nav:last-of-type {
+    flex: 1;
+    justify-content: flex-end;
 }
 
 header nav ul {
@@ -39,11 +75,32 @@ header nav ul li a {
     background-color: #FFAFCC;
     padding: 10px 15px;
     border-radius: 5px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header nav:first-of-type ul li:not(:first-child) {
+    display: none;
+}
+
+header nav:last-of-type ul li:nth-child(2) {
+    display: none;
 }
 
 header nav ul li a:hover {
     background-color: #FFC8DD;
+}
+
+img {
+    max-width: 200px;
+    height: auto;
+}
+
+#about-us img {
+    max-width: 400px;
+    height: auto;
 }
 
 main {
@@ -157,7 +214,7 @@ footer p {
     margin: 5px 0;
 }
 
-#signin_img img {
+#signin_img img { 
     max-width: 200px; 
     height: auto;
 }
@@ -236,4 +293,26 @@ ul {
 #login-page label input[type="checkbox"] {
     margin: 0;
     vertical-align: middle;
+}
+
+@media screen and (min-width: 1024px) {
+    header nav:first-of-type ul li:not(:first-child) {
+        display: inline;
+    }
+
+    header nav:first-of-type ul li:first-child {
+        display: none;
+    }
+    
+    header nav:last-of-type ul li:nth-child(2) {
+        display: inline;
+    }
+
+    header div img {
+        display: inline;
+    }
+
+    header div a h1 {
+        display: none;
+    }
 }

@@ -14,6 +14,7 @@
     <header>
         <nav>
             <ul>
+                <li><a href="#menu"><img src="<?php echo ICONS_DIR . 'menu.png'; ?>" alt="Menu"></a></li>
                 <li><a href="shop.php">Shop</a></li>
                 <li><a href="bestSeller.php">Best Seller</a></li>
                 <li><a href="aboutUs.php">About Us</a></li>
@@ -22,6 +23,7 @@
         <div>
             <a href="index.php">
             <img src="<?php echo ICONS_DIR . 'logo1.png'; ?>" alt="Uni Sweet Treats Logo">
+            <h1>Uni Sweet Treats</h1>
             </a>
         </div>
         
