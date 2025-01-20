@@ -8,9 +8,9 @@ if(!isset($_SESSION["email"])) {
 
 $templateParams["titolo"] = "Uni Sweet Treats - Cart";
 
-$codOrder = $db->getOrderCart($_SESSION['email'])["codOrd"]; //get the order in creation
+$codOrder = $db->getOrderCart($_SESSION["email"])["codOrd"]; //get the order in creation
 if(empty($codOrder))) {//if the cart has no orders in creation, create a order first
-    if(!($db->createOrder($_SESSION['email']))) { //if the order creation fails, redirect to shop
+    if(!($db->createOrder($_SESSION["email"]))) { //if the order creation fails, redirect to shop
         echo "Error creating order";
         header("location: shop.php");
     }
