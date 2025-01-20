@@ -176,7 +176,8 @@ class DatabaseHelper{
         $stmt->bind_param('ss', $nomeGusto, $nomeTip);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $row = $result->fetch_assoc();
+        return $row ? $row['prezzo'] : null;
     }
 
     public function getCategories() {
