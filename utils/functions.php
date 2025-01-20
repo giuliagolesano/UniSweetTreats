@@ -21,14 +21,15 @@
             
             $prezzo = $db->getPriceByProduct($article['nomeGusto'], $article['nomeTip']);
 
-            if($prezzo !== null) {
-                if(in_array($article['nomeTip'], $categories) &&
-                $prezzo >= $minPrice &&
-                $prezzo <= $maxPrice ){
+            if ($prezzo !== null) {
+                $categoriaMatch = in_array($article['nomeTip'], $categories);
+                $prezzoMatch = ($prezzo >= $minPrice && $prezzo <= $maxPrice);
+                if ($categoriaMatch && $prezzoMatch) {
                     $filteredArticles[] = $article;
                 }
             }
         }
+
         return $filteredArticles;
     }
 

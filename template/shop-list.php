@@ -8,20 +8,20 @@
                 <fieldset>
                     <legend>What do you want to include? </legend>
                     <div class="form-check">
-                        <label class="form-check-label" for="cakes">Cakes</label>
-                        <input class="form-check-input" type="checkbox" name="categorie[]" value="cakes" id="cakes" />
+                        <label class="form-check-label" for="cake">Cakes</label>
+                        <input class="form-check-input" type="checkbox" name="categorie[]" value="cake" id="cake" />
                     </div>
                     <div class="form-check">
-                        <label class="form-check-label" for="cookies">Cookies</label>
-                        <input class="form-check-input" type="checkbox" name="categorie[]" value="cookies" id="cookies" />
+                        <label class="form-check-label" for="cookie">Cookies</label>
+                        <input class="form-check-input" type="checkbox" name="categorie[]" value="cookie" id="cookie" />
                     </div>
                     <div class="form-check">
                         <label class="form-check-label" for="gummy">Gummy</label>
                         <input class="form-check-input" type="checkbox" name="categorie[]" value="gummy" id="gummy" />
                     </div>
                     <div class="form-check">
-                        <label class="form-check-label" for="cupcakes">Cupcakes</label>
-                        <input class="form-check-input" type="checkbox" name="categorie[]" value="cupcakes" id="cupcakes" />
+                        <label class="form-check-label" for="cupcake">Cupcakes</label>
+                        <input class="form-check-input" type="checkbox" name="categorie[]" value="cupcake" id="cupcake" />
                     </div>
                     <label for="prezzoMin" class="form-label">Prezzo minimo: <span id="prezzoMinValue"><?php echo $filterMinPrice; ?></span></label>
                     <input type="range" class="form-range" name="prezzoMin" min="0" max="50" value="<?php echo $filterMinPrice; ?>" id="prezzoMin" oninput="updateRangeValue('prezzoMin')" />
@@ -71,7 +71,7 @@
                     </div>
                 <?php endforeach; ?>
         <?php else: ?>
-            <p>No products found under €<?php echo $filterPrice; ?></p>
+            <p>No products found</p>
         <?php endif; ?>
     </div>
 </div>
