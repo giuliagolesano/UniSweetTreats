@@ -244,6 +244,16 @@ class DatabaseHelper{
         return $products;
     }
 
+    public function getProductByCode($codProd) {
+        $stmt = $this->db->prepare("SELECT P.*, T.prezzo
+                                    FROM PRODOTTO P JOIN TARIFFARIO T ON P.nomeGusto = T.nomeGusto AND P.nomeTip = T.nomeTip
+                                    WHERE P.codProd = ?");
+        $stmt->bind_param('s', $codProd);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+
 }
 
 ?>
