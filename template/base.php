@@ -27,12 +27,31 @@
         
         <nav>
             <ul>
-                <li><a href="shop.php"><img src="<?php echo ICONS_DIR . 'search.png'; ?>" alt="Search"></a></li>
+                <li><a id="searchToggle" href="javascript:void(0)" onclick="toggleSearch()"><img src="<?php echo ICONS_DIR . 'search.png'; ?>" alt="Search"></a></li>
                 <li><a href="login.php"><img src="<?php echo ICONS_DIR . 'account.png'; ?>" alt="Login"></a></li>
                 <li><a href="cart.php"><img src="<?php echo ICONS_DIR . 'cart.png'; ?>" alt="Cart"></a></li>
             </ul>
         </nav>
     </header>
+
+    <div id="searchBar" style="display: none;">
+        <form action="shop.php" method="GET" class="search-form">
+            <input type="text" name="search" placeholder="Search for products..." class="form-control" />
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const searchToggle = document.getElementById("searchToggle");
+            const searchBar = document.getElementById("searchBar");
+
+            searchToggle.addEventListener("click", function(event) {
+                event.preventDefault();
+                searchBar.style.display = searchBar.style.display === "none" ? "block" : "none";
+            });
+        });
+    </script>
 
     <main>
         <?php require($templateParams["nome"]); ?>
