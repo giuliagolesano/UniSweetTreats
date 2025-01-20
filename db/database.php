@@ -146,6 +146,14 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    // Function to get all products
+    public function getAllProducts() {
+        $stmt = $this->db->prepare("SELECT * FROM PRODOTTO");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     public function getCostsForOrders($email){
         $stmt = $this->db->prepare("SELECT O.codOrd AS CodiceOrdine, SUM(T.prezzo) AS CostoTotale FROM UTENTE U
         INNER JOIN ORDINE O ON U.e_mail = O.e_mail

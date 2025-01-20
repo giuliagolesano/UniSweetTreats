@@ -10,3 +10,6 @@ function getPersonalitation() {
 
 }
 
+function updateRangeValue(id) {
+    
+}

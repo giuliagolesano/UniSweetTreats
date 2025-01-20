@@ -31,6 +31,7 @@
     </div>
 </div>
 <div>
+    <h3>All products</h3>
     <div>
         
         <?php
@@ -48,17 +49,17 @@
         }*/
         ?>
 
-        <?php /*foreach ($userParams["products"] as $prodotto): ?>
+        <?php foreach ($templateParams["prodotti"] as $prodotto): ?>
             <div>
-                <a href="product.php?id_prodotto=<?php echo $prodotto["id_prodotto"]; ?>">
+                <h2>codProd:<?php echo $prodotto["codProd"]; ?></h2>
                     <div>
                         <div>
-                            <h3><?php echo $prodotto["name"]; ?></h3>
-                            <p><?php echo $prodotto["description"]; ?></p>
+                            <img src="<?php echo getImageProduct($prodotto["nomeTip"], $prodotto["nomeGusto"]); ?>" alt="<?php echo $prodotto["descrizione"]; ?>">
+                            <h3><?php echo $prodotto["descrizione"]; ?></h3>
+                            <p><?php echo $prodotto["quantita"]; ?></p>
                         </div>
                     </div>
-                </a>
             </div>
-        <?php endforeach;*/ ?>
+        <?php endforeach; ?>
     </div>
 </div>
