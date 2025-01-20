@@ -176,7 +176,8 @@ class DatabaseHelper{
         $stmt->bind_param('ss', $nomeGusto, $nomeTip);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $row = $result->fetch_assoc();
+        return $row ? $row['prezzo'] : null;
     }
 
     public function getCategories() {
@@ -241,6 +242,16 @@ class DatabaseHelper{
             $products[$row['CodiceOrdine']][$row['CodiceProdotto']] = $row;
         }
         return $products;
+    }
+
+    public function getProductByCode($codProd) {
+        $stmt = $this->db->prepare("SELECT P.*, T.prezzo
+                                    FROM PRODOTTO P JOIN TARIFFARIO T ON P.nomeGusto = T.nomeGusto AND P.nomeTip = T.nomeTip
+                                    WHERE P.codProd = ?");
+        $stmt->bind_param('s', $codProd);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
     }
 
 }

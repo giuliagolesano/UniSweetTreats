@@ -30,7 +30,7 @@ if (isset($_GET["ricerca"])) {
     $articoliCercati = $userParams["articoli"];
 }
 
-$userParams["articoliVisualizzati"] = getFilteredArticles($articoliCercati, $filterCategories, $filterMinPrice, $filterMaxPrice, $db);
+$templateParams["prodotti"] = getFilteredArticles($articoliCercati, $filterCategories, $filterMinPrice, $filterMaxPrice, $db);
 
 
 require("template/base.php");
