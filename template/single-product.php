@@ -11,7 +11,6 @@
             <?php $prezzo = $db->getPriceByProduct($product["nomeGusto"],$product["nomeTip"]); ?>
             <h2><?php echo $product["descrizione"]; ?></h2>
             <p>Prezzo: €<?php echo $prezzo; ?></p>
-            <p>Quantità disponibile: <?php echo $product["quantita"]; ?></p>
             <form action="cart.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="codProd" value="<?php echo htmlspecialchars($product["codProd"]); ?>" />
                 <input type="number" name="quantita" value="1" min="1" max="<?php echo $product["quantita"]; ?>" />
