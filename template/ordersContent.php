@@ -33,7 +33,7 @@
                     <?php endif; ?>
                     <p>Quantity: <?php echo $prodotto["quantita"]; ?></p>
                     <p>Total Product Price: €<?php echo $prodotto["prezzoProdottoTot"]; ?></p>
-                    <?php if(isUserLoggedIn()): ?>
+                    <?php if(isUserLoggedIn() && !$db->isAlreadyReviewed($_SESSION["user_email"], $prodotto["codProd"])): ?>
                         <a href="writeReview.php?codProd=<?php echo $prodotto["codProd"]; ?>">Review Product</a>
                     <?php endif; ?>
                 </div>

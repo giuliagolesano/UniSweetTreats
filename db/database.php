@@ -409,6 +409,14 @@ class DatabaseHelper{
         }
     }
 
+    public function isAlreadyReviewed($email, $codProd) {
+        $stmt = $this->db->prepare("SELECT * FROM review WHERE e_mail = ? AND codProd = ?");
+        $stmt->bind_param('ss', $email, $codProd);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->num_rows > 0;
+    }
+
 }
 
 ?>
