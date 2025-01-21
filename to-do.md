@@ -1,57 +1,66 @@
 **Cosa manca?**
-- query per creare ordine
-- sistemare alcuni sfondi NOBG che restano macchie
-- ritagliare bene simboli search, account, cart..
-- cosa visualizza l'utente e cosa visualizza l'admin
+
 - query per iscrivere la email alla newsletter che cerca l'utente -> se non ce l'account portare a pagina login
 - controlliamo che esista già l'utente che cerca di registrarsi? in quel caso aggiungere query che cerca una determinata email nel db 
-- review bottone solo se non lhai gia fatta
-- costumer reviews nella home devono essere presi con la query
-- functions per dati dai form alle query login e registrazione
-- query per le FAQ's
-- query per la review e caricarla db ???
+- funzione controlla se quell'user ha già fatto quella review -> per mostrare o meno nella pagina il bottone
+- le faq ancora non esistono
 
-- stati notifiche sono in italiano sul sito, dobbiamo fare uno switch che li traduce dal db sul sito in eng?
+**QUERY DA SCRIVERE:**
+- Review caricata nel db
+- nuovo utente registrato caricato nel db
+- ordine caricato nel db??
+- eliminazione e modifica prodotto già nel db
+- cambiare stato se il bottone viene premuto (query + event listener bottone)
+
+**COSE DA FARE:**
+- 22/01 
+Giulia (inserimento review sul singolo prodotto, eliminazione e modifica dell'ordine con bottoni, js e query) + CSS carrello, modifica prodotto, ordini e notifiche 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 **COSE GIA' IMPLEMENTATE NELLE PAGINE:**
 asterisco se lo abbiamo implementato
-- HOME (**mockup**, **html**, **php**, **css**, js) GIULIA
-- LOGIN (**mockup**, **html**, **php**, **css**, js) GIULIA
-- REGISTRAZIONE (**mockup**, **html**, **php**, **css**, js) GIULIA
-- ABOUT US (**mockup**, **html**, **php**, **css**, js) GIULIA 
+- HOME (**mockup**, **html**, **php**, **css**) GIULIA
+- LOGIN (**mockup**, **html**, **php**, **css**) GIULIA
+- REGISTRAZIONE (**mockup**, **html**, **php**, **css**) GIULIA
+- ABOUT US (**mockup**, **html**, **php**, **css**) GIULIA 
 - ORDINI (**mockup**, **html**, **php**, css, js) SOFI
-- CARRELLO (**mockup**, **html**, php, css, js) SOFI
+- CARRELLO (**mockup**, **html**, **php**, css, js) SOFI
 - NOTIFICHE (**mockup**, **html**, **php**, css, js) SOFI
-- SHOP (**mockup**, **html**, **php**, **css**, js) ICO
-- BEST SELLER (**mockup**, **html**, **php**, **css**, js) ICO
+- SHOP (**mockup**, **html**, **php**, **css**) ICO
+- BEST SELLER (**mockup**, **html**, **php**, **css**) ICO
 - SINGOLO ARTICOLO (**mockup**, **html**, **php**, **css**, js) ICO 
-- SINGOLO ARTICOLO PERSONALIZZABILE ? (**mockup**, **html**, **php**, **css**, js) ICO
-- REVIEW (**mockup**, **html**, **php**, **css**, js) SOFI
-- RICETTE (**mockup**, **html**, **php**, **css**, js) GIULIA
-- ADMIN SHOP MODIFICA LISTA (**mockup**, **html**, php, css, js) ICO/GIULIA
+- WRITE REVIEW (**mockup**, **html**, **php**, **css**, js) SOFI
+- RICETTE (**mockup**, **html**, **php**, **css**) GIULIA
 - PAGINA ADD PRODUCT (**mockup**, **html**, **php**, css, js) GIULIA
 - 
 
 
-**COSE DA FARE:**
-- 20/01 - 21/01 sistemare css, funzioni js e query
-- header mobile 
 
-
-
-- bottone read
-- bottoni shop
-- css ricette
-- css carello
-- carrello aggiungi articolo
-- query e js crea ordine
-- js modifica quantità
-- review query per inserire
-- testare eliminazione e modifica di un oggetto
-
-
-
-- da sistemare review sul singolo prodotto
+CODICE CHE MI SERVE DOMANI:
         <div class="reviews">
              <h3>Reviews</h3>
             <?php if(empty($templateParams["reviews"])): ?>
@@ -67,4 +76,6 @@ asterisco se lo abbiamo implementato
             <?php endif; ?>
         </div>
 
-        
+
+
+
