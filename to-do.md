@@ -2,10 +2,9 @@
 - query per creare ordine
 - sistemare alcuni sfondi NOBG che restano macchie
 - ritagliare bene simboli search, account, cart..
-
+- cosa visualizza l'utente e cosa visualizza l'admin
 - query per iscrivere la email alla newsletter che cerca l'utente -> se non ce l'account portare a pagina login
 - controlliamo che esista già l'utente che cerca di registrarsi? in quel caso aggiungere query che cerca una determinata email nel db 
-- versione mobile dell'header
 - review bottone solo se non lhai gia fatta
 - lente dalla home che porta allo shop con filtro applicato
 - costumer reviews nella home devono essere presi con la query
@@ -15,7 +14,6 @@
 - query per la review e caricarla db ???
 
 - stati notifiche sono in italiano sul sito, dobbiamo fare uno switch che li traduce dal db sul sito in eng?
-- VA DIMINUITA QUANTITA PRODOTTO DOPO AVER MESSO NEL CARRELLO (OPPURE DOPO AVERLO EFFETTUATO L'ORDINE PER PERMETTERE RIMOZIONE) PS DECISAMENTE DOPO AVERLO EFFETTUATO, PENSO?
 
 **MOBILE:**
 - header : barre lateriale (shop, best seller, about us, login in basso) + al centro il nome + a destra lente e carrello

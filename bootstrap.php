@@ -1,6 +1,9 @@
 <?php
 require_once("utils/functions.php");
 require_once("db/database.php");
+
+session_start();
+
 $db = new DatabaseHelper("localhost", "root", "", "Unisweettreats", 3306);
 define("UPLOAD_DIR", "./resources/");
 define("CAKES_DIR", UPLOAD_DIR . "cakes/");
