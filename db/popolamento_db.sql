@@ -140,21 +140,21 @@ insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('shark', 'gummy', '6
 -- Ordini per gli utenti
 -- Giulia
 insert into ORDINE (codOrd, giorno, ora, stato, e_mail)
-values ('ord1', '2025-01-20', '12:30:00', 'effettuato', 'giulia.golesano@studio.unibo.it');
+values ('ord1', '2025-01-20', '12:30:00', 'placed', 'giulia.golesano@studio.unibo.it');
 insert into formato_da (codOrd, codProd, foto, testo, topping, quantita)
 values ('ord1', 'cake1', 'bountyCake.png', 'Delicious Bounty Cake', 'chocolateChips', 2),
        ('ord1', 'cookie3', 'chocolateChipsCookie.png', 'ChocolateChips Cookie', 'vanilla topping', 3);
 
 -- Enrico
 insert into ORDINE (codOrd, giorno, ora, stato, e_mail)
-values ('ord2', '2025-01-21', '15:00:00', 'effettuato', 'enrico.cornacchia@studio.unibo.it');
+values ('ord2', '2025-01-21', '15:00:00', 'waiting', 'enrico.cornacchia@studio.unibo.it');
 insert into formato_da (codOrd, codProd, foto, testo, topping, quantita)
 values ('ord2', 'cupcake2', 'blueberryCupcake.png', 'Blueberry Cupcake', 'none', 1),
        ('ord2', 'gummy5', 'frizzyGummy.png', 'Frizzy Gummy', 'none', 4);
 
 -- Sofia
 insert into ORDINE (codOrd, giorno, ora, stato, e_mail)
-values ('ord3', '2025-01-22', '16:45:00', 'effettuato', 'sofia.caberletti@studio.unibo.it');
+values ('ord3', '2025-01-22', '16:45:00', 'delivering', 'sofia.caberletti@studio.unibo.it');
 insert into formato_da (codOrd, codProd, foto, testo, topping, quantita)
 values ('ord3', 'cake6', 'oreoCake.png', 'Oreo Infused Cake', 'chocolate drizzle', 2),
        ('ord3', 'cookie2', 'chinnamonCookie.png', 'Cinnamon Cookie', 'sugar coating', 5);
@@ -162,24 +162,24 @@ values ('ord3', 'cake6', 'oreoCake.png', 'Oreo Infused Cake', 'chocolate drizzle
 -- Notifiche per gli ordini
 -- Giulia
 insert into NOTIFICA (codNot, testo, stato, giorno, ora, e_mail, codOrd)
-values ('not1', 'Your order has been placed!', 'effettuato', '2025-01-20', '12:30:00', 'giulia.golesano@studio.unibo.it', 'ord1'),
-       ('not2', 'Your order has been confirmed!', 'confermato', '2025-01-20', '13:00:00', 'giulia.golesano@studio.unibo.it', 'ord1'),
-       ('not3', 'Your order is being delivered.', 'in consegna', '2025-01-21', '09:00:00', 'giulia.golesano@studio.unibo.it', 'ord1'),
-       ('not4', 'Your order has been delivered!', 'consegnato', '2025-01-21', '12:00:00', 'giulia.golesano@studio.unibo.it', 'ord1');
+values ('not1', 'Your order has been placed!', 'to_read', '2025-01-20', '12:30:00', 'giulia.golesano@studio.unibo.it', 'ord1'),
+       ('not2', 'Your order has been confirmed!', 'to_read', '2025-01-20', '13:00:00', 'giulia.golesano@studio.unibo.it', 'ord1'),
+       ('not3', 'Your order is being delivered.', 'to_read', '2025-01-21', '09:00:00', 'giulia.golesano@studio.unibo.it', 'ord1'),
+       ('not4', 'Your order has been delivered!', 'to_read', '2025-01-21', '12:00:00', 'giulia.golesano@studio.unibo.it', 'ord1');
 
 -- Enrico
 insert into NOTIFICA (codNot, testo, stato, giorno, ora, e_mail, codOrd)
-values ('not5', 'Your order has been placed!', 'effettuato', '2025-01-21', '15:00:00', 'enrico.cornacchia@studio.unibo.it', 'ord2'),
-       ('not6', 'Your order has been confirmed!', 'confermato', '2025-01-21', '15:30:00', 'enrico.cornacchia@studio.unibo.it', 'ord2'),
-       ('not7', 'Your order is being delivered.', 'in consegna', '2025-01-22', '10:00:00', 'enrico.cornacchia@studio.unibo.it', 'ord2'),
-       ('not8', 'Your order has been delivered!', 'consegnato', '2025-01-22', '13:00:00', 'enrico.cornacchia@studio.unibo.it', 'ord2');
+values ('not5', 'Your order has been placed!', 'to_read', '2025-01-21', '15:00:00', 'enrico.cornacchia@studio.unibo.it', 'ord2'),
+       ('not6', 'Your order has been confirmed!', 'to_read', '2025-01-21', '15:30:00', 'enrico.cornacchia@studio.unibo.it', 'ord2'),
+       ('not7', 'Your order is being delivered.', 'to_read', '2025-01-22', '10:00:00', 'enrico.cornacchia@studio.unibo.it', 'ord2'),
+       ('not8', 'Your order has been delivered!', 'to_read', '2025-01-22', '13:00:00', 'enrico.cornacchia@studio.unibo.it', 'ord2');
 
 -- Sofia
 insert into NOTIFICA (codNot, testo, stato, giorno, ora, e_mail, codOrd)
-values ('not9', 'Your order has been placed!', 'effettuato', '2025-01-22', '16:45:00', 'sofia.caberletti@studio.unibo.it', 'ord3'),
-       ('not10', 'Your order has been confirmed!', 'confermato', '2025-01-22', '17:00:00', 'sofia.caberletti@studio.unibo.it', 'ord3'),
-       ('not11', 'Your order is being delivered.', 'in consegna', '2025-01-23', '11:00:00', 'sofia.caberletti@studio.unibo.it', 'ord3'),
-       ('not12', 'Your order has been delivered!', 'consegnato', '2025-01-23', '14:00:00', 'sofia.caberletti@studio.unibo.it', 'ord3');
+values ('not9', 'Your order has been placed!', 'to_read', '2025-01-22', '16:45:00', 'sofia.caberletti@studio.unibo.it', 'ord3'),
+       ('not10', 'Your order has been confirmed!', 'to_read', '2025-01-22', '17:00:00', 'sofia.caberletti@studio.unibo.it', 'ord3'),
+       ('not11', 'Your order is being delivered.', 'to_read', '2025-01-23', '11:00:00', 'sofia.caberletti@studio.unibo.it', 'ord3'),
+       ('not12', 'Your order has been delivered!', 'to_read', '2025-01-23', '14:00:00', 'sofia.caberletti@studio.unibo.it', 'ord3');
 
 -- Review per alcuni prodotti
 insert into review (e_mail, testo, valutazione, codProd)
@@ -203,8 +203,8 @@ values ('news1', 'giulia.golesano@studio.unibo.it'),
 
 -- Congratulazioni per l'apertura del sito
 insert into AGGIORNAMENTO (codNot, testo, stato, giorno, ora, e_mail)
-values ('not1', 'Congratulations on the launch of the website! We are excited to offer sweet treats to all!', 'A', '2025-01-19', '13:30:00', 'unisweettreats@unibo.it');
+values ('not1', 'Congratulations on the launch of the website! We are excited to offer sweet treats to all!', 'read', '2025-01-19', '13:30:00', 'unisweettreats@unibo.it');
 
 -- Informazioni sulla disponibilità di 50 pezzi per prodotto
 insert into AGGIORNAMENTO (codNot, testo, stato, giorno, ora, e_mail)
-values ('not2', 'There are exactly 50 pieces available for each product. Get ready for orders!', 'A', '2025-01-19', '13:35:00', 'unisweettreats@unibo.it');
+values ('not2', 'There are exactly 50 pieces available for each product. Get ready for orders!', 'read', '2025-01-19', '13:35:00', 'unisweettreats@unibo.it');
