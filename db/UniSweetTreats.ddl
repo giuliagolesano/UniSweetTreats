@@ -45,6 +45,7 @@ create table formato_da (
      foto varchar(100),
      testo varchar(50),
      topping varchar(25),
+     quantita int(11),
      constraint ID_formato_da_ID primary key (codProd, codOrd));
 
 create table NEWSLETTER (

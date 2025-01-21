@@ -141,23 +141,23 @@ insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('shark', 'gummy', '6
 -- Giulia
 insert into ORDINE (codOrd, giorno, ora, stato, e_mail)
 values ('ord1', '2025-01-20', '12:30:00', 'effettuato', 'giulia.golesano@studio.unibo.it');
-insert into formato_da (codOrd, codProd, foto, testo, topping)
-values ('ord1', 'cake1', 'bountyCake.png', 'Delicious Bounty Cake', 'chocolateChips'),
-       ('ord1', 'cookie3', 'chocolateChipsCookie.png', 'ChocolateChips Cookie', 'vanilla topping');
+insert into formato_da (codOrd, codProd, foto, testo, topping, quantita)
+values ('ord1', 'cake1', 'bountyCake.png', 'Delicious Bounty Cake', 'chocolateChips', 2),
+       ('ord1', 'cookie3', 'chocolateChipsCookie.png', 'ChocolateChips Cookie', 'vanilla topping', 3);
 
 -- Enrico
 insert into ORDINE (codOrd, giorno, ora, stato, e_mail)
 values ('ord2', '2025-01-21', '15:00:00', 'effettuato', 'enrico.cornacchia@studio.unibo.it');
-insert into formato_da (codOrd, codProd, foto, testo, topping)
-values ('ord2', 'cupcake2', 'blueberryCupcake.png', 'Blueberry Cupcake', 'none'),
-       ('ord2', 'gummy5', 'frizzyGummy.png', 'Frizzy Gummy', 'none');
+insert into formato_da (codOrd, codProd, foto, testo, topping, quantita)
+values ('ord2', 'cupcake2', 'blueberryCupcake.png', 'Blueberry Cupcake', 'none', 1),
+       ('ord2', 'gummy5', 'frizzyGummy.png', 'Frizzy Gummy', 'none', 4);
 
 -- Sofia
 insert into ORDINE (codOrd, giorno, ora, stato, e_mail)
 values ('ord3', '2025-01-22', '16:45:00', 'effettuato', 'sofia.caberletti@studio.unibo.it');
-insert into formato_da (codOrd, codProd, foto, testo, topping)
-values ('ord3', 'cake6', 'oreoCake.png', 'Oreo Infused Cake', 'chocolate drizzle'),
-       ('ord3', 'cookie2', 'chinnamonCookie.png', 'Cinnamon Cookie', 'sugar coating');
+insert into formato_da (codOrd, codProd, foto, testo, topping, quantita)
+values ('ord3', 'cake6', 'oreoCake.png', 'Oreo Infused Cake', 'chocolate drizzle', 2),
+       ('ord3', 'cookie2', 'chinnamonCookie.png', 'Cinnamon Cookie', 'sugar coating', 5);
 
 -- Notifiche per gli ordini
 -- Giulia
