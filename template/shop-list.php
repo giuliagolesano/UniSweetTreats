@@ -7,16 +7,18 @@
             <a href="account_orders.php">Orders</a>
         </li><li>
             <a href="account_notifications.php">Notifications</a>
+        </li><li>
+            <a href="addProduct.php"> Add Product </a>
         </li>
     </ul>
 </nav>
 <?php endif; ?>
-<div class = "shop">
+<div class="shop">
     <nav>
         <h3>ALL PRODUCTS</h3>
         <div>
             <button type="button" class="btn" data-bs-toggle="collapse" data-bs-target="#filterMenu" aria-expanded="false" aria-controls="filterMenu">
-                filter
+                Filter
             </button>
             <div class="collapse" id="filterMenu">
                 <form action="shop.php" method="GET" class="bg-light p-4 rounded">
@@ -50,32 +52,41 @@
             </div>
         </div>
     </nav>
-    <div>
-        <?php if(isAdminLoggedIn()): ?>
-            <li><a href="addProduct.php"> Add Product </a></li>
-        <?php endif; ?>
-        <?php if (!empty($templateParams["prodotti"])): ?>
-            <?php 
-                $lastCategory = null; 
-                foreach ($templateParams["prodotti"] as $product): 
-                    if ($lastCategory !== $product["nomeTip"]): 
-                        $lastCategory = $product["nomeTip"]; 
-                    ?>
-                        <h2><?php echo ucfirst($lastCategory); ?></h2>
-                    <?php endif; ?>
-                    <div>
-                        <a href="product.php?codProd=<?php echo $product["codProd"]; ?>">
-                        <div>
-                            <img src="<?php echo getImageProduct($product["nomeTip"], $product["foto"]); ?>" alt="<?php echo $product["descrizione"]; ?>">
-                            <h3><?php echo $product["nomeGusto"]; ?> <?php echo $product["nomeTip"]; ?></h3>
-                            <p><?php echo $product["descrizione"]; ?></p>
-                            <?php echo getPrice($product["nomeGusto"], $product["nomeTip"], $db); ?>
-
+    <div class="container">
+        <div class="row">
+            <?php if (!empty($templateParams["prodotti"])): ?>
+                <?php 
+                    $lastCategory = null; 
+                    foreach ($templateParams["prodotti"] as $product): 
+                        if ($lastCategory !== $product["nomeTip"]): 
+                            $lastCategory = $product["nomeTip"]; 
+                        ?>
+                            <div class="col-12">
+                                <h2 class="text-center"><?php echo ucfirst($lastCategory); ?></h2>
+                            </div>
+                        <?php endif; ?>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                            <div class="card">
+                                <a href="product.php?codProd=<?php echo $product["codProd"]; ?>">
+                                    <img src="<?php echo getImageProduct($product["nomeTip"], $product["foto"]); ?>" class="card-img-top" alt="<?php echo $product["descrizione"]; ?>">
+                                </a>
+                                <div class="card-body text-center">
+                                    <h5 class="card-title"><?php echo $product["nomeGusto"]; ?> <?php echo $product["nomeTip"]; ?></h5>
+                                    <p class="card-text"><?php echo $product["descrizione"]; ?></p>
+                                    <p class="card-text fw-bold">Price: €<?php echo getPrice($product["nomeGusto"], $product["nomeTip"], $db); ?> </p>
+                                    <?php if (isAdminLoggedIn()): ?>
+                                        <a href="addProduct.php?codProd=<?php echo $product["codProd"]; ?>" class="btn btn-primary btn-sm">Modifica</a>
+                                        <button class="btn btn-danger btn-sm delete-button" data-id="<?php echo $product["codProd"]; ?>">Elimina</button>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-        <?php else: ?>
-            <p>No products found</p>
-        <?php endif; ?>
+                    <?php endforeach; ?>
+            <?php else: ?>
+                <div class="col-12">
+                    <p class="text-center">No products found</p>
+                </div>
+            <?php endif; ?>
+        </div>
     </div>
 </div>

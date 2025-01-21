@@ -365,10 +365,8 @@ footer p {
 /* Shop.php */
 
 .shop {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
     padding: 20px;
+    text-align: center;
 }
 
 .shop h3, .shop h2 {
@@ -378,71 +376,103 @@ footer p {
     text-align: center;
 }
 
-.shop > nav > div {
-    display: flex;
-    gap: 15px;
+.shop .row {
     justify-content: center;
-    align-items: center;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-}
-
-.shop > nav > div > button,
-.shop > nav > div > form {
-    flex-shrink: 0;
-}
-
-.shop > div {
-    display: flex;
-    flex-wrap: wrap;
     gap: 20px;
-    justify-content: center;
 }
 
-.shop > div > div {
-    background-color: #FFC8DD;
-    border: 1px solid #CCC;
-    border-radius: 5px;
-    padding: 15px;
-    width: 200px;
-    height: 300px; 
-    box-sizing: border-box;
+.shop .card {
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
     text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-    flex-shrink: 0;
+    background-color: #FFC8DD;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin-top: 15px;
 }
 
-.shop > div > div:hover {
+.shop .card:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.shop > div > div img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-    object-fit: contain;
+.shop .card img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    margin-top: 10px;
 }
 
-.shop > div > div h3 {
+.shop .card-body {
+    padding: 15px;
+}
+
+.shop .card-title {
     font-size: 1.2rem;
     color: #333;
     margin-bottom: 5px;
 }
 
-.shop > div > div p {
+.shop .card-text {
     font-size: 1rem;
     color: #666;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    margin: 5px 0;
 }
 
-@media screen and (max-width: 768px) {
-    .shop > div {
-        justify-content: flex-start;
+.shop .btn {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    margin-top: 10px;
+}
+
+.shop .btn-primary {
+    background-color: #A2D2FF;
+    color: #FFF;
+    border: none;
+}
+
+.shop .btn-primary:hover {
+    background-color: #90C9FF;
+}
+
+.shop .btn-danger {
+    background-color: #FF6F91;
+    color: #FFF;
+    border: none;
+}
+
+.shop .btn-danger:hover {
+    background-color: #FF5F81;
+}
+
+@media screen and (min-width: 992px) {
+    .shop .row > .col-lg-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .shop .row > .col-md-4 {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .shop .row > .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .shop .row > .col-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
     }
 }
 
@@ -450,9 +480,6 @@ footer p {
 /* Best Seller */
 
 .bestSeller {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
     padding: 20px;
 }
 
@@ -463,57 +490,75 @@ footer p {
     text-align: center;
 }
 
-.bestSeller > div {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    align-items: stretch;
-    flex-wrap: nowrap;
+.bestSeller .row {
+    justify-content: center; 
+    gap: 20px;
 }
 
-.bestSeller > div > div {
-    background-color: #FFC8DD;
-    border: 1px solid #CCC;
-    border-radius: 5px;
-    padding: 15px;
-    width: 200px;
-    height: 300px;
-    box-sizing: border-box;
+.bestSeller .card {
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
     text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-    flex-shrink: 0;
+    background-color: #FFC8DD;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-.bestSeller > div > div:hover {
+.bestSeller .card:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.bestSeller > div > div img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-    object-fit: contain;
+.bestSeller .card img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    margin-top: 10px;
 }
 
-.bestSeller > div > div h4 {
+.bestSeller .card-body {
+    padding: 15px;
+}
+
+.bestSeller .card-title {
     font-size: 1.2rem;
     color: #333;
     margin-bottom: 5px;
 }
 
-.bestSeller > div > div h5 {
+.bestSeller .card-text {
     font-size: 1rem;
     color: #666;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    margin: 5px 0;
 }
 
-@media screen and (max-width: 768px) {
-    .bestSeller > div {
-        justify-content: flex-start;
+@media screen and (min-width: 992px) {
+    .bestSeller .row > .col-lg-3 {
+        flex: 0 0 25%; 
+        max-width: 25%;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .bestSeller .row > .col-md-4 {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .bestSeller .row > .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .bestSeller .row > .col-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
     }
 }

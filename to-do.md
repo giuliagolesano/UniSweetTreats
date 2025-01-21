@@ -47,4 +47,5 @@ asterisco se lo abbiamo implementato
 - query e js crea ordine
 - js modifica quantità
 - review query per inserire
+- testare eliminazione e modifica di un oggetto
 
