@@ -281,7 +281,7 @@ class DatabaseHelper{
     }
 
     public function getCartItems($codOrd) {
-        $stmt = $this->db->prepare("SELECT P.codProd, P.descrizione, P.foto, T.prezzo, P.nomeGusto, P.nomeTip, F.foto AS fotoAggiunta, F.testo, F.topping, COUNT(F.codProd) AS quantita
+        $stmt = $this->db->prepare("SELECT P.codProd, P.descrizione, P.foto, T.prezzo, P.nomeGusto, P.nomeTip, F.foto AS fotoAggiunta, F.testo, F.topping, F.quantita
                                     FROM PRODOTTO P JOIN TARIFFARIO T ON P.nomeGusto = T.nomeGusto AND P.nomeTip = T.nomeTip
                                     JOIN FORMATO_DA F ON P.codProd = F.codProd
                                     WHERE F.codOrd = ?
