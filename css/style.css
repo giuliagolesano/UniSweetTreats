@@ -17,7 +17,7 @@ header {
     justify-content: space-between;
     padding: 10px 20px;
 }
-
+        
 header div {
     display: flex;
     align-items: center;
@@ -32,10 +32,9 @@ header div img {
     height: auto;
 }
 
-header div a {
+a {
     text-decoration: none;
 }
-
 
 header div a h1 {
     display: inline;
@@ -183,9 +182,6 @@ img {
 .homepage .carosello img {
     max-width: 150px;
 }
-
-
-
 
 
 footer {
