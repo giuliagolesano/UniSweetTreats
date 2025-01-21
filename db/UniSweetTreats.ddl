@@ -88,7 +88,7 @@ create table review (
      testo varchar(200),
      valutazione int not null,
      codProd varchar(10) not null,
-     constraint FKrev_UTE_ID primary key (e_mail));
+     constraint PK_review primary key (e_mail, codProd));
 
 create table riceve (
      codNews varchar(10) not null,
@@ -150,11 +150,11 @@ alter table PRODOTTO add constraint FKappartenenza_FK
      references TIPOLOGIA (nomeTip);
 
 alter table review add constraint FKrev_UTE_FK
-     foreign key (e_mail)
+     foreign key (e_mail) 
      references UTENTE (e_mail);
 
 alter table review add constraint FKrev_PRO_FK
-     foreign key (codProd)
+     foreign key (codProd) 
      references PRODOTTO (codProd);
 
 alter table riceve add constraint FKric_UTE_FK
