@@ -1,8 +1,12 @@
 <?php
 require_once("bootstrap.php");
 
-unset($_SESSION["user_email"]);
-unset($_SESSION["admin_email"]);
+if(isset($_GET["action"]) && $_GET["action"] == "logout"){
+    unset($_SESSION["user_email"]);
+    unset($_SESSION["admin_email"]);
+    unset($_SESSION["nome"]);
+    unset($_SESSION["cognome"]);
+}
 
 if(isset($_POST["email"]) && isset($_POST["password"])){
     $login_result = $db->checkLoginUser($_POST["email"], $_POST["password"]); //E' un array di array associativi con i dati dell'utente

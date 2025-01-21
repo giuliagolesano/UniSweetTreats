@@ -30,12 +30,13 @@
         <nav>
             <ul>
                 <li><a id="searchToggle" href="javascript:void(0)" onclick="toggleSearch()"><img src="<?php echo ICONS_DIR . 'search.png'; ?>" alt="Search"></a></li>
-                <li><a href="login.php"><img src="<?php echo ICONS_DIR . 'account.png'; ?>" alt="Login"></a></li>
                 <?php if(!isAdminLoggedIn()): ?>
                     <li><a href="cart.php"><img src="<?php echo ICONS_DIR . 'cart.png'; ?>" alt="Cart"></a></li>
                 <?php endif; ?>
+                
+                <li><a href="login.php?action=login"><img src="<?php echo ICONS_DIR . 'account.png'; ?>" alt="Login"></a></li>
                 <?php if(isAdminLoggedIn() || isUserLoggedIn()): ?>
-                    <li><a href="#"><img src="<?php echo ICONS_DIR . 'logout.png'; ?>" alt="LogOut"></a></li>
+                    <li><a href="login.php?action=logout"><img src="<?php echo ICONS_DIR . 'logout.png'; ?>" alt="LogOut"></a></li>
                 <?php endif; ?>
             </ul>
         </nav>
@@ -55,7 +56,10 @@
         <li><a href="shop.php">Shop</a></li>
         <li><a href="bestSeller.php">Best Seller</a></li>
         <li><a href="aboutUs.php">About Us</a></li>
-        <li><a href="login.php">Login</a></li>
+        <li><a href="login.php?action=login">Login</a></li>
+        <?php if(isAdminLoggedIn() || isUserLoggedIn()): ?>
+            <li><a href="login.php?action=logout">Logout</a></li>
+        <?php endif; ?>
     </ul>
 </nav>
 

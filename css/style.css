@@ -88,7 +88,7 @@ header nav:first-of-type ul li:not(:first-child) {
     display: none;
 }
 
-header nav:last-of-type ul li:nth-child(2) {
+header nav:last-of-type ul li:nth-child(3), header nav:last-of-type ul li:nth-child(4) {
     display: none;
 }
 
@@ -296,7 +296,7 @@ footer p {
         display: none;
     }
     
-    header nav:last-of-type ul li:nth-child(2) {
+    header nav:last-of-type ul li:nth-child(3), header nav:last-of-type ul li:nth-child(4) {
         display: inline;
     }
 
