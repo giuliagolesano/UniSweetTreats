@@ -187,6 +187,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /*
     public function getCostsForOrders($email){
         $stmt = $this->db->prepare("SELECT O.codOrd AS CodiceOrdine, SUM(T.prezzo) AS CostoTotale FROM UTENTE U
         INNER JOIN ORDINE O ON U.e_mail = O.e_mail
@@ -207,7 +208,22 @@ class DatabaseHelper{
         }
         return $costs;
     }
+    */
 
+    public function getOrderPrice($codOrd) {
+        $stmt = $this->db->prepare("SELECT SUM(T.prezzo * F.quantita) AS prezzoOrdine FROM ORDINE O
+                                    JOIN FORMATO_DA F ON O.codOrd = F.codOrd
+                                    JOIN PRODOTTO P ON F.codProd = P.codProd
+                                    JOIN TARIFFARIO T ON P.nomeGusto = T.nomeGusto AND P.nomeTip = T.nomeTip
+                                    WHERE O.codOrd = ?");
+        $stmt->bind_param('s', $codOrd);
+        $stmt->execute();
+        $result = $stmt->get_result(); 
+        $row = $result->fetch_assoc(); 
+        return $row['prezzoOrdine'];  
+    }
+
+    /*
     public function getProductsForOrders($email){
         $stmt = $this->db->prepare("SELECT 
         O.codOrd AS CodiceOrdine,
@@ -242,6 +258,19 @@ class DatabaseHelper{
             $products[$row['CodiceOrdine']][$row['CodiceProdotto']] = $row;
         }
         return $products;
+    }
+    */
+
+    public function getProductsByOrder($codOrd) {
+        $stmt = $this->db->prepare("SELECT P.codProd, P.descrizione, P.foto, T.prezzo, P.nomeGusto, P.nomeTip, F.foto AS fotoAggiunta, F.testo, F.topping, COUNT(F.codProd) AS quantita
+                                    FROM PRODOTTO P JOIN TARIFFARIO T ON P.nomeGusto = T.nomeGusto AND P.nomeTip = T.nomeTip
+                                    JOIN FORMATO_DA F ON P.codProd = F.codProd
+                                    WHERE F.codOrd = ?
+                                    GROUP BY P.codProd, P.descrizione, P.foto, T.prezzo, P.nomeGusto, P.nomeTip, F.foto, F.testo, F.topping");
+        $stmt->bind_param('s', $codOrd);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function getProductByCode($codProd) {
@@ -317,6 +346,12 @@ class DatabaseHelper{
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function deleteProduct($codProd) {
+        $stmt = $this->db->prepare("DELETE FROM PRODOTTO WHERE codProd = ?");
+        $stmt->bind_param('i', $codProd);
+        return $stmt->execute();
     }
 
 }

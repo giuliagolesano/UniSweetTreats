@@ -1,14 +1,9 @@
 <?php 
 require_once("bootstrap.php");
 
-/*if(!isset($_SESSION["email"])) {
-    header("location: login.php");
-    exit;
-} else {
-    $email = $_SESSION["email"];
-}*/
-
-$email = "sofia.caberletti@studio.unibo.it";
+if(!isUserLoggedIn()){
+    header("Location: login.php"); //Se l'utente non è loggato, lo reindirizzo alla pagina di login
+}
 
 if(isset($_GET["codProd"])){
     $codProd = $_GET["codProd"];

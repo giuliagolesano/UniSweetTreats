@@ -11,6 +11,7 @@
     </ul>
 </nav>
 <?php foreach($templateParams["ordini"] as $ordine): ?>
+    <?php if(isUserLoggedIn()): ?>
         <div>
             <h2>Order <?php echo $ordine["codOrd"]; ?></h2>
             <p>Order Date and Time: <?php echo $ordine["giorno"]; ?>, <?php echo $ordine["ora"]; ?></p>
@@ -23,11 +24,27 @@
                         <h3><?php echo $prodotto["NomeGusto"]; ?> <?php echo $prodotto["NomeTip"]; ?></h3>
                         <p>Quantity: <?php echo $prodotto["Quantita"]; ?></p>
                         <p>Total Price: €<?php echo $prodotto["PrezzoTotale"]; ?></p>
-                        <?php if(!isAdminLoggedIn()): ?>
-                            <a href="writeReview.php?codProd=<?php echo $prodotto["CodiceProdotto"]; ?>">Review Product</a>
-                        <?php endif; ?>
+                        <a href="writeReview.php?codProd=<?php echo $prodotto["CodiceProdotto"]; ?>">Review Product</a>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
+    <?php else: ?>
+        <div>
+            <h2>Order <?php echo $ordine["codOrd"]; ?> by <?php echo $ordine["e_mail"]; ?></h2>
+            <p>Order Date and Time: <?php echo $ordine["giorno"]; ?>, <?php echo $ordine["ora"]; ?></p>
+            <p>Status: <?php echo $ordine["stato"]; ?></p>
+            <p>Total Order Price: €<?php echo $db->getOrderPrice($ordine["codOrd"]) ?></p>
+            <?php foreach($templateParams["prodotti"][$ordine["codOrd"]] as $prodotto): ?>
+                <div>
+                    <img src="<?php echo getImageProduct($prodotto["NomeTip"], $prodotto["FotoProdotto"]); ?>" alt="Product Image">
+                    <div>
+                        <h3><?php echo $prodotto["NomeGusto"]; ?> <?php echo $prodotto["NomeTip"]; ?></h3>
+                        <p>Quantity: <?php echo $prodotto["Quantita"]; ?></p>
+                        <p>Total Product Price: €<?php echo $prodotto["PrezzoTotale"]; ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
 <?php endforeach; ?>
