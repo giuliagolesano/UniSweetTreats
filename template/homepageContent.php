@@ -15,7 +15,7 @@
         <p>At Uni Sweet Treats, we believe every celebration deserves a touch of sweetness. From custom cakes to handcrafted pastries, we bring joy to every bite with love and passion. Perfect for students tackling tough exams or celebrating small victories!</p>
     </div>
 
-    <div class = "recipes">
+    <div class = "recipe">
         <h2>Our Recipes</h2>
         <p>Discover our delicious recipes and learn how to make your favorite treats at home. From cupcakes to cookies, we have something for everyone. <a href="recipes.php">Read more</a></p>
     </div>
