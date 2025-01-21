@@ -35,13 +35,19 @@
             <p>Order Date and Time: <?php echo $ordine["giorno"]; ?>, <?php echo $ordine["ora"]; ?></p>
             <p>Status: <?php echo $ordine["stato"]; ?></p>
             <p>Total Order Price: €<?php echo $db->getOrderPrice($ordine["codOrd"]) ?></p>
-            <?php foreach($templateParams["prodotti"][$ordine["codOrd"]] as $prodotto): ?>
+            <?php foreach($db->getProductsByOrder($ordine["codOrd"]) as $prodotto): ?>
                 <div>
-                    <img src="<?php echo getImageProduct($prodotto["NomeTip"], $prodotto["FotoProdotto"]); ?>" alt="Product Image">
+                    <img src="<?php echo getImageProduct($prodotto["nomeTip"], $prodotto["foto"]); ?>" alt="Product Image">
                     <div>
-                        <h3><?php echo $prodotto["NomeGusto"]; ?> <?php echo $prodotto["NomeTip"]; ?></h3>
-                        <p>Quantity: <?php echo $prodotto["Quantita"]; ?></p>
-                        <p>Total Product Price: €<?php echo $prodotto["PrezzoTotale"]; ?></p>
+                        <h3><?php echo $prodotto["nomeGusto"]; ?> <?php echo $prodotto["nomeTip"]; ?></h3>
+                        <?php if($prodotto["fotoAggiunta"] != "null"): ?>
+                            <p>Personalized Photo: <?php echo $prodotto["fotoAggiunta"]; ?></p>
+                        <?php endif; ?>
+                        <?php if($prodotto["testo"] != "null"): ?>
+                            <p>Personalized Text: <?php echo $prodotto["testo"]; ?></p>
+                        <?php endif; ?>
+                        <p>Quantity: <?php echo $prodotto["quantita"]; ?></p>
+                        <p>Total Product Price: €<?php echo $prodotto["prezzoProdottoTot"]; ?></p>
                     </div>
                 </div>
             <?php endforeach; ?>

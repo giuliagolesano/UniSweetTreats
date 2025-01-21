@@ -211,7 +211,7 @@ class DatabaseHelper{
     */
 
     public function getOrderPrice($codOrd) {
-        $stmt = $this->db->prepare("SELECT SUM(T.prezzo * F.quantita) AS prezzoOrdine FROM ORDINE O
+        $stmt = $this->db->prepare("SELECT SUM(T.prezzo * F.quantita) AS prezzoOrdineTot FROM ORDINE O
                                     JOIN FORMATO_DA F ON O.codOrd = F.codOrd
                                     JOIN PRODOTTO P ON F.codProd = P.codProd
                                     JOIN TARIFFARIO T ON P.nomeGusto = T.nomeGusto AND P.nomeTip = T.nomeTip
@@ -220,7 +220,7 @@ class DatabaseHelper{
         $stmt->execute();
         $result = $stmt->get_result(); 
         $row = $result->fetch_assoc(); 
-        return $row['prezzoOrdine'];  
+        return $row['prezzoOrdineTot'];  
     }
 
     /*
@@ -262,11 +262,10 @@ class DatabaseHelper{
     */
 
     public function getProductsByOrder($codOrd) {
-        $stmt = $this->db->prepare("SELECT P.codProd, P.descrizione, P.foto, T.prezzo, P.nomeGusto, P.nomeTip, F.foto AS fotoAggiunta, F.testo, F.topping, COUNT(F.codProd) AS quantita
+        $stmt = $this->db->prepare("SELECT P.codProd, P.descrizione, P.foto, T.prezzo, P.nomeGusto, P.nomeTip, F.foto AS fotoAggiunta, F.testo, F.topping, F.quantita, (F.quantita * T.prezzo) AS prezzoProdottoTot
                                     FROM PRODOTTO P JOIN TARIFFARIO T ON P.nomeGusto = T.nomeGusto AND P.nomeTip = T.nomeTip
                                     JOIN FORMATO_DA F ON P.codProd = F.codProd
-                                    WHERE F.codOrd = ?
-                                    GROUP BY P.codProd, P.descrizione, P.foto, T.prezzo, P.nomeGusto, P.nomeTip, F.foto, F.testo, F.topping");
+                                    WHERE F.codOrd = ?");
         $stmt->bind_param('s', $codOrd);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -351,6 +350,12 @@ class DatabaseHelper{
     public function deleteProduct($codProd) {
         $stmt = $this->db->prepare("DELETE FROM PRODOTTO WHERE codProd = ?");
         $stmt->bind_param('i', $codProd);
+        return $stmt->execute();
+    }
+
+    public function markNotificationAsRead($codNot) {
+        $stmt = $this->db->prepare("UPDATE NOTIFICA SET stato = 'read' WHERE codNot = ?");
+        $stmt->bind_param('s', $codNot);
         return $stmt->execute();
     }
 
