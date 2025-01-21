@@ -15,7 +15,7 @@
             <form action="cart.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="codProd" value="<?php echo htmlspecialchars($product["codProd"]); ?>" />
                 <input type="number" name="quantita" value="1" min="1" max="<?php echo $product["quantita"]; ?>" />
-                <?php if($product["nome_categoria"] == "cake"): ?>
+                <?php if($product["nomeTip"] == "cake"): ?>
                     <div>
                         <label for="custom-text">Customize your cake:</label>
                         <input type="text" id="custom-text" name="custom-text" placeholder="Write your text here..." />
