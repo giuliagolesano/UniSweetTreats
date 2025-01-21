@@ -1,7 +1,7 @@
 <main>
     <div>
         <div>
-            <img  src="<?php echo ICONS_DIR . 'aboutUs.png'; ?>" alt="About Us">
+            <img  class="aboutUs" src="<?php echo ICONS_DIR . 'aboutUs.png'; ?>" alt="About Us">
         </div>
         <div>
             <p>At Uni Sweet Treats, we believe every celebration deserves a touch of sweetness. <br> From custom cakes to handcrafted pastries, we bring joy to every bite with love and passion. <br> Perfect for students tackling tough exams or celebrating small victories! Our mission is to provide the highest quality sweets that not only taste amazing but also bring a smile to your face. <br> Whether you're looking for a special treat for yourself or a gift for a loved one, we have something for everyone. <br> Join us in celebrating life's sweetest moments!</p>

@@ -1,5 +1,7 @@
 /* Debug: CSS file loaded */
 
+/* CSS general */
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -33,6 +35,7 @@ header div img {
 header div a {
     text-decoration: none;
 }
+
 
 header div a h1 {
     display: inline;
@@ -69,6 +72,7 @@ header nav ul {
     gap: 15px;
 }
 
+/* bottoni shop, about us, best seller, search, cart and account*/
 header nav ul li a {
     text-decoration: none;
     color: white;
@@ -93,62 +97,40 @@ header nav ul li a:hover {
     background-color: #FFC8DD;
 }
 
-img {
-    max-width: 200px;
-    height: auto;
-}
-
-#about-us img {
-    max-width: 400px;
-    height: auto;
-}
-
 main {
     text-align: center;
     padding: 40px 20px;
     background-color: #BDE0FE;
 }
 
-main section {
+/****/
+
+img {
+    max-width: 200px;
+    height: auto;
+}
+
+/* Home Page */
+
+.homepage div {
     padding: 20px;
     margin: 20px 0;
     border-radius: 10px;
+    
 }
 
-main section div {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-main section div img {
-    max-width: 100px;
-    height: auto;
-    border-radius: 10px;
-}
-
-main section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-main section p {
-    font-size: 1rem;
-    line-height: 1.5;
-}
-
-main section:first-of-type {
+.homepage .intro {
     background-color: #BDE0FE;
+    text-align: center;
 }
 
-main section:first-of-type h1 {
+.homepage .intro h1 {
     font-size: 2rem;
     color: #333;
     margin-bottom: 20px;
 }
 
-main section:first-of-type a {
+.homepage .intro a {
     text-decoration: none;
     color: white;
     background-color: #A2D2FF;
@@ -158,45 +140,53 @@ main section:first-of-type a {
     transition: background-color 0.3s;
 }
 
-main section:first-of-type a:hover {
+.homepage .intro a:hover {
     background-color: #FFAFCC;
 }
 
-main section:nth-of-type(2) {
+.homepage .about {
     background-color: #FFC8DD;
     text-align: center;
 }
 
-main section:nth-of-type(3) {
+.homepage .recipes {
     background-color: #D4A59A;
     color: #4A2C2A;
     text-align: left;
 }
 
-main section:nth-of-type(3) h2 {
+.homepage .recipes h2 {
     color: #FAE5E1;
     text-align: center;
 }
 
-main section:nth-of-type(3) div {
+.homepage .recipes div {
     border-bottom: 1px solid #FFC8DD;
     padding-bottom: 10px;
     margin-bottom: 15px;
 }
 
-main section:nth-of-type(3) div p:last-child {
+.homepage .recipes div p:last-child {
     color: #B99285;
     font-size: 1.2rem;
 }
 
-main section:nth-of-type(4) {
+.homepage .slogan {
     background-color: #EED4C8;
     color: #5A3E36;
 }
 
-main section:nth-of-type(4) h2 {
+.homepage .slogan h2 {
     color: #D6B8A1;
 }
+
+.homepage .carosello img {
+    max-width: 150px;
+}
+
+
+
+
 
 footer {
     background-color: #CDB4DB;
@@ -219,10 +209,10 @@ footer p {
     height: auto;
 }
 
-ul {
+/*ul { ignorato 
     list-style-type: none;
     padding: 0;
-}
+}*/
 
 /* da login.css */
 #login-page {

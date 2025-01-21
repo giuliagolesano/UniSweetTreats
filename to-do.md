@@ -6,20 +6,12 @@
 - query per iscrivere la email alla newsletter che cerca l'utente -> se non ce l'account portare a pagina login
 - controlliamo che esista già l'utente che cerca di registrarsi? in quel caso aggiungere query che cerca una determinata email nel db 
 - review bottone solo se non lhai gia fatta
-- lente dalla home che porta allo shop con filtro applicato
 - costumer reviews nella home devono essere presi con la query
 - functions per dati dai form alle query login e registrazione
-- espansione cerca, filtro, menu barre per mobile. --> compressione
 - query per le FAQ's
 - query per la review e caricarla db ???
 
 - stati notifiche sono in italiano sul sito, dobbiamo fare uno switch che li traduce dal db sul sito in eng?
-
-**MOBILE:**
-- header : barre lateriale (shop, best seller, about us, login in basso) + al centro il nome + a destra lente e carrello
-
-**DESKTOP:**
-- header: shop, best seller e about us + logo al centro + lente, account e carrello a destra
 
 **COSE GIA' IMPLEMENTATE NELLE PAGINE:**
 asterisco se lo abbiamo implementato
