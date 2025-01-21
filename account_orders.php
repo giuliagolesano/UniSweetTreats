@@ -7,8 +7,6 @@ if(!isUserLoggedIn() && !isAdminLoggedIn()){
 
 if(isUserLoggedIn()){
     $templateParams["ordini"] = $db->getOrdersByEmail($_SESSION["user_email"]);
-    /*$templateParams["costi"] = $db->getCostsForOrders($_SESSION["user_email"]); 
-    $templateParams["prodotti"] = $db->getProductsForOrders($_SESSION["user_email"]);*/
 } else {
     $templateParams["ordini"] = $db->getAllOrders();
 }
