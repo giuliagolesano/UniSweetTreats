@@ -7,11 +7,12 @@ if(!(isset($_GET["codProd"]))) {
 
 $templateParams["titolo"] = "Uni Sweet Treats - Product";
 $templateParams["nome"] = "single-product.php";
-$templateParams["js"][] = "js/product.js";
 
 $userParams["product"] = current(array_filter($userParams["articoli"], function($product) {
     return $product["codProd"] == $_REQUEST["codProd"];
 }));
+
+// $prodotto = $db->getProductByCode($_GET["CodProd"]);
 
 require("template/base.php");
 ?>

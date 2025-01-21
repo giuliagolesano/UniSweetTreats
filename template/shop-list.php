@@ -38,7 +38,7 @@
     <div>
         
         <?php
-        /*if (isset($_SESSION["username"]) && isset($_SESSION["admin"]) && $_SESSION["admin"]) {
+        /*if (isset($_SESSION["e_mail"]) && isset($_SESSION["admin"]) && $_SESSION["admin"]) {
             echo "
                 <div>
                     <a href='addProduct.php'>
@@ -63,6 +63,7 @@
                         <h2><?php echo ucfirst($lastCategory); ?></h2>
                     <?php endif; ?>
                     <div>
+                        <a href="product.php?codProd=<?php echo $product["codProd"]; ?>">
                         <div>
                             <img src="<?php echo getImageProduct($product["nomeTip"], $product["foto"]); ?>" alt="<?php echo $product["descrizione"]; ?>">
                             <h3><?php echo $product["nomeGusto"]; ?> <?php echo $product["nomeTip"]; ?></h3>
