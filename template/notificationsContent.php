@@ -12,13 +12,26 @@
 </nav>
 <div>
     <?php foreach($templateParams["notifiche"] as $notifica) : ?>
-        <div>
-            <header>
-                <h2>Order <?php echo $notifica["codOrd"]; ?> <?php echo $notifica["stato"]; ?></h2>
-                <time datetime="<?php echo $notifica["giorno"]; ?><?php echo $notifica["ora"]; ?>"><?php echo $notifica["giorno"]; ?> <?php echo $notifica["ora"]; ?></time>
-            </header>
-            <p><?php echo $notifica["testo"]; ?></p>
-            <button>Read</button>
-        </div>
+        <?php if(isAdminLoggedIn()): ?>
+            <div>
+                <header>
+                    <h2>Notification <?php echo $notifica["codNot"]; ?></h2>
+                    <div> Stato: <?php echo $notifica["stato"]; ?></div>
+                    <time datetime="<?php echo $notifica["giorno"]; ?><?php echo $notifica["ora"]; ?>"><?php echo $notifica["giorno"]; ?> <?php echo $notifica["ora"]; ?></time>
+                </header>
+                <p><?php echo $notifica["testo"]; ?></p>
+                <button>Read</button>
+            </div>
+        <?php else: ?>
+            <div>
+                <header>
+                    <h2>Order <?php echo $notifica["codOrd"]; ?></h2>
+                    <div> Stato: <?php echo $notifica["stato"]; ?></div>
+                    <time datetime="<?php echo $notifica["giorno"]; ?><?php echo $notifica["ora"]; ?>"><?php echo $notifica["giorno"]; ?> <?php echo $notifica["ora"]; ?></time>
+                </header>
+                <p><?php echo $notifica["testo"]; ?></p>
+                <button>Read</button>
+            </div>
+        <?php endif; ?>
     <?php endforeach; ?>
 </div>
