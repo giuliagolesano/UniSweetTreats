@@ -152,24 +152,24 @@ ul, li {
     text-align: center;
 }
 
-.homepage .recipes {
+.homepage .recipe {
     background-color: #D4A59A;
     color: #4A2C2A;
     text-align: left;
 }
 
-.homepage .recipes h2 {
+.homepage .recipe h2 {
     color: #FAE5E1;
     text-align: center;
 }
 
-.homepage .recipes div {
+.homepage .recipe div {
     border-bottom: 1px solid #FFC8DD;
     padding-bottom: 10px;
     margin-bottom: 15px;
 }
 
-.homepage .recipes div p:last-child {
+.homepage .recipe div p:last-child {
     color: #B99285;
     font-size: 1.2rem;
 }
