@@ -255,7 +255,7 @@ class DatabaseHelper{
     }
 
     public function getOrderCart($email) {
-        $stmt = $this->db->prepare("SELECT * FROM ORDINE WHERE stato = 'in creazione' AND e_mail = ?");
+        $stmt = $this->db->prepare("SELECT * FROM ORDINE WHERE stato = 'attesa' AND e_mail = ?");
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -267,9 +267,10 @@ class DatabaseHelper{
         $row = $result->fetch_assoc(); //COULD CHECK IF THE QUERY RETURNED A ROW EMPTY
         $newCodOrd = 'ord' . ((int)substr($row['maxCodOrd'], 3) + 1); // create a new order code increasing the last one
         $stmt = $this->db->prepare("INSERT INTO ORDINE (codOrd, giorno, ora, stato, e_mail) 
-                                    VALUES (?, CURDATE(), CURTIME(), 'in creazione', ?)");
+                                    VALUES (?, CURDATE(), CURTIME(), 'attesa', ?)");
         $stmt->bind_param('ss', $newCodOrd, $email);
         $stmt->execute();
+        return $newCodOrd;
     }
 
     public function addProductToCart($codOrd, $codProd, $quantita, $customText, $photoName, $topping) {

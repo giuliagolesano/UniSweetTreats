@@ -11,7 +11,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {//if the request is a post request, l
     if (isset($_POST["codProd"], $_POST["quantita"])) {
         $codOrder = $db->getOrderCart($_SESSION["user_email"]); //get the order in creation
         if(empty($codOrder)) {//if the cart has no orders in creation, create a order first
-            $db->createOrder($_SESSION["user_email"]);
+            $codOrd = $db->createOrder($_SESSION["user_email"]); // create a new order and get the code
+        } else {
+            $codOrd = $codOrder[0]["codOrd"]; // get the code of the order in creation
         }
         $codProd = $_POST["codProd"];
         $quantita = $_POST["quantita"];
@@ -24,7 +26,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {//if the request is a post request, l
             $photoName = basename($uploadPhoto["name"]);
         }
 
-        $codOrd = $codOrder["codOrd"]; // get the order in creation 
+        //$codOrd = $db->getOrderCart($_SESSION["user_email"]); // get the order in creation
+        var_dump($codOrd);
         // Add product to cart
         $db->addProductToCart($codOrd, $codProd, $quantita, $customText, $photoName, $topping);
 
@@ -32,9 +35,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {//if the request is a post request, l
         unset($_POST["codProd"], $_POST["quantita"], $_POST["custom-text"], $_FILES["upload-photo"], $_POST["topping"]);
     }
 }
-
+$codOrder = $db->getOrderCart($_SESSION["user_email"]); //get the order in creation
 if (!empty($codOrder)) {
-    $templateParams["cartItems"] = $db->getCartItems($codOrder["codOrd"]); //get the items in the cart
+    $order = $codOrder[0]["codOrd"];
+    $templateParams["cartItems"] = $db->getCartItems($order); //get the items in the cart
 }
 else {
     $templateParams["cartItems"] = [];
