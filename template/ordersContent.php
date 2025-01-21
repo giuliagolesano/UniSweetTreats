@@ -15,7 +15,7 @@
             <p>Total Cost: €<?php echo $templateParams["costi"][$ordine["codOrd"]]; ?></p>
             <?php foreach($templateParams["prodotti"][$ordine["codOrd"]] as $prodotto): ?>
                 <div>
-                    <img src="<?php echo getImageProduct($prodotto["NomeTip"], $prodotto["fotoProdotto"]); ?>" alt="Product Image">
+                    <img src="<?php echo getImageProduct($prodotto["NomeTip"], $prodotto["FotoProdotto"]); ?>" alt="Product Image">
                     <div>
                         <h3><?php echo $prodotto["NomeGusto"]; ?> <?php echo $prodotto["NomeTip"]; ?></h3>
                         <p>Quantity: <?php echo $prodotto["Quantita"]; ?></p>
