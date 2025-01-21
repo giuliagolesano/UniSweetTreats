@@ -35,7 +35,7 @@
                     <li><a href="cart.php"><img src="<?php echo ICONS_DIR . 'cart.png'; ?>" alt="Cart"></a></li>
                 <?php endif; ?>
                 <?php if(isAdminLoggedIn() || isUserLoggedIn()): ?>
-                    <li><a href="addProduct.php"><img src="<?php echo ICONS_DIR . 'add.png'; ?>" alt="Add Product"></a></li>
+                    <li><a href="#"><img src="<?php echo ICONS_DIR . 'logout.png'; ?>" alt="LogOut"></a></li>
                 <?php endif; ?>
             </ul>
         </nav>

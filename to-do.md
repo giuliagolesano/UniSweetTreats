@@ -16,17 +16,17 @@
 **COSE GIA' IMPLEMENTATE NELLE PAGINE:**
 asterisco se lo abbiamo implementato
 - HOME (**mockup**, **html**, **php**, **css**, js) GIULIA
-- LOGIN (**mockup**, **html**, **php**, css, js) GIULIA
-- REGISTRAZIONE (**mockup**, **html**, **php**, css, js) GIULIA
-- ABOUT US (**mockup**, **html**, **php**, css, js) GIULIA 
+- LOGIN (**mockup**, **html**, **php**, **css**, js) GIULIA
+- REGISTRAZIONE (**mockup**, **html**, **php**, **css**, js) GIULIA
+- ABOUT US (**mockup**, **html**, **php**, **css**, js) GIULIA 
 - ORDINI (**mockup**, **html**, **php**, css, js) SOFI
 - CARRELLO (**mockup**, **html**, php, css, js) SOFI
 - NOTIFICHE (**mockup**, **html**, **php**, css, js) SOFI
-- SHOP (**mockup**, **html**, **php**, css, js) ICO
-- BEST SELLER (**mockup**, **html**, **php**, css, js) ICO
-- SINGOLO ARTICOLO (**mockup**, **html**, php, css, js) ICO 
-- SINGOLO ARTICOLO PERSONALIZZABILE ? (**mockup**, **html**, php, css, js) ICO
-- REVIEW (**mockup**, **html**, **php**, css, js) SOFI
+- SHOP (**mockup**, **html**, **php**, **css**, js) ICO
+- BEST SELLER (**mockup**, **html**, **php**, **css**, js) ICO
+- SINGOLO ARTICOLO (**mockup**, **html**, php, **css**, js) ICO 
+- SINGOLO ARTICOLO PERSONALIZZABILE ? (**mockup**, **html**, **php**, **css**, js) ICO
+- REVIEW (**mockup**, **html**, **php**, **css**, js) SOFI
 - RICETTE (**mockup**, **html**, **php**, css, js) GIULIA
 - ADMIN SHOP MODIFICA LISTA (**mockup**, **html**, php, css, js) ICO/GIULIA
 - PAGINA ADD PRODUCT (**mockup**, **html**, **php**, css, js) GIULIA
@@ -37,4 +37,14 @@ asterisco se lo abbiamo implementato
 - 20/01 - 21/01 sistemare css, funzioni js e query
 - header mobile 
 
+
+
+- bottone read
+- bottoni shop
+- css ricette
+- css carello
+- carrello aggiungi articolo
+- query e js crea ordine
+- js modifica quantità
+- review query per inserire
 
