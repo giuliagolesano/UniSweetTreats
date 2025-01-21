@@ -80,12 +80,12 @@ class DatabaseHelper{
     public function getBestSellers(){
         $stmt = $this->db->prepare("WITH TotaliProdotti AS (
             SELECT 
-            P.nomeTip,
-            P.codProd,
-            P.descrizione,
-            P.foto,
-            G.nomeGusto,
-            COUNT(*) AS totale_vendite
+                P.nomeTip,
+                P.codProd,
+                P.descrizione,
+                P.foto,
+                G.nomeGusto,
+                SUM(F.quantita) AS totale_vendite
             FROM 
                 PRODOTTO P
             JOIN 
@@ -382,6 +382,31 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("UPDATE NOTIFICA SET stato = CASE WHEN stato = 'read' THEN 'to_read' ELSE 'read' END WHERE codNot = ?");
         $stmt->bind_param('s', $codNot);
         return $stmt->execute();
+    }
+
+    public function placeOrder($orderId) {
+        $this->db->begin_transaction();
+    
+        try {
+            $stmt = $this->db->prepare("UPDATE ORDINE SET stato = 'placed' WHERE codOrd = ?");
+            $stmt->bind_param('i', $orderId);
+            $stmt->execute();
+            $stmt = $this->db->prepare("SELECT codProd, quantita FROM formato_da WHERE codOrd = ?");
+            $stmt->bind_param('i', $orderId);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $products = $result->fetch_all(MYSQLI_ASSOC);
+            foreach ($products as $product) {
+                $stmt = $this->db->prepare("UPDATE PRODOTTO SET quantita = quantita - ? WHERE codProd = ?");
+                $stmt->bind_param('ii', $product['quantita'], $product['codProd']);
+                $stmt->execute();
+            }
+            $this->db->commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->rollback();
+            return false;
+        }
     }
 
 }

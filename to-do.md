@@ -49,7 +49,7 @@ asterisco se lo abbiamo implementato
 - ABOUT US (**mockup**, **html**, **php**, **css**) GIULIA 
 - ORDINI (**mockup**, **html**, **php**, css, js) SOFI
 - CARRELLO (**mockup**, **html**, **php**, css, js) SOFI
-- NOTIFICHE (**mockup**, **html**, **php**, css, js) SOFI
+- NOTIFICHE (**mockup**, **html**, **php**, css, **js**) SOFI
 - SHOP (**mockup**, **html**, **php**, **css**) ICO
 - BEST SELLER (**mockup**, **html**, **php**, **css**) ICO
 - SINGOLO ARTICOLO (**mockup**, **html**, **php**, **css**, js) ICO 
