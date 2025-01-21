@@ -31,7 +31,12 @@
             <ul>
                 <li><a id="searchToggle" href="javascript:void(0)" onclick="toggleSearch()"><img src="<?php echo ICONS_DIR . 'search.png'; ?>" alt="Search"></a></li>
                 <li><a href="login.php"><img src="<?php echo ICONS_DIR . 'account.png'; ?>" alt="Login"></a></li>
-                <li><a href="cart.php"><img src="<?php echo ICONS_DIR . 'cart.png'; ?>" alt="Cart"></a></li>
+                <?php if(!isAdminLoggedIn()): ?>
+                    <li><a href="cart.php"><img src="<?php echo ICONS_DIR . 'cart.png'; ?>" alt="Cart"></a></li>
+                <?php endif; ?>
+                <?php if(isAdminLoggedIn() || isUserLoggedIn()): ?>
+                    <li><a href="addProduct.php"><img src="<?php echo ICONS_DIR . 'add.png'; ?>" alt="Add Product"></a></li>
+                <?php endif; ?>
             </ul>
         </nav>
 

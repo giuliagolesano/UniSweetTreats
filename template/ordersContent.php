@@ -23,7 +23,7 @@
                         <h3><?php echo $prodotto["NomeGusto"]; ?> <?php echo $prodotto["NomeTip"]; ?></h3>
                         <p>Quantity: <?php echo $prodotto["Quantita"]; ?></p>
                         <p>Total Price: €<?php echo $prodotto["PrezzoTotale"]; ?></p>
-                        <?php if(isAdminLoggedIn()): ?>
+                        <?php if(!isAdminLoggedIn()): ?>
                             <a href="writeReview.php?codProd=<?php echo $prodotto["CodiceProdotto"]; ?>">Review Product</a>
                         <?php endif; ?>
                     </div>
