@@ -1,19 +1,18 @@
 <?php 
 require_once("bootstrap.php");
 
-/*
-if(!isset($_SESSION["email"])) {
-    header("location: login.php");
-    exit;
-} else {
-    $email = $_SESSION["email"];
-}*/
+if(!isUserLoggedIn() && !isAdminLoggedIn()){
+    header("Location: login.php"); //Se l'utente non è loggato, lo reindirizzo alla pagina di login
+}
 
-$email = "sofia.caberletti@studio.unibo.it";
+if(isUserLoggedIn()){
+    $templateParams["notifiche"] = $db->getNotificationsByEmail($_SESSION["user_email"]);
+} else {
+    $templateParams["notifiche"] = $db->getUpdatesByEmail($_SESSION["admin_email"]);
+}
 
 $templateParams["titolo"] = "Uni Sweet Treats - Account Notifications";
 $templateParams["nome"] = "notificationsContent.php";
-$templateParams["notifiche"] = $db->getNotificationsByEmail($email);
 
 require("template/base.php");
 ?>

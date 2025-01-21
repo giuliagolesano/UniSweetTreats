@@ -1,6 +1,9 @@
 <nav>
     <ul>
-        <li>
+        <?php if(isAdminLoggedIn()): ?>
+            <li>
+                <a href="shop.php">Shop Products List</a>
+            </li><?php endif; ?><li>
             <a href="account_orders.php">Orders</a>
         </li><li>
             <a href="account_notifications.php">Notifications</a>
@@ -20,7 +23,9 @@
                         <h3><?php echo $prodotto["NomeGusto"]; ?> <?php echo $prodotto["NomeTip"]; ?></h3>
                         <p>Quantity: <?php echo $prodotto["Quantita"]; ?></p>
                         <p>Total Price: €<?php echo $prodotto["PrezzoTotale"]; ?></p>
-                        <a href="writeReview.php?codProd=<?php echo $prodotto["CodiceProdotto"]; ?>">Review Product</a>
+                        <?php if(isAdminLoggedIn()): ?>
+                            <a href="writeReview.php?codProd=<?php echo $prodotto["CodiceProdotto"]; ?>">Review Product</a>
+                        <?php endif; ?>
                     </div>
                 </div>
             <?php endforeach; ?>

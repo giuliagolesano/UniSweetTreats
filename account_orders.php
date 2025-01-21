@@ -1,20 +1,20 @@
 <?php 
 require_once("bootstrap.php");
 
-/*
-if(!isset($_SESSION["email"])) {
-    header("location: login.php");
-    exit;
-} else {
-    $email = $_SESSION["email"];
-}*/
+if(!isUserLoggedIn() && !isAdminLoggedIn()){
+    header("Location: login.php"); //Se l'utente non è loggato, lo reindirizzo alla pagina di login
+}
 
-$email = "sofia.caberletti@studio.unibo.it";
+if(isUserLoggedIn()){
+    $templateParams["ordini"] = $db->getOrdersByEmail($_SESSION["user_email"]);
+    $templateParams["costi"] = $db->getCostsForOrders($_SESSION["user_email"]); 
+    $templateParams["prodotti"] = $db->getProductsForOrders($_SESSION["user_email"]);
+} else {
+    $templateParams["ordini"] = $db->getAllOrders();
+}
 
 $templateParams["titolo"] = "Uni Sweet Treats - Account Orders";
 $templateParams["nome"] = "ordersContent.php";
-$templateParams["ordini"] = $db->getOrdersByEmail($email);
-$templateParams["costi"] = $db->getCostsForOrders($email); 
-$templateParams["prodotti"] = $db->getProductsForOrders($email);
+
 require("template/base.php");
 ?>

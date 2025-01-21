@@ -1,3 +1,16 @@
+<?php if(isAdminLoggedIn()): ?>
+    <nav>
+    <ul>
+        <li>
+            <a href="shop.php">Shop Products List</a>
+        </li><li>
+            <a href="account_orders.php">Orders</a>
+        </li><li>
+            <a href="account_notifications.php">Notifications</a>
+        </li>
+    </ul>
+</nav>
+<?php endif; ?>
 <div>
     <button type="button" class="btn" data-bs-toggle="collapse" data-bs-target="#filterMenu" aria-expanded="false" aria-controls="filterMenu">
         filter

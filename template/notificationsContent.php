@@ -1,6 +1,9 @@
 <nav>
     <ul>
-        <li>
+        <?php if(isAdminLoggedIn()): ?>
+            <li>
+                <a href="shop.php">Shop Products List</a>
+            </li><?php endif; ?><li>
             <a href="account_orders.php">Orders</a>
         </li><li>
             <a href="account_notifications.php">Notifications</a>

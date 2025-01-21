@@ -11,7 +11,7 @@
             <p>Don't have an account? <a href="signup.php">Sign up</a></p>
             <ul>
                 <li>
-                    <label for="username">Email:</label><input type="text" id="username" name="username" require/>
+                    <label for="email">Email:</label><input type="text" id="email" name="email" require/>
                 </li>
                 <li>
                     <label for="password">Password:</label><input type="password" id="password" name="password" require/>

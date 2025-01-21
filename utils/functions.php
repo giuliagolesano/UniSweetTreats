@@ -1,4 +1,27 @@
 <?php
+
+    function isUserLoggedIn(){
+        return !empty($_SESSION["user_email"]);
+    }
+    
+    function registerLoggedUser($user){
+        $_SESSION["user_email"] = $user["e_mail"];
+        $_SESSION["nome"] = $user["nome"];
+        $_SESSION["cognome"] = $user["cognome"];
+    }
+
+    function isAdminLoggedIn(){
+        return !empty($_SESSION["admin_email"]);
+    }
+    
+    function registerLoggedAdmin($admin){
+        $_SESSION["admin_email"] = $admin["e_mail"];
+        $_SESSION["nome"] = $admin["nome"];
+        $_SESSION["cognome"] = $admin["cognome"];
+        
+    }
+
+
     function getImageProduct($category, $image) {
         switch($category) {
             case "cake":
