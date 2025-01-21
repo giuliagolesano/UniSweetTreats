@@ -4,6 +4,17 @@ require_once("bootstrap.php");
 $templateParams["titolo"] = "Uni Sweet Treats - Shop";
 $templateParams["nome"] = "shop-list.php";
 
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["action"]) && $_POST["action"] === "deleteProduct") {
+    $codProd = intval($_POST["codProd"]);
+
+    if ($db->deleteProduct($codProd)) {
+        echo "success";
+    } else {
+        echo "error";
+    }
+    exit;
+}
+
 $filterCategories = [];
 foreach ($templateParams["categorie"] as $categoria) {
     $filterCategories[] = $categoria["nomeTip"];

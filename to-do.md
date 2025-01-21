@@ -24,10 +24,10 @@ asterisco se lo abbiamo implementato
 - NOTIFICHE (**mockup**, **html**, **php**, css, js) SOFI
 - SHOP (**mockup**, **html**, **php**, **css**, js) ICO
 - BEST SELLER (**mockup**, **html**, **php**, **css**, js) ICO
-- SINGOLO ARTICOLO (**mockup**, **html**, php, **css**, js) ICO 
+- SINGOLO ARTICOLO (**mockup**, **html**, **php**, **css**, js) ICO 
 - SINGOLO ARTICOLO PERSONALIZZABILE ? (**mockup**, **html**, **php**, **css**, js) ICO
 - REVIEW (**mockup**, **html**, **php**, **css**, js) SOFI
-- RICETTE (**mockup**, **html**, **php**, css, js) GIULIA
+- RICETTE (**mockup**, **html**, **php**, **css**, js) GIULIA
 - ADMIN SHOP MODIFICA LISTA (**mockup**, **html**, php, css, js) ICO/GIULIA
 - PAGINA ADD PRODUCT (**mockup**, **html**, **php**, css, js) GIULIA
 - 
@@ -49,3 +49,22 @@ asterisco se lo abbiamo implementato
 - review query per inserire
 - testare eliminazione e modifica di un oggetto
 
+
+
+- da sistemare review sul singolo prodotto
+        <div class="reviews">
+             <h3>Reviews</h3>
+            <?php if(empty($templateParams["reviews"])): ?>
+                <p>No reviews available for this product.</p>
+            <?php else: ?>
+                <?php foreach($templateParams["reviews"] as $review): ?>
+                    <article>
+                        <h4><?php echo htmlspecialchars($review['e_mail']); ?></h4>
+                        <p><?php echo htmlspecialchars($review['testo']); ?></p>
+                        <p>Rating: <?php echo str_repeat('★', $review['valutazione']); ?><?php echo str_repeat('☆', 5 - $review['valutazione']); ?></p>
+                    </article>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+
+        

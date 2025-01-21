@@ -32,3 +32,37 @@ document.addEventListener('DOMContentLoaded', () => {
     updateRangeValue('prezzoMin');
     updateRangeValue('prezzoMax');
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const deleteButtons = document.querySelectorAll(".delete-button");
+
+    deleteButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const codProd = button.getAttribute("data-id");
+            if (confirm("Sei sicuro di voler eliminare questo prodotto?")) {
+                fetch("shop.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: `action=deleteProduct&codProd=${codProd}`
+                })
+                .then(response => response.text())
+                .then(data => {
+                    if (data === "success") {
+                        alert("Prodotto eliminato con successo!");
+                        button.closest("div").remove(); // Rimuove il prodotto dalla lista
+                    } else {
+                        alert("Errore durante l'eliminazione del prodotto.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Errore:", error);
+                    alert("Errore durante l'eliminazione del prodotto.");
+                });
+            }
+        });
+    });
+});
+
+
+
