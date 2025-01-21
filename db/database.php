@@ -269,14 +269,14 @@ class DatabaseHelper{
         $stmt = $this->db->prepare("INSERT INTO ORDINE (codOrd, giorno, ora, stato, e_mail) 
                                     VALUES (?, CURDATE(), CURTIME(), 'in creazione', ?)");
         $stmt->bind_param('ss', $newCodOrd, $email);
-        return $stmt->execute();
+        $stmt->execute();
     }
 
     public function addProductToCart($codOrd, $codProd, $quantita, $customText, $photoName, $topping) {
         $stmt = $this->db->prepare("INSERT INTO FORMATO_DA (codOrd, codProd, foto, testo, topping) 
                                     VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param('sssss', $codOrd, $codProd, $photoName, $customText, $topping);
-        return $stmt->execute();
+        $stmt->execute();
     }
 
     public function getCartItems($codOrd) {
