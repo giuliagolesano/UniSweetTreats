@@ -7,7 +7,7 @@
         </li>
     </ul>
 </nav>
-<form action="#" method="POST">
+<form action="processa_review.php" method="POST">
     <ul>
         <li>
             <label for="review">Review:</label> 
@@ -24,4 +24,5 @@
         <label for="reset">Reset</label>
         <input type="reset" id="reset" name="reset" value="Cancel" />
     </div>   
+    <input type="hidden" name="codProd" value="<?php echo $codProd; ?>" />
 </form>

@@ -359,6 +359,25 @@ class DatabaseHelper{
         return $stmt->execute();
     }
 
+    public function getReviewsByProduct($codProd) {
+        $stmt = $this->$db->prepare( "SELECT e_mail, testo, valutazione
+                      FROM review
+                      WHERE codProd = ?
+                      ORDER BY valutazione DESC
+                      LIMIT 3");
+        
+        $stmt -> bind_param('s',$codProd);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function insertReview($email, $codProd, $testo, $valutazione) {
+        $stmt = $this->db->prepare("INSERT INTO review (e_mail, codProd, testo, valutazione) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param('ssss', $email, $codProd, $testo, $valutazione);
+        return $stmt->execute();
+    }
+
 }
 
 ?>
