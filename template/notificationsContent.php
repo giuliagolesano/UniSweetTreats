@@ -16,21 +16,27 @@
             <div>
                 <header>
                     <h2>Notification <?php echo $notifica["codNot"]; ?></h2>
-                    <div> Stato: <?php echo $notifica["stato"]; ?></div>
+                    <div class="stato">Stato: <?php echo $notifica["stato"]; ?></div>
                     <time datetime="<?php echo $notifica["giorno"]; ?><?php echo $notifica["ora"]; ?>"><?php echo $notifica["giorno"]; ?> <?php echo $notifica["ora"]; ?></time>
                 </header>
                 <p><?php echo $notifica["testo"]; ?></p>
-                <button>Read</button>
+                <form action="updateNotification.php" method="POST" class="notification-form">
+                    <input type="hidden" name="codNot" value="<?php echo $notifica["codNot"]; ?>">
+                    <button type="submit" class="notifications"><?php echo $notifica["stato"] === 'read' ? 'To Read' : 'Read'; ?></button>
+                </form>
             </div>
         <?php else: ?>
             <div>
                 <header>
                     <h2>Order <?php echo $notifica["codOrd"]; ?></h2>
-                    <div> Stato: <?php echo $notifica["stato"]; ?></div>
+                    <div class="stato">Stato: <?php echo $notifica["stato"]; ?></div>
                     <time datetime="<?php echo $notifica["giorno"]; ?><?php echo $notifica["ora"]; ?>"><?php echo $notifica["giorno"]; ?> <?php echo $notifica["ora"]; ?></time>
                 </header>
                 <p><?php echo $notifica["testo"]; ?></p>
-                <button>Read</button>
+                <form action="updateNotification.php" method="POST" class="notification-form">
+                    <input type="hidden" name="codNot" value="<?php echo $notifica["codNot"]; ?>">
+                    <button type="submit" class="notifications"><?php echo $notifica["stato"] === 'read' ? 'To Read' : 'Read'; ?></button>
+                </form>
             </div>
         <?php endif; ?>
     <?php endforeach; ?>

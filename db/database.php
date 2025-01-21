@@ -378,6 +378,12 @@ class DatabaseHelper{
         return $stmt->execute();
     }
 
+    public function toggleNotificationState($codNot) {
+        $stmt = $this->db->prepare("UPDATE NOTIFICA SET stato = CASE WHEN stato = 'read' THEN 'to_read' ELSE 'read' END WHERE codNot = ?");
+        $stmt->bind_param('s', $codNot);
+        return $stmt->execute();
+    }
+
 }
 
 ?>

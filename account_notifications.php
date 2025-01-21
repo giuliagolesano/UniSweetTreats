@@ -13,6 +13,7 @@ if(isUserLoggedIn()){
 
 $templateParams["titolo"] = "Uni Sweet Treats - Account Notifications";
 $templateParams["nome"] = "notificationsContent.php";
+$templateParams["js"][] = "js/notifications.js";
 
 require("template/base.php");
 ?>
