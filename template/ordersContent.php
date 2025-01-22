@@ -11,7 +11,7 @@
     </ul>
 </nav>
 <h2>Your Orders:</h2>
-<?php if(empty($templateParams["ordini"]) || $templateParams["ordini"][0]["stato"] == "waiting"): ?>
+<?php if(empty($templateParams["ordini"]) || ($templateParams["ordini"][0]["stato"] == "waiting" && count($templateParams["ordini"]) == 1)): ?>
     <p>You have no orders yet.</p>
 <?php endif; ?>
 <?php foreach($templateParams["ordini"] as $ordine): ?>
