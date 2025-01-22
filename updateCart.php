@@ -7,7 +7,6 @@ if (isset($data["prodId"], $data["quantity"])) {
     $prodId = $data["prodId"];
     $quantity = $data["quantity"];
     $orderId = $db->getOrderCart($_SESSION["user_email"])[0]["codOrd"];
-
     $result = $db->updateCartQuantity($orderId, $prodId, $quantity);
     echo json_encode(["success" => $result]);
 } else {

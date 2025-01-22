@@ -6,51 +6,55 @@ document.addEventListener("DOMContentLoaded", function() {
     const cancelButton = document.getElementById("cancelButton");
     const closeButton = document.querySelector(".close");
 
-    orderButton.addEventListener("click", function(event) {
-        event.preventDefault();
-        const subtotal = orderButton.dataset.subtotal;
-        const orderId = orderButton.dataset.orderId;
+    if (orderButton) {
+        orderButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            const subtotal = orderButton.dataset.subtotal;
+            const orderId = orderButton.dataset.orderId;
 
-        modalMessage.textContent = `The total price is €${subtotal}. Do you want to place the order?`;
-        modal.style.display = "block";
+            modalMessage.textContent = `The total price is €${subtotal}. Do you want to place the order?`;
+            modal.style.display = "block";
 
-        confirmButton.onclick = function() {
-            modal.style.display = "none";
-            fetch("checkout.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ orderId: orderId })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.success) {
-                    showModalMessage("Order placed successfully!", true);
-                } else {
-                    showModalMessage("Failed to place the order.", false);
-                }
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                showModalMessage("Failed to place the order due to a network error.", false);
-            });
-        };
-
-        cancelButton.onclick = function() {
-            modal.style.display = "none";
-        };
-
-        closeButton.onclick = function() {
-            modal.style.display = "none";
-        };
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
+            confirmButton.onclick = function() {
                 modal.style.display = "none";
-            }
-        };
-    });
+                fetch("checkout.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ orderId: orderId })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if(data.success) {
+                        showModalMessage("Order placed successfully!", true);
+                    } else {
+                        showModalMessage("Failed to place the order.", false);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    showModalMessage("Failed to place the order due to a network error.", false);
+                });
+            };
+
+            cancelButton.onclick = function() {
+                modal.style.display = "none";
+            };
+
+            closeButton.onclick = function() {
+                modal.style.display = "none";
+            };
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+        });
+    } else {
+        console.error("Order button not found");
+    }
 
     function showModalMessage(message, success) {
         modalMessage.textContent = message;
@@ -87,21 +91,21 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch("updateCart.php", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
+            "Content-Type": "application/json",
             },
             body: JSON.stringify({ prodId: prodId, quantity: quantity }),
         })
-            .then((response) => response.json())
-            .then((data) => {
+            .then(response => response.json())
+            .then(data => {
                 if (!data.success) {
                     showCartMessage("Failed to update the cart.", "danger");
                 } else {
-                    location.reload();
+                    window.location.href = "cart.php";
                 }
             })
             .catch((error) => {
-                console.error("Error:", error);
-                showCartMessage("Failed to update the cart due to a network error.", "danger");
+            console.error("Error:", error);
+            showCartMessage("Failed to update the cart due to a network error.", "danger");
             });
     }
 
@@ -118,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (!data.success) {
                     showCartMessage("Failed to remove the product.", "danger");
                 } else {
-                    location.reload();
+                    window.location.href = "cart.php";
                 }
             })
             .catch((error) => {
@@ -134,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let quantity = parseInt(quantitySpan.textContent);
 
             if (quantity > 1) {
-                quantity--;
+                quantity = quantity - 1;
                 quantitySpan.textContent = quantity;
                 updateCartQuantity(prodId, quantity);
             } else {
@@ -149,9 +153,9 @@ document.addEventListener("DOMContentLoaded", function () {
             const maxQuantity = parseInt(this.dataset.maxQuantity);
             const quantitySpan = document.querySelector(`.quantity[data-prod-id='${prodId}']`);
             let quantity = parseInt(quantitySpan.textContent);
-
+            
             if (quantity < maxQuantity) {
-                quantity++;
+                quantity = quantity + 1;
                 quantitySpan.textContent = quantity;
                 updateCartQuantity(prodId, quantity);
             } else {
