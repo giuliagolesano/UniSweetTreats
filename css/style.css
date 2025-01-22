@@ -769,9 +769,13 @@ footer p {
 .order-container {
     background-color: #FFC8DD;
     border-radius: 8px;
-    padding: 20px;
     margin: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 5%;
+    box-sizing: border-box;
 }
 
 .order-container h2 {
@@ -780,8 +784,11 @@ footer p {
     margin-bottom: 15px;
 }
 
+
 .order-info {
     margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .products-container {
@@ -848,6 +855,20 @@ footer p {
 
     .product {
         max-width: 100%;
+    }
+
+    .order-container {
+        padding: 10px;
+    }
+
+    .order-info {
+        margin-bottom: 20px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .order-container h2 {
+        font-size: 1.1rem;
     }
 }
 
@@ -1036,6 +1057,22 @@ footer p {
 
     .faq-answer {
         font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .centered-list {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .centered-list li {
+        width: 45%; /* Due elementi per riga, con uno spazio tra di loro */
+        margin-bottom: 10px;
+    }
+
+    .centered-list a {
+        width: 100%; /* Assicura che i link occupino tutto lo spazio disponibile nel contenitore */
     }
 }
 
