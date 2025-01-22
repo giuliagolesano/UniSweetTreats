@@ -10,7 +10,12 @@
         </li>
     </ul>
 </nav>
+<h2>Your Orders:</h2>
+<?php if(empty($templateParams["ordini"]) || $templateParams["ordini"][0]["stato"] == "waiting"): ?>
+    <p>You have no orders yet.</p>
+<?php endif; ?>
 <?php foreach($templateParams["ordini"] as $ordine): ?>
+    <?php if($ordine["stato"] != "waiting"): ?>
     <div>
         <?php if(isUserLoggedIn()): ?>
             <h2>Order <?php echo $ordine["codOrd"]; ?></h2>
@@ -43,4 +48,5 @@
             </div>
         <?php endforeach; ?>
     </div>
+    <?php endif; ?>
 <?php endforeach; ?>

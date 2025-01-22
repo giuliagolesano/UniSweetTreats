@@ -10,6 +10,10 @@
         </li>
     </ul>
 </nav>
+<h2>Your Notifications:</h2>
+<?php if(empty($templateParams["notifiche"])): ?>
+    <p>You have no notifications yet.</p>
+<?php endif; ?>
 <div>
     <?php foreach($templateParams["notifiche"] as $notifica) : ?>
         <?php if(isAdminLoggedIn()): ?>
