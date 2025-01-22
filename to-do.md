@@ -7,11 +7,10 @@
         - Aggiunta di un prodotto
 
 - NOTIFICHE:
-    - Notifica all' utente e aggiornamento all' admin quando viene cliccato il bottone "Order" in Cart
     - Aggiornamenti all'admin quando la quantità di un prodotto è a 0
 
 
--GENERAZIONE AUTOMATICA DI NOTIFICHE?? COME??
+-GENERAZIONE AUTOMATICA DI NOTIFICHE?? COME?? xdx
 -POPOLAMENTO COSA LASCIAMO? ORDINI ? ANCHE SENZA UTENTI?
 
 
@@ -21,13 +20,13 @@ asterisco se lo abbiamo implementato
 - LOGIN (**mockup**, **html**, **php**, **css**) GIULIA
 - REGISTRAZIONE (**mockup**, **html**, **php**, **css**) GIULIA
 - ABOUT US (**mockup**, **html**, **php**, **css**) GIULIA 
-- ORDINI (**mockup**, **html**, **php**, **css**, js) SOFI
-- CARRELLO (**mockup**, **html**, **php**, **css**, js) SOFI
+- ORDINI (**mockup**, **html**, **php**, **css**, **js**) SOFI
+- CARRELLO (**mockup**, **html**, **php**, **css**, **js**) SOFI
 - NOTIFICHE (**mockup**, **html**, **php**, **css**, **js**) SOFI
 - SHOP (**mockup**, **html**, **php**, **css**) ICO
 - BEST SELLER (**mockup**, **html**, **php**, **css**) ICO
-- SINGOLO ARTICOLO (**mockup**, **html**, **php**, **css**, js) ICO 
-- WRITE REVIEW (**mockup**, **html**, **php**, **css**, js) SOFI
+- SINGOLO ARTICOLO (**mockup**, **html**, **php**, **css**, **js**) ICO 
+- WRITE REVIEW (**mockup**, **html**, **php**, **css**, **js**) SOFI
 - RICETTE (**mockup**, **html**, **php**, **css**) GIULIA
 - PAGINA ADD PRODUCT (**mockup**, **html**, **php**, **css**, js) GIULIA
 - 

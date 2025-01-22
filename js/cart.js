@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
             confirmButton.onclick = function() {
                 modal.style.display = "none";
-                console.log("Order ID:", orderId); // Debugging statement
                 fetch("checkout.php", {
                     method: "POST",
                     headers: {
