@@ -8,6 +8,7 @@
                 <h2 class="text-center">Login</h2>
                 <?php if (isset($templateParams["errore"])): ?>
                     <p class="text-danger"><?php echo $templateParams["errore"]; ?></p>
+                    <?php unset($templateParams["errore"]);?>
                 <?php endif; ?>
                 <p class="text-center">Don't have an account? <a href="signup.php">Sign up</a></p>
                 <div class="mb-3">

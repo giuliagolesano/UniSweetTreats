@@ -74,10 +74,17 @@
 
     <footer>
         <h2>Contact Us</h2>
+        <form action="newsletter.php" method="POST">
+            <div class="input-group">
+                <input type="email" name="newsletter_email" placeholder="Subscribe to our Newsletter" class="form-control" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </div>
+        </form>
         <p>Email: unisweettreats@unibo.it</p>
         <p>Phone: +123 456 7890</p>
         <p>Address: Via Cesare Pavese 50, 47521, FC</p>
     </footer>
+
     <script src="./js/base.js"></script>
 </body>
 </html>

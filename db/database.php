@@ -42,6 +42,26 @@ class DatabaseHelper{
         return $result->fetch_assoc();
     }
 
+    public function checkLoginUser($email){
+        $query = "SELECT e_mail, nome, cognome, `password`, consensoNews  FROM utente WHERE e_mail = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s',$email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }    
+
+    public function checkLoginAdmin($email, $password){
+        $query = "SELECT e_mail, nome, cognome, `password`  FROM `admin` WHERE e_mail = ? AND `password` = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss',$email, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    } 
+
     // Function to get notifications for a specific user email
     public function getNotificationsByEmail($email){
         $stmt = $this->db->prepare("SELECT * FROM NOTIFICA WHERE e_mail = ?");
