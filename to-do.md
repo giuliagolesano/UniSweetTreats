@@ -1,17 +1,11 @@
 **TO DO (pensate dalla Sofi, quindi non so se vanno bene ahahahha)**
 - PAGINA SINGOLO PRODOTTO:
     - PHP:
-        - Se un prodotto è gia nel carrello e lo vuoi aggiungere di nuovo dallo shop, se premi add cart e ti porta al carrello
-        - Controllo tra quantità che voglio ordinare e quantità disponibile del prodotto
         - E' gestito bene l'Upload della foto -> guardare lab 07-PHP del prof (registrazione ven 6 dicembre)
 - PAGINA CARRELLO:
     - HTML/CSS/PHP:
-        - Aggiungere un bottone del bidoncino per eliminare il prodotto dal carrello (Aggiungere finestra di conferma eliminazione?)
-        - La quantità minima è 1 per un prodotto nel carrello
         - Controllo tra quantità che voglio ordinare e quantità disponibile del prodotto
-        - Se elimino tutti i prodotti nel mio carrello poi viene eliminato anche l'ordine che avevo in waiting? Direi di no vero? Può rimanerelì
-          e poi quando voglio aggiungere di nuovo un prodotto lo aggiunge direttamente a quell'ordine in waiting
-        - Appena clicco order magari inserisco nel db una nuova notifica di order placed
+        - notifica con nuovo order
 - LISTA PRODOTTI ADMIN:
     - PHP:
         - Aggiunta, Modifica ed Eliminazione di un prodotto: ci sono già le query? Funziona?
