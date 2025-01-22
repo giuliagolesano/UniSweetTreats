@@ -7,6 +7,7 @@
         foreach ($templateParams["cartItems"] as $item): 
             $totalPrice = $item["quantita"] * $item["prezzo"];
             $subtotal += $totalPrice;
+            $maxQuant = $db->getMaxQuantity($item["codProd"]);
     ?>
         <div class="cart-item row align-items-center mb-4 p-3 bg-light shadow rounded">
             <div class="col-md-4 text-center d-flex justify-content-center">
@@ -16,9 +17,9 @@
                 <h3 class="text-center text-md-start"><?php echo htmlspecialchars($item["descrizione"]); ?></h3>
                 <p class="text-center text-md-start">Total: €<?php echo number_format($totalPrice, 2); ?></p>
                 <div class="d-flex align-items-center justify-content-center justify-content-md-start">
-                    <button class="btn btn-outline-secondary btn-sm me-2 decrease-quantity" data-prod-id="<?php echo $item["codProd"]; ?>" data-max-quantity="<?php echo $item["maxQuantity"]; ?>">-</button>
+                    <button class="btn btn-primary decrease-quantity" data-prod-id="<?php echo $item["codProd"]; ?>" data-max-quantity="<?php echo $maxQuant; ?>">-</button>
                     <span class="mx-2 quantity" data-prod-id="<?php echo $item["codProd"]; ?>"><?php echo htmlspecialchars($item["quantita"]); ?></span>
-                    <button class="btn btn-outline-secondary btn-sm ms-2 increase-quantity" data-prod-id="<?php echo $item["codProd"]; ?>" data-max-quantity="<?php echo $item["maxQuantity"]; ?>">+</button>
+                    <button class="btn btn-primary increase-quantity" data-prod-id="<?php echo $item["codProd"]; ?>" data-max-quantity="<?php echo $maxQuant ?>">+</button>
                 </div>
             </div>
         </div>

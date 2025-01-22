@@ -71,3 +71,56 @@ document.addEventListener("DOMContentLoaded", function() {
         modal.style.display = "block";
     }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    function updateCartQuantity(prodId, quantity) {
+        fetch("updateCart.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ prodId: prodId, quantity: quantity })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.success) {
+                alert("Failed to update the cart.");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("Failed to update the cart due to a network error.");
+        });
+    }
+
+    document.querySelectorAll(".decrease-quantity").forEach(button => {
+        button.addEventListener("click", function() {
+            const prodId = this.dataset.prodId;
+            const maxQuantity = parseInt(this.dataset.maxQuantity);
+            const quantitySpan = document.querySelector(`.quantity[data-prod-id='${prodId}']`);
+            let quantity = parseInt(quantitySpan.textContent);
+
+            if (quantity > 1) {
+                quantity--;
+                quantitySpan.textContent = quantity;
+                updateCartQuantity(prodId, quantity);
+            }
+        });
+    });
+
+    document.querySelectorAll(".increase-quantity").forEach(button => {
+        button.addEventListener("click", function() {
+            const prodId = this.dataset.prodId;
+            const maxQuantity = parseInt(this.dataset.maxQuantity);
+            const quantitySpan = document.querySelector(`.quantity[data-prod-id='${prodId}']`);
+            let quantity = parseInt(quantitySpan.textContent);
+
+            if (quantity < maxQuantity) {
+                quantity++;
+                quantitySpan.textContent = quantity;
+                updateCartQuantity(prodId, quantity);
+            }
+        });
+    });
+});

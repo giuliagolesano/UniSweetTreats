@@ -329,6 +329,23 @@ class DatabaseHelper{
         return $result->num_rows > 0;
     }
 
+    // Function to get the quantity of a product
+    public function getMaxQuantity($prodId) {
+        $stmt = $this->db->prepare("SELECT quantita FROM PRODOTTO WHERE codProd = ?");
+        $stmt->bind_param('s', $prodId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['quantita'];
+    }
+
+    // Function to update the quantity of a product in the cart
+    public function updateCartQuantity($orderId, $prodId, $quantity) {
+        $stmt = $this->db->prepare("UPDATE formato_da SET quantita = ? WHERE codOrd = ? AND codProd = ?");
+        $stmt->bind_param('iss', $quantity, $orderId, $prodId);
+        return $stmt->execute();
+    }
+
 }
 
 ?>
