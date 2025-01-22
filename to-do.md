@@ -1,29 +1,5 @@
-**Cosa manca?**
-
-- query per iscrivere la email alla newsletter che cerca l'utente -> se non ce l'account portare a pagina login
-- le faq ancora non esistono
-
-
-**QUERY DA SCRIVERE:**
-- eliminazione e modifica prodotto già nel db
-
-**COSE DA FARE:**
-- 22/01 
-Giulia (eliminazione e modifica dell'ordine con bottoni, js e query)
-
-
 **TO DO (pensate dalla Sofi, quindi non so se vanno bene ahahahha)**
-- PAGINA ABOUT US:
-    - HTML e CSS:
-        - Aggiungere le FAQs hard-coded
-- PAGINA SHOP:
-    - CSS:
-        - Forse è meglio cambiare lo sfondo del filtro così che si vedano meglio i quadratini dei checkbox
-        - Scrivere ai lati degli sliders dei prezzi il prezzo min e il prezzo max
-        - (Solo se abbiamo tempo: avvicinare quadratini dei checkbox al loro testo)
 - PAGINA SINGOLO PRODOTTO:
-    - CSS:
-        - Mettere a posto css delle reviews
     - PHP:
         - Se un prodotto è gia nel carrello e lo vuoi aggiungere di nuovo dallo shop, se premi add cart e ti porta al carrello
         - Controllo tra quantità che voglio ordinare e quantità disponibile del prodotto
@@ -36,28 +12,16 @@ Giulia (eliminazione e modifica dell'ordine con bottoni, js e query)
         - Se elimino tutti i prodotti nel mio carrello poi viene eliminato anche l'ordine che avevo in waiting? Direi di no vero? Può rimanerelì
           e poi quando voglio aggiungere di nuovo un prodotto lo aggiunge direttamente a quell'ordine in waiting
         - Appena clicco order magari inserisco nel db una nuova notifica di order placed
-- PAGINA LOGIN:
-    - PHP:
-        - Errore se l'utente non esiste
-- PAGINA SIGNUP:
-    - PHP:
-        - Query per inserire effettivamente nel db l'utente
-        - Errore se l'utente è già registrato (cioè c'è già l'email nel db)
 - LISTA PRODOTTI ADMIN:
     - PHP:
         - Aggiunta, Modifica ed Eliminazione di un prodotto: ci sono già le query? Funziona?
 - ACCOUNT IN GENERALE:
-    - CSS:
-        - Mettere in fila orizzontale i bottoni per navigare tra le varie pagine dell'account?
     - PHP:
         - Usare isActive per sottolineare nei bottoni in quale pagina ci troviamo?
-- DATABASE:
-    - Quando abbiamo un campo in cui non mettiamo nulla viene segnato a null o con un testo "none"??????
 
-Altre pagine che non so se hanno bisogno ancora di lavoro:
-- BEST SELLER
-- ORDINI
-- NOTIFICHE
+
+-GENERAZIONE AUTOMATICA DI NOTIFICHE?? COME??
+-POPOLAMENTO COSA LASCIAMO? ORDINI ? ANCHE SENZA UTENTI?
 
 
 **COSE GIA' IMPLEMENTATE NELLE PAGINE:**
