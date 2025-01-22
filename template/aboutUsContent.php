@@ -22,7 +22,7 @@
         </div>
         <div class="faq">
             <h3 class="faq-question">Do you offer delivery services?</h3>
-            <p class="faq-answer">Yes, we offer delivery services to out Campus in Via Cesare Pavese 50.</p>
+            <p class="faq-answer">Yes, we offer delivery services to our Campus in Via Cesare Pavese 50.</p>
         </div>
         <div class="faq">
             <h3 class="faq-question">Can I customize my order?</h3>
