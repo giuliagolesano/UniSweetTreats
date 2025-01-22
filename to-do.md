@@ -2,13 +2,9 @@
 - PAGINA SINGOLO PRODOTTO:
     - PHP:
         - E' gestito bene l'Upload della foto -> guardare lab 07-PHP del prof (registrazione ven 6 dicembre)
-- PAGINA CARRELLO:
-    - HTML/CSS/PHP:
-        - Controllo tra quantità che voglio ordinare e quantità disponibile del prodotto
-        - notifica con nuovo order
 - LISTA PRODOTTI ADMIN:
     - PHP:
-        - Aggiunta, Modifica ed Eliminazione di un prodotto: ci sono già le query? Funziona?
+        - Aggiunta di un prodotto
 
 - NOTIFICHE:
     - Notifica all' utente e aggiornamento all' admin quando viene cliccato il bottone "Order" in Cart
