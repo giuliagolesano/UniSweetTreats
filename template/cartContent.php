@@ -20,6 +20,9 @@
                     <button class="btn btn-primary decrease-quantity" data-prod-id="<?php echo $item["codProd"]; ?>" data-max-quantity="<?php echo $maxQuant; ?>">-</button>
                     <span class="mx-2 quantity" data-prod-id="<?php echo $item["codProd"]; ?>"><?php echo htmlspecialchars($item["quantita"]); ?></span>
                     <button class="btn btn-primary increase-quantity" data-prod-id="<?php echo $item["codProd"]; ?>" data-max-quantity="<?php echo $maxQuant ?>">+</button>
+                    <button class="btn btn-danger remove-product ms-3" data-prod-id="<?php echo $item["codProd"]; ?>">
+                        <img src="<?php echo ICONS_DIR . 'bin.png'; ?>" alt="Remove" class="img-fluid" style="width: 20px;">
+                    </button>
                 </div>
             </div>
         </div>

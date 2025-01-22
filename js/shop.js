@@ -1,16 +1,3 @@
-function addProduct() {
-
-}
-
-function filter() {
-
-}
-
-function getPersonalitation() {
-
-}
-
-
 function updateRangeValue(id) {
     const rangeInput = document.getElementById(id);
     const rangeValue = document.getElementById(id + 'Value');
@@ -49,15 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(response => response.text())
                 .then(data => {
                     if (data === "success") {
-                        alert("Prodotto eliminato con successo!");
                         button.closest("div").remove(); // Rimuove il prodotto dalla lista
-                    } else {
-                        alert("Errore durante l'eliminazione del prodotto.");
-                    }
+                    } 
                 })
                 .catch(error => {
                     console.error("Errore:", error);
-                    alert("Errore durante l'eliminazione del prodotto.");
                 });
             }
         });

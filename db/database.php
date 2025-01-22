@@ -346,6 +346,13 @@ class DatabaseHelper{
         return $stmt->execute();
     }
 
+    public function removeProductFromCart($codOrd, $prodId) {
+        $stmt = $this->db->prepare("DELETE FROM FORMATO_DA WHERE codOrd = ? AND codProd = ?");
+        $stmt->bind_param('ss', $codOrd, $prodId);
+        return $stmt->execute();
+    }
+    
+
 }
 
 ?>

@@ -72,32 +72,64 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
+    const cartMessage = document.getElementById("cart-message");
+
+    function showCartMessage(message, type) {
+        cartMessage.textContent = message;
+        cartMessage.classList.remove("d-none");
+        setTimeout(() => {
+            cartMessage.classList.add("d-none");
+        }, 3000);
+    }
 
     function updateCartQuantity(prodId, quantity) {
         fetch("updateCart.php", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
             },
-            body: JSON.stringify({ prodId: prodId, quantity: quantity })
+            body: JSON.stringify({ prodId: prodId, quantity: quantity }),
         })
-        .then(response => response.json())
-        .then(data => {
-            if (!data.success) {
-                alert("Failed to update the cart.");
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            alert("Failed to update the cart due to a network error.");
-        });
+            .then((response) => response.json())
+            .then((data) => {
+                if (!data.success) {
+                    showCartMessage("Failed to update the cart.", "danger");
+                } else {
+                    location.reload();
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                showCartMessage("Failed to update the cart due to a network error.", "danger");
+            });
     }
 
-    document.querySelectorAll(".decrease-quantity").forEach(button => {
-        button.addEventListener("click", function() {
+    function removeProductFromCart(prodId) {
+        fetch("removeFromCart.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ prodId: prodId }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (!data.success) {
+                    showCartMessage("Failed to remove the product.", "danger");
+                } else {
+                    location.reload();
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                showCartMessage("Failed to remove the product due to a network error.", "danger");
+            });
+    }
+
+    document.querySelectorAll(".decrease-quantity").forEach((button) => {
+        button.addEventListener("click", function () {
             const prodId = this.dataset.prodId;
-            const maxQuantity = parseInt(this.dataset.maxQuantity);
             const quantitySpan = document.querySelector(`.quantity[data-prod-id='${prodId}']`);
             let quantity = parseInt(quantitySpan.textContent);
 
@@ -105,12 +137,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 quantity--;
                 quantitySpan.textContent = quantity;
                 updateCartQuantity(prodId, quantity);
+            } else {
+                showCartMessage("Quantity cannot be less than 1.", "warning");
             }
         });
     });
 
-    document.querySelectorAll(".increase-quantity").forEach(button => {
-        button.addEventListener("click", function() {
+    document.querySelectorAll(".increase-quantity").forEach((button) => {
+        button.addEventListener("click", function () {
             const prodId = this.dataset.prodId;
             const maxQuantity = parseInt(this.dataset.maxQuantity);
             const quantitySpan = document.querySelector(`.quantity[data-prod-id='${prodId}']`);
@@ -120,7 +154,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 quantity++;
                 quantitySpan.textContent = quantity;
                 updateCartQuantity(prodId, quantity);
+            } else {
+                showCartMessage("Maximum quantity reached.", "warning");
             }
+        });
+    });
+
+    document.querySelectorAll(".remove-product").forEach((button) => {
+        button.addEventListener("click", function () {
+            const prodId = this.dataset.prodId;
+            removeProductFromCart(prodId);
         });
     });
 });
