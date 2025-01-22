@@ -771,11 +771,7 @@ footer p {
     border-radius: 8px;
     margin: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 5%;
-    box-sizing: border-box;
+    padding: 20px;
 }
 
 .order-container h2 {
@@ -787,8 +783,6 @@ footer p {
 
 .order-info {
     margin-bottom: 20px;
-    width: 100%;
-    box-sizing: border-box;
 }
 
 .products-container {
@@ -855,20 +849,6 @@ footer p {
 
     .product {
         max-width: 100%;
-    }
-
-    .order-container {
-        padding: 10px;
-    }
-
-    .order-info {
-        margin-bottom: 20px;
-        width: 100%;
-        text-align: center;
-    }
-
-    .order-container h2 {
-        font-size: 1.1rem;
     }
 }
 
