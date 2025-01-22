@@ -8,12 +8,12 @@ if(!isUserLoggedIn()) {
 $templateParams["titolo"] = "Uni Sweet Treats - Cart";
 $templateParams["js"][]="js/cart.js";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["codProd"], $_POST["quantita"])) {//if the request is a post request, load the cart
-    $codOrder = $db->getOrderCart($_SESSION["user_email"]); //get the order in creation
-    if(empty($codOrder)) {//if the cart has no orders in creation, create a order first
-        $codOrd = $db->createOrder($_SESSION["user_email"]); // create a new order and get the code
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["codProd"], $_POST["quantita"])) {
+    $codOrder = $db->getOrderCart($_SESSION["user_email"]);
+    if(empty($codOrder)) {
+        $codOrd = $db->createOrder($_SESSION["user_email"]);
     } else {
-        $codOrd = $codOrder[0]["codOrd"]; // get the code of the order in creation
+        $codOrd = $codOrder[0]["codOrd"];
     }
     $codProd = $_POST["codProd"];
     $quantita = $_POST["quantita"];
@@ -22,23 +22,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["codProd"], $_POST["qua
     $topping = isset($_POST["topping"]) ? $_POST["topping"] : 'none';
 
     $photoName = '';
-    if ($uploadPhoto && $uploadPhoto["error"] == UPLOAD_ERR_OK) { // if the photo is uploaded correctly
+    if ($uploadPhoto && $uploadPhoto["error"] == UPLOAD_ERR_OK) {
         $photoName = basename($uploadPhoto["name"]);
     }
 
-    //$codOrd = $db->getOrderCart($_SESSION["user_email"]); // get the order in creation
-    var_dump($codOrd);
-    // Add product to cart
     $db->addProductToCart($codOrd, $codProd, $quantita, $customText, $photoName, $topping);
 
-    // Unset POST variables after use
     unset($_POST["codProd"], $_POST["quantita"], $_POST["custom-text"], $_FILES["upload-photo"], $_POST["topping"]);
 }
-$codOrder = $db->getOrderCart($_SESSION["user_email"]); //get the order in creation
+$codOrder = $db->getOrderCart($_SESSION["user_email"]);
 if (!empty($codOrder)) {
     $order = $codOrder[0]["codOrd"];
-    var_dump($order);
-    $templateParams["cartItems"] = $db->getCartItems($order); //get the items in the cart
+    $templateParams["cartItems"] = $db->getCartItems($order);
     $templateParams["codiceOrdine"] = $order;
 }
 else {
