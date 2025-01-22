@@ -916,3 +916,28 @@ footer p {
 .cart-summary button:hover {
     background-color: #90C9FF;
 }
+
+/* Notifications */
+
+.notification-card {
+    background-color: #FFC8DD !important;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.notification-button {
+    background-color: #A2D2FF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.notification-button:hover {
+    background-color: #90C9FF;
+}
