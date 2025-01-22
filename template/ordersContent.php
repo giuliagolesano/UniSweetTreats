@@ -31,6 +31,9 @@
                     <?php if($prodotto["testo"] != "null"): ?>
                         <p>Personalized Text: <?php echo $prodotto["testo"]; ?></p>
                     <?php endif; ?>
+                    <?php if($prodotto["topping"] != "null"): ?>
+                        <p>Topping: <?php echo $prodotto["topping"]; ?></p>
+                    <?php endif; ?>
                     <p>Quantity: <?php echo $prodotto["quantita"]; ?></p>
                     <p>Total Product Price: €<?php echo $prodotto["prezzoProdottoTot"]; ?></p>
                     <?php if(isUserLoggedIn() && !$db->isAlreadyReviewed($_SESSION["user_email"], $prodotto["codProd"])): ?>

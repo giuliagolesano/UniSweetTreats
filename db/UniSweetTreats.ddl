@@ -88,7 +88,7 @@ create table review (
      testo varchar(200),
      valutazione int not null,
      codProd varchar(10) not null,
-     constraint PK_review primary key (e_mail, codProd));
+     constraint ID_review_ID primary key (codProd, e_mail));
 
 create table riceve (
      codNews varchar(10) not null,
@@ -153,7 +153,7 @@ alter table review add constraint FKrev_UTE_FK
      foreign key (e_mail) 
      references UTENTE (e_mail);
 
-alter table review add constraint FKrev_PRO_FK
+alter table review add constraint FKrev_PRO
      foreign key (codProd) 
      references PRODOTTO (codProd);
 
@@ -222,11 +222,11 @@ create index FKdi_IND
 create index FKappartenenza_IND
      on PRODOTTO (nomeTip);
 
-create unique index FKrev_UTE_IND
-     on review (e_mail);
+create unique index ID_review_IND
+     on review (codProd, e_mail);
 
-create index FKrev_PRO_IND
-     on review (codProd);
+create index FKrev_UTE_IND
+     on review (e_mail);
 
 create unique index ID_riceve_IND
      on riceve (codNews, e_mail);
