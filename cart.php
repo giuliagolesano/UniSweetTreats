@@ -6,6 +6,7 @@ if(!isUserLoggedIn()) {
 }
 
 $templateParams["titolo"] = "Uni Sweet Treats - Cart";
+$templateParams["js"][]="js/cart.js";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {//if the request is a post request, load the cart
     if (isset($_POST["codProd"], $_POST["quantita"])) {
@@ -39,10 +40,13 @@ $codOrder = $db->getOrderCart($_SESSION["user_email"]); //get the order in creat
 if (!empty($codOrder)) {
     $order = $codOrder[0]["codOrd"];
     $templateParams["cartItems"] = $db->getCartItems($order); //get the items in the cart
+    $templateParams["codiceOrdine"] = $order;
 }
 else {
     $templateParams["cartItems"] = [];
+    $templateParams["codiceOrdine"] = null;
 }
+
 $templateParams["nome"] = "cartContent.php";
 
 require("template/base.php");

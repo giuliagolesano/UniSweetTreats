@@ -17,7 +17,7 @@
             <!-- Colonna dettagli -->
             <div class="col-md-8">
                 <h3 class="text-center text-md-start"><?php echo htmlspecialchars($item["descrizione"]); ?></h3>
-                <p class="text-center text-md-start">Totale: €<?php echo number_format($totalPrice, 2); ?></p>
+                <p class="text-center text-md-start">Total: €<?php echo number_format($totalPrice, 2); ?></p>
                 <div class="d-flex align-items-center justify-content-center justify-content-md-start">
                     <button class="btn btn-outline-secondary btn-sm me-2">-</button>
                     <span class="mx-2"><?php echo htmlspecialchars($item["quantita"]); ?></span>
@@ -29,7 +29,7 @@
         <!-- Totale e pulsante ordine -->
         <div class="cart-summary text-end p-3 bg-light shadow rounded">
             <p><strong>Subtotal: €<?php echo number_format($subtotal, 2); ?></strong></p>
-            <button class="btn btn-primary">Order</button>
+            <button class="btn btn-primary order-button" data-order-id="<?php echo $templateParams["codiceOrdine"]; ?>" data-subtotal="<?php echo number_format($subtotal, 2); ?>">Order</button>
         </div>
     <?php endif; ?>
 </div>

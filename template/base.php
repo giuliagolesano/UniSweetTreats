@@ -65,6 +65,11 @@
 
     <main>
         <?php require($templateParams["nome"]); ?>
+        <?php if (isset($templateParams["js"])): ?>
+            <?php foreach ($templateParams["js"] as $js): ?>
+                <script src="<?php echo $js; ?>"></script>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </main>
 
     <footer>
