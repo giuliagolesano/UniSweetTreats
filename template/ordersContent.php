@@ -32,6 +32,16 @@
                 <div class="product">
                     <img src="<?php echo getImageProduct($prodotto["nomeTip"], $prodotto["foto"]); ?>" alt="Product Image">
                     <div class="product-details">
+                        <h3><?php echo $prodotto["nomeGusto"]; ?> <?php echo $prodotto["nomeTip"]; ?></h3>
+                        <?php if($prodotto["fotoAggiunta"] != null): ?>
+                            <p>Personalized Photo: <?php echo $prodotto["fotoAggiunta"]; ?></p> 
+                        <?php endif; ?>
+                        <?php if($prodotto["testo"] != null): ?>
+                            <p>Personalized Text: <?php echo $prodotto["testo"]; ?></p> 
+                        <?php endif; ?>
+                        <?php if($prodotto["topping"] != "none"): ?>
+                            <p>Extra Topping: <?php echo $prodotto["topping"]; ?></p> 
+                        <?php endif; ?>
                         <p>Quantity: <?php echo $prodotto["quantita"]; ?></p>
                         <p>Total Product Price: €<?php echo $prodotto["prezzoProdottoTot"]; ?></p>
                         <?php if(isUserLoggedIn() && !$db->isAlreadyReviewed($_SESSION["user_email"], $prodotto["codProd"])): ?>
