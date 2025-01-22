@@ -362,9 +362,20 @@ class DatabaseHelper{
 
     // Function to delete a product from the db
     public function deleteProduct($codProd) {
-        $stmt = $this->db->prepare("DELETE FROM PRODOTTO WHERE codProd = ?");
-        $stmt->bind_param('s', $codProd);
-        return $stmt->execute();
+        $this->db->begin_transaction();
+        try {
+            $stmt = $this->db->prepare("DELETE FROM formato_da WHERE codProd = ?");
+            $stmt->bind_param('s', $codProd);
+            $stmt->execute();
+            $stmt = $this->db->prepare("DELETE FROM PRODOTTO WHERE codProd = ?");
+            $stmt->bind_param('s', $codProd);
+            $stmt->execute();
+            $this->db->commit();
+            return true;
+        } catch (Exception $e) {
+            $this->db->rollback();
+            throw $e;
+        }
     }
 
     // Function to update a product in the db    
@@ -385,9 +396,7 @@ class DatabaseHelper{
         ");
         $stmtTariffario->bind_param('sss', $price, $codProd, $codProd);
         return $stmtTariffario->execute();
-    }
-    
-    
+    }   
 }
 
 ?>
