@@ -1,42 +1,55 @@
 <?php
 require_once("bootstrap.php");
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $codProd = isset($_POST['codProd']) ? $_POST['codProd'] : null;
-    $name = $_POST['name'];
-    $description = $_POST['description'];
-    $price = $_POST['price'];
-    $uploadedPhoto = isset($_FILES['upload-photo']) && $_FILES['upload-photo']['error'] === UPLOAD_ERR_OK ? $_FILES['upload-photo'] : null;
-    $existingPhoto = isset($_POST['existing-photo']) ? $_POST['existing-photo'] : null;
-
-    if ($uploadedPhoto) {
-        $photoName = basename($uploadedPhoto['name']);
-        move_uploaded_file($uploadedPhoto['tmp_name'], "uploads/$photoName");
-    } else {
-        $photoName = $existingPhoto;
-    }
-
-    if ($codProd) {
-        $db->updateProductFields($codProd, $name, $description, $price, $photoName);
-    }
-
-    header("Location: shop.php");
-    exit;
-}
-
-if (isset($_GET['codProd'])) {
-    $product = $db->getProductByCode($_GET['codProd']);
-    if ($product) {
-        $templateParams['product'] = $product;
-        $templateParams['action'] = 'modify';
-    } else {
-        die("Product not found.");
-    }
-} else {
-    die("Invalid access: Product ID is required.");
-}
-
-$templateParams["titolo"] = "Uni Sweet Treats - Modify Product";
+$templateParams["titolo"] = "Uni Sweet Treats - " . ucfirst($action) . " Product";
 $templateParams["nome"] = "product-form.php";
 
+$action = isset($_GET['action']) ? $_GET['action'] : 'add';
+$product = null;
+
+if (($action === 'modify' || $action === 'delete') && isset($_GET['codProd'])) {
+    $codProd = $_GET['codProd'];
+    $product = $db->getProductByCode($codProd);
+    if (!$product) {
+        $templateParams["errore"] = "Product not found.";
+        $action = 'add';
+    }
+}
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $action = $_POST['action'];
+
+    if ($action === 'delete' && isset($_POST['codProd'])) {
+        $codProd = $_POST['codProd'];
+        $db->deleteProduct($codProd);
+        header("Location: shop.php");
+        exit;
+    } elseif ($action === 'add' || $action === 'modify') {
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $price = $_POST['price'];
+        $photoName = '';
+
+        if (isset($_FILES['upload-photo']) && $_FILES['upload-photo']['error'] === UPLOAD_ERR_OK) {
+            $photoName = basename($_FILES['upload-photo']['name']);
+            move_uploaded_file($_FILES['upload-photo']['tmp_name'], UPLOAD_DIR . $photoName);
+        } elseif ($action === 'modify') {
+            $photoName = $product['foto'];
+        }
+
+        if ($action === 'add') {
+            $db->addProduct($name, $description, $price, $photoName);
+        } elseif ($action === 'modify') {
+            $db->updateProductFields($codProd, $name, $description, $price, $photoName);
+        }
+
+        header("Location: shop.php");
+        exit;
+    }
+}
+
+$templateParams["action"] = $action;
+$templateParams["product"] = $product;
+
 require("template/base.php");
+?>
