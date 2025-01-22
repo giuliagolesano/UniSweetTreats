@@ -16,9 +16,9 @@
                 <h3 class="text-center text-md-start"><?php echo htmlspecialchars($item["descrizione"]); ?></h3>
                 <p class="text-center text-md-start">Total: €<?php echo number_format($totalPrice, 2); ?></p>
                 <div class="d-flex align-items-center justify-content-center justify-content-md-start">
-                    <button class="btn btn-outline-secondary btn-sm me-2">-</button>
-                    <span class="mx-2"><?php echo htmlspecialchars($item["quantita"]); ?></span>
-                    <button class="btn btn-outline-secondary btn-sm ms-2">+</button>
+                    <button class="btn btn-outline-secondary btn-sm me-2 decrease-quantity" data-prod-id="<?php echo $item["codProd"]; ?>" data-max-quantity="<?php echo $item["maxQuantity"]; ?>">-</button>
+                    <span class="mx-2 quantity" data-prod-id="<?php echo $item["codProd"]; ?>"><?php echo htmlspecialchars($item["quantita"]); ?></span>
+                    <button class="btn btn-outline-secondary btn-sm ms-2 increase-quantity" data-prod-id="<?php echo $item["codProd"]; ?>" data-max-quantity="<?php echo $item["maxQuantity"]; ?>">+</button>
                 </div>
             </div>
         </div>
@@ -28,4 +28,13 @@
             <button class="btn btn-primary order-button" data-order-id="<?php echo $templateParams["codiceOrdine"]; ?>" data-subtotal="<?php echo number_format($subtotal, 2); ?>">Order</button>
         </div>
     <?php endif; ?>
+</div>
+
+<div id="confirmationModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="modalMessage"></p>
+        <button id="confirmButton" class="btn btn-primary">Confirm</button>
+        <button id="cancelButton" class="btn btn-secondary">Cancel</button>
+    </div>
 </div>
