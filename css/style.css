@@ -16,6 +16,7 @@ header {
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
+    
 }
         
 header div {
@@ -204,18 +205,9 @@ footer p {
     margin: 5px 0;
 }
 
-#signin_img img { 
-    max-width: 200px; 
-    height: auto;
-}
 
-/*ul { ignorato 
-    list-style-type: none;
-    padding: 0;
-}*/
-
-/* da login.css */
-#login-page {
+/* Login and Signup pages */
+.login-page {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -223,33 +215,35 @@ footer p {
     gap: 30px;
 }
 
-#login-page img {
-    max-width: 200px;
+
+.login-page img {
+    max-width: 400px;
     height: auto;
 }
 
-#login-page h2 {
+.login-page h2 {
+    margin-top: 0;
     margin-bottom: 20px;
     color: #333;
 }
 
-#login-page p {
+.login-page p {
     margin-bottom: 20px;
     font-size: 14px;
 }
 
-#login-page p a {
+.login-page p a {
     color: #FF69B4;
     text-decoration: underline;
 }
 
-#login-page form label {
+.login-page form label {
     display: block;
     margin-bottom: 10px;
     font-size: 14px;
 }
 
-#login-page form input {
+.login-page form input {
     width: 100%;
     padding: 10px;
     margin-bottom: 20px;
@@ -258,7 +252,7 @@ footer p {
     font-size: 14px;
 }
 
-#login-page form button {
+.login-page form button {
     width: 100%;
     padding: 10px;
     background-color: #FF69B4;
@@ -270,20 +264,39 @@ footer p {
     transition: background-color 0.3s ease;
 }
 
-#login-page form button:hover {
+.login-page form button:hover {
     background-color: #FF85C0;
 }
 
-#login-page label {
+.login-page label {
     display: flex;
     align-items: center;
     gap: 10px; 
 }
 
-#login-page label input[type="checkbox"] {
+.login-page label input[type="checkbox"] {
     margin: 0;
     vertical-align: middle;
 }
+
+@media (max-width: 767px) {
+    .signup-image, .login-image {
+        display: none;
+    }
+}
+
+.form-check-input {
+    width: 16px !important;
+    height: 16px;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.form-check-label {
+    margin: 0;
+    font-size: 14px;
+}
+
 
 
 
