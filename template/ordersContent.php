@@ -15,6 +15,7 @@
     <p>You have no orders yet.</p>
 <?php endif; ?>
 <?php foreach($templateParams["ordini"] as $ordine): ?>
+    <?php if($ordine["stato"] != "waiting"): ?>
     <div>
         <?php if(isUserLoggedIn()): ?>
             <h2>Order <?php echo $ordine["codOrd"]; ?></h2>
