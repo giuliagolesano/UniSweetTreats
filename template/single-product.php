@@ -43,7 +43,9 @@
                             </div>
                         </fieldset>
                     <?php endif; ?>
+                    <?php if(isUserLoggedIn()): ?>
                     <button type="submit" class="add-to-cart">Add to cart</button>
+                    <?php endif; ?>
                 </form>
             </div>
         </div>
