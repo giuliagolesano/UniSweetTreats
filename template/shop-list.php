@@ -8,7 +8,7 @@
         </li><li>
             <a <?php isActive("account_notifications.php");?> href="account_notifications.php">Notifications</a>
         </li><li>
-            <a href="addProduct.php"> Add Product </a>
+            <a href="addProduct.php?action=add">Add Product</a>
         </li>
     </ul>
 </nav>
@@ -75,8 +75,8 @@
                                     <p class="card-text"><?php echo $product["descrizione"]; ?></p>
                                     <p class="card-text fw-bold">Price: €<?php echo getPrice($product["nomeGusto"], $product["nomeTip"], $db); ?> </p>
                                     <?php if (isAdminLoggedIn()): ?>
-                                        <a href="addProduct.php?codProd=<?php echo $product["codProd"]; ?>" class="btn btn-primary btn-sm">Modifica</a>
-                                        <button class="btn btn-danger btn-sm delete-button" data-id="<?php echo $product["codProd"]; ?>">Elimina</button>
+                                        <a href="addProduct.php?action=modify&codProd=<?php echo $product['codProd']; ?>" class="btn btn-primary btn-sm" >Modify</a>
+                                        <a href="addProduct.php?action=delete&codProd=<?php echo $product['codProd']; ?>" class="btn btn-danger btn-sm">Delete</a>
                                     <?php endif; ?>
                                 </div>
                             </div>

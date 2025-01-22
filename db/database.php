@@ -258,13 +258,6 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    //DA GUARDARE
-    public function deleteProduct($codProd) {
-        $stmt = $this->db->prepare("DELETE FROM PRODOTTO WHERE codProd = ?");
-        $stmt->bind_param('i', $codProd);
-        return $stmt->execute();
-    }
-
     public function markNotificationAsRead($codNot) {
         $stmt = $this->db->prepare("UPDATE NOTIFICA SET stato = 'read' WHERE codNot = ?");
         $stmt->bind_param('s', $codNot);
@@ -358,6 +351,7 @@ class DatabaseHelper{
         return $stmt->execute();
     }
 
+    
     public function isProductInCart($codOrd, $codProd) {
         $stmt = $this->db->prepare("SELECT * FROM FORMATO_DA WHERE codOrd = ? AND codProd = ? ");
         $stmt->bind_param('ss', $codOrd, $codProd);
@@ -365,6 +359,35 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->num_rows > 0;
     }
+
+    // Function to delete a product from the db
+    public function deleteProduct($codProd) {
+        $stmt = $this->db->prepare("DELETE FROM PRODOTTO WHERE codProd = ?");
+        $stmt->bind_param('s', $codProd);
+        return $stmt->execute();
+    }
+
+    // Function to update a product in the db    
+    public function updateProductFields($codProd, $name, $description, $price, $photo) {
+        $stmt = $this->db->prepare("
+            UPDATE PRODOTTO
+            SET descrizione = ?, quantita = quantita, foto = ?, nomeGusto = nomeGusto, nomeTip = nomeTip
+            WHERE codProd = ?
+        ");
+        $stmt->bind_param('sss', $description, $photo, $codProd);
+        $stmt->execute();
+    
+        $stmtTariffario = $this->db->prepare("
+            UPDATE TARIFFARIO
+            SET prezzo = ?
+            WHERE nomeGusto = (SELECT nomeGusto FROM PRODOTTO WHERE codProd = ?)
+              AND nomeTip = (SELECT nomeTip FROM PRODOTTO WHERE codProd = ?)
+        ");
+        $stmtTariffario->bind_param('sss', $price, $codProd, $codProd);
+        return $stmtTariffario->execute();
+    }
+    
+    
 }
 
 ?>
