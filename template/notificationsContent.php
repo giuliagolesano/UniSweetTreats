@@ -23,9 +23,6 @@
             <div class="notification-card row align-items-center mb-4 p-3 bg-light shadow rounded">
                 <div class="col-md-6">
                     <h2 class="mb-2">Order number: <?php echo isAdminLoggedIn() ? $notifica['codNot'] : $notifica['codOrd']; ?></h2>
-                    <?php if (isAdminLoggedIn()): ?>
-                        <p>Email: <?php echo $notifica["email"]; ?></p>
-                    <?php endif; ?>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <div class="stato mb-2">Status: <?php echo $notifica["stato"]; ?></div>
