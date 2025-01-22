@@ -21,7 +21,7 @@
                 Filter
             </button>
             <div class="collapse" id="filterMenu">
-                <form action="shop.php" method="GET" class="bg-light p-4 rounded">
+                <form action="shop.php" method="GET" class="bg-info p-4 rounded">
                     <div class="mb-3">
                         <fieldset>
                             <legend>What do you want to include? </legend>
