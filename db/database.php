@@ -369,16 +369,16 @@ class DatabaseHelper{
     
         try {
             $stmt = $this->db->prepare("UPDATE ORDINE SET stato = 'placed' WHERE codOrd = ?");
-            $stmt->bind_param('i', $orderId);
+            $stmt->bind_param('s', $orderId);
             $stmt->execute();
             $stmt = $this->db->prepare("SELECT codProd, quantita FROM formato_da WHERE codOrd = ?");
-            $stmt->bind_param('i', $orderId);
+            $stmt->bind_param('s', $orderId);
             $stmt->execute();
             $result = $stmt->get_result();
             $products = $result->fetch_all(MYSQLI_ASSOC);
             foreach ($products as $product) {
                 $stmt = $this->db->prepare("UPDATE PRODOTTO SET quantita = quantita - ? WHERE codProd = ?");
-                $stmt->bind_param('ii', $product['quantita'], $product['codProd']);
+                $stmt->bind_param('is', $product['quantita'], $product['codProd']);
                 $stmt->execute();
             }
             $this->db->commit();
