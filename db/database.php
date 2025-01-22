@@ -24,26 +24,9 @@ class DatabaseHelper{
         return $stmt->execute();
     }
 
-    // Function to login a user
-    public function loginUser($email){
-        $stmt = $this->db->prepare("SELECT * FROM UTENTE WHERE e_mail = ?");
-        $stmt->bind_param('s', $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_assoc();
-    }
-
-    // Function to login an admin
-    public function loginAdmin($email, $password){
-        $stmt = $this->db->prepare("SELECT * FROM ADMIN WHERE e_mail = ? AND password = ?");
-        $stmt->bind_param('ss', $email, $password);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_assoc();
-    }
-
+    //Function to login an user
     public function checkLoginUser($email){
-        $query = "SELECT e_mail, nome, cognome, `password`, consensoNews  FROM utente WHERE e_mail = ?";
+        $query = "SELECT e_mail, nome, cognome, password, consensoNews  FROM utente WHERE e_mail = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s',$email);
         $stmt->execute();
@@ -52,6 +35,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }    
 
+    //Function to login an admin
     public function checkLoginAdmin($email, $password){
         $query = "SELECT e_mail, nome, cognome, `password`  FROM `admin` WHERE e_mail = ? AND `password` = ?";
         $stmt = $this->db->prepare($query);
@@ -80,6 +64,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    // Function to check if a email is present
     public function isEmailRegistered($email) {
         $stmt = $this->db->prepare("SELECT COUNT(*) as count FROM UTENTE WHERE e_mail = ?");
         $stmt->bind_param('s', $email);
@@ -89,27 +74,11 @@ class DatabaseHelper{
         return $row['count'] > 0;
     }
     
+    // Function to update the state of the consent
     public function updateNewsletterConsent($email) {
         $stmt = $this->db->prepare("UPDATE UTENTE SET consensoNews = 'S' WHERE e_mail = ?");
         $stmt->bind_param('s', $email);
         return $stmt->execute();
-    }
-    
-
-    // Function to get 3 random reviews
-    public function getRandomReviews(){
-        $stmt = $this->db->prepare("SELECT * FROM review ORDER BY RAND() LIMIT 3");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-    
-    // Function to get 4 random photos from ARCHIVIO_FOTO
-    public function getRandomPhotos(){
-        $stmt = $this->db->prepare("SELECT * FROM ARCHIVIO_FOTO ORDER BY RAND() LIMIT 4");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     // Function to get the best seller for each product type
@@ -160,22 +129,6 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // Function to get all recipes
-    public function getAllRecipes(){
-        $stmt = $this->db->prepare("SELECT * FROM RICETTA");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    // Function to get all FAQs
-    public function getAllFAQs(){
-        $stmt = $this->db->prepare("SELECT * FROM FAQ");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
     // Function to get all orders for a specific user email
     public function getOrdersByEmail($email){
         $stmt = $this->db->prepare("SELECT * FROM ORDINE WHERE e_mail = ? ORDER BY giorno DESC, ora DESC");
@@ -205,6 +158,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);       
     }
 
+    //
     public function getPriceByProduct($nomeGusto, $nomeTip) {
         $stmt = $this->db->prepare("SELECT prezzo
                                         FROM TARIFFARIO
@@ -216,6 +170,7 @@ class DatabaseHelper{
         return $row ? $row['prezzo'] : null;
     }
 
+    //
     public function getCategories() {
         $stmt = $this->db->prepare("SELECT * FROM TIPOLOGIA");
         $stmt->execute();
@@ -223,29 +178,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    /*
-    public function getCostsForOrders($email){
-        $stmt = $this->db->prepare("SELECT O.codOrd AS CodiceOrdine, SUM(T.prezzo) AS CostoTotale FROM UTENTE U
-        INNER JOIN ORDINE O ON U.e_mail = O.e_mail
-        INNER JOIN FORMATO_DA F ON O.codOrd = F.codOrd
-        INNER JOIN PRODOTTO P ON F.codProd = P.codProd
-        INNER JOIN TARIFFARIO T ON P.nomeGusto = T.nomeGusto AND P.nomeTip = T.nomeTip
-        WHERE 
-        U.e_mail = ?
-        GROUP BY 
-        O.codOrd;
-        ");
-        $stmt->bind_param('s', $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $costs = [];
-        while ($row = $result->fetch_assoc()) {
-            $costs[$row['CodiceOrdine']] = $row['CostoTotale'];
-        }
-        return $costs;
-    }
-    */
-
+    //
     public function getOrderPrice($codOrd) {
         $stmt = $this->db->prepare("SELECT SUM(T.prezzo * F.quantita) AS prezzoOrdineTot FROM ORDINE O
                                     JOIN FORMATO_DA F ON O.codOrd = F.codOrd
@@ -258,44 +191,6 @@ class DatabaseHelper{
         $row = $result->fetch_assoc(); 
         return $row['prezzoOrdineTot'];  
     }
-
-    /*
-    public function getProductsForOrders($email){
-        $stmt = $this->db->prepare("SELECT 
-        O.codOrd AS CodiceOrdine,
-        P.codProd AS CodiceProdotto,
-        P.descrizione AS DescrizioneProdotto,
-        P.nomeGusto AS NomeGusto,
-        P.nomeTip AS NomeTip,
-        P.foto AS FotoProdotto,
-        F.foto AS FotoAggiunta,
-        F.testo AS TestoAggiunto,
-        F.topping AS ToppingAggiunto,
-        COUNT(F.codProd) AS Quantita,
-        COUNT(F.codProd) * T.prezzo AS PrezzoTotale
-        FROM 
-        UTENTE U
-        INNER JOIN ORDINE O ON U.e_mail = O.e_mail
-        INNER JOIN FORMATO_DA F ON O.codOrd = F.codOrd
-        INNER JOIN PRODOTTO P ON F.codProd = P.codProd
-        INNER JOIN TARIFFARIO T ON P.nomeGusto = T.nomeGusto AND P.nomeTip = T.nomeTip
-        WHERE 
-        U.e_mail = ?
-        GROUP BY 
-        O.codOrd, P.codProd, P.descrizione, P.nomeGusto, P.nomeTip, P.foto, F.foto, F.testo, F.topping, T.prezzo
-        ORDER BY 
-        O.codOrd, P.codProd;
-        ");
-        $stmt->bind_param('s', $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $products = [];
-        while ($row = $result->fetch_assoc()) {
-            $products[$row['CodiceOrdine']][$row['CodiceProdotto']] = $row;
-        }
-        return $products;
-    }
-    */
 
     public function getProductsByOrder($codOrd) {
         $stmt = $this->db->prepare("SELECT P.codProd, P.descrizione, P.foto, T.prezzo, P.nomeGusto, P.nomeTip, F.foto AS fotoAggiunta, F.testo, F.topping, F.quantita, (F.quantita * T.prezzo) AS prezzoProdottoTot
@@ -363,6 +258,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    //DA GUARDARE
     public function deleteProduct($codProd) {
         $stmt = $this->db->prepare("DELETE FROM PRODOTTO WHERE codProd = ?");
         $stmt->bind_param('i', $codProd);

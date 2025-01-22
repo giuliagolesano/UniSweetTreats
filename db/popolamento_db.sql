@@ -3,14 +3,7 @@ insert into ADMIN (e_mail, nome, cognome, password)
 values ('unisweettreats@unibo.it', 'uni', 'sweettreats', '1234');
 
 -- Inserting UTENTE records
-insert into UTENTE (e_mail, nome, cognome, password, consensoNews)
-values ('giulia.golesano@studio.unibo.it', 'giulia', 'golesano', 'giulia', 'S');
 
-insert into UTENTE (e_mail, nome, cognome, password, consensoNews)
-values ('enrico.cornacchia@studio.unibo.it', 'enrico', 'cornacchia', 'enrico', 'S');
-
-insert into UTENTE (e_mail, nome, cognome, password, consensoNews)
-values ('sofia.caberletti@studio.unibo.it', 'sofia', 'caberletti', 'sofia', 'S');
 
 -- Inserting GUSTO records
 insert into GUSTO (nomeGusto) values ('bounty');
@@ -168,11 +161,6 @@ values ('not1', 'Your order has been placed!', 'to_read', '2025-01-20', '12:30:0
        ('not4', 'Your order has been delivered!', 'to_read', '2025-01-21', '12:00:00', 'giulia.golesano@studio.unibo.it', 'ord1');
 
 -- Enrico
-insert into NOTIFICA (codNot, testo, stato, giorno, ora, e_mail, codOrd)
-values ('not5', 'Your order has been placed!', 'to_read', '2025-01-21', '15:00:00', 'enrico.cornacchia@studio.unibo.it', 'ord2'),
-       ('not6', 'Your order has been confirmed!', 'to_read', '2025-01-21', '15:30:00', 'enrico.cornacchia@studio.unibo.it', 'ord2'),
-       ('not7', 'Your order is being delivered.', 'to_read', '2025-01-22', '10:00:00', 'enrico.cornacchia@studio.unibo.it', 'ord2'),
-       ('not8', 'Your order has been delivered!', 'to_read', '2025-01-22', '13:00:00', 'enrico.cornacchia@studio.unibo.it', 'ord2');
 
 -- Sofia
 insert into NOTIFICA (codNot, testo, stato, giorno, ora, e_mail, codOrd)
