@@ -6,10 +6,10 @@ if (isset($_POST["newsletter_email"])) {
 
     if ($db->isEmailRegistered($email)) {
         if ($db->updateNewsletterConsent($email)) {
-            header("Location: index.php")
+            header("Location: index.php");
         }
     } else {
-        header("Location: login.php")
+        header("Location: login.php");
     }
 }
 ?>
