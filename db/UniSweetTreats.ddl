@@ -109,7 +109,7 @@ create table UTENTE (
      e_mail varchar(100) not null,
      nome varchar(50) not null,
      cognome varchar(50) not null,
-     password varchar(8) not null,
+     password varchar(255) not null,
      consensoNews char(1),
      constraint ID_UTENTE_ID primary key (e_mail));
 
