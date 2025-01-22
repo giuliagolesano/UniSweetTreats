@@ -224,7 +224,10 @@ class DatabaseHelper{
     public function createOrder($email) {
         $result = $this->db->query("SELECT MAX(CAST(SUBSTRING(codOrd, 4) AS UNSIGNED)) AS maxCodOrd FROM ORDINE"); // get the last order code number
         $row = $result->fetch_assoc();
-        $newCodOrd = 'cod' . ($row['maxCodOrd'] + 1); // create a new order code increasing the last one
+        if ($row['maxCodOrd'] == null) {
+            $newCodOrd = 'ord1';
+        }
+        $newCodOrd = 'ord' . ($row['maxCodOrd'] + 1); // create a new order code increasing the last one
         $stmt = $this->db->prepare("INSERT INTO ORDINE (codOrd, giorno, ora, stato, e_mail) 
                         VALUES (?, CURDATE(), CURTIME(), 'waiting', ?)");
         $stmt->bind_param('ss', $newCodOrd, $email);
@@ -396,7 +399,49 @@ class DatabaseHelper{
         ");
         $stmtTariffario->bind_param('sss', $price, $codProd, $codProd);
         return $stmtTariffario->execute();
-    }   
+    }
+       
+    // Function to get the next notification code
+    public function getNextNotificationCode() {
+        $result = $this->db->query("SELECT MAX(CAST(SUBSTRING(codNot, 4) AS UNSIGNED)) AS maxCodNot FROM NOTIFICA");
+        $row = $result->fetch_assoc();
+        if ($row['maxCodNot'] == null) {
+            return 'not1';
+        }
+        return 'not' . ($row['maxCodNot'] + 1);
+    }
+
+    // Function to get the next update code
+    public function getNextUpdateCode() {
+        $result = $this->db->query("SELECT MAX(CAST(SUBSTRING(codNot, 4) AS UNSIGNED)) AS maxCodAgg FROM AGGIORNAMENTO");
+        $row = $result->fetch_assoc();
+        if ($row['maxCodAgg'] == null) {
+            return 'not1';
+        }
+        return 'not' . ($row['maxCodAgg'] + 1);
+    }
+
+    // Function to get all admin emails
+    public function getAllAdminEmails() {
+        $stmt = $this->db->prepare("SELECT e_mail FROM `admin`");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    // Function to create a notification
+    public function createNotification($codNot, $testo, $stato, $giorno, $ora, $email, $codOrd) {
+        $stmt = $this->db->prepare("INSERT INTO NOTIFICA (codNot, testo, stato, giorno, ora, e_mail, codOrd) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param('sssssss', $codNot, $testo, $stato, $giorno, $ora, $email, $codOrd);
+        return $stmt->execute();
+    }
+
+    // Function to create an update for the admin
+    public function createUpdateAdmin($codAgg, $testo, $stato, $giorno, $ora, $email) {
+        $stmt = $this->db->prepare("INSERT INTO AGGIORNAMENTO (codNot, testo, stato, giorno, ora, e_mail) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param('ssssss', $codAgg, $testo, $stato, $giorno, $ora, $email);
+        return $stmt->execute();
+    }
 }
 
 ?>

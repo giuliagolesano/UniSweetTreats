@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             confirmButton.onclick = function() {
                 modal.style.display = "none";
+                console.log("Order ID:", orderId); // Debugging statement
                 fetch("checkout.php", {
                     method: "POST",
                     headers: {
@@ -37,15 +38,15 @@ document.addEventListener("DOMContentLoaded", function() {
                     showModalMessage("Failed to place the order due to a network error.", false);
                 });
             };
-
+            
             cancelButton.onclick = function() {
                 modal.style.display = "none";
             };
-
+            
             closeButton.onclick = function() {
                 modal.style.display = "none";
             };
-
+            
             window.onclick = function(event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
@@ -68,8 +69,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 window.location.href = "cart.php";
             };
         } else {
+            closeButton.onclick = function() {
+                window.location.href = "cart.php";
+            };
             cancelButton.onclick = function() {
-                modal.style.display = "none";
+                window.location.href = "cart.php";
             };
         }
         modal.style.display = "block";
