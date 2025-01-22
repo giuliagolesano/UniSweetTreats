@@ -9,9 +9,10 @@
 - LISTA PRODOTTI ADMIN:
     - PHP:
         - Aggiunta, Modifica ed Eliminazione di un prodotto: ci sono già le query? Funziona?
-- ACCOUNT IN GENERALE:
-    - PHP:
-        - Usare isActive per sottolineare nei bottoni in quale pagina ci troviamo?
+
+- NOTIFICHE:
+    - Notifica all' utente e aggiornamento all' admin quando viene cliccato il bottone "Order" in Cart
+    - Aggiornamenti all'admin quando la quantità di un prodotto è a 0
 
 
 -GENERAZIONE AUTOMATICA DI NOTIFICHE?? COME??
