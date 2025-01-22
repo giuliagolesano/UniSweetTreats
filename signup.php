@@ -16,13 +16,17 @@ if (isset($_POST["submit"])) {
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $templateParams["errore"] = "Indirizzo email non valido!";
     } else {
-        $passwordHashed = password_hash($password, PASSWORD_BCRYPT);
-        $registration = $db->signUpUser($email, $name, $surname, $passwordHashed, $consent);
-        if ($registration) {
-            header("Location: account_orders.php");
-            exit;
+        if ($db->isEmailRegistered($email)) {
+            $templateParams["errore"] = "An account with this email already exists!";
         } else {
-            $templateParams["errore"] = "Errore nella registrazione. Riprova più tardi.";
+            $passwordHashed = password_hash($password, PASSWORD_BCRYPT);
+            $registration = $db->signUpUser($email, $name, $surname, $passwordHashed, $consent);
+            if ($registration) {
+                header("Location: account_orders.php");
+                exit;
+            } else {
+                $templateParams["errore"] = "Error during registration. Please try again later.";
+            }
         }
     }
 }

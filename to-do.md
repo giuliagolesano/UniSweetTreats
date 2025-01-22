@@ -1,15 +1,11 @@
 **Cosa manca?**
 
 - query per iscrivere la email alla newsletter che cerca l'utente -> se non ce l'account portare a pagina login
-- controlliamo che esista già l'utente che cerca di registrarsi? in quel caso aggiungere query che cerca una determinata email nel db 
 - le faq ancora non esistono
 
 
 **QUERY DA SCRIVERE:**
-- nuovo utente registrato caricato nel db
-- ordine caricato nel db??
 - eliminazione e modifica prodotto già nel db
-- cambiare stato se il bottone viene premuto (query + event listener bottone)
 
 **COSE DA FARE:**
 - 22/01 

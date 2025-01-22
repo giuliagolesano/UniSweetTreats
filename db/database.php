@@ -60,6 +60,16 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function isEmailRegistered($email) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) as count FROM UTENTE WHERE e_mail = ?");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['count'] > 0;
+    }
+    
+
     // Function to get 3 random reviews
     public function getRandomReviews(){
         $stmt = $this->db->prepare("SELECT * FROM review ORDER BY RAND() LIMIT 3");
