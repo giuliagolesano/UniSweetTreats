@@ -16,7 +16,7 @@
 <?php endif; ?>
 <?php foreach($templateParams["ordini"] as $ordine): ?>
     <?php if($ordine["stato"] != "waiting"): ?>
-    <div>
+    <div class="order-container">
         <?php if(isUserLoggedIn()): ?>
             <h2>Order <?php echo $ordine["codOrd"]; ?></h2>
         <?php else: ?>
@@ -44,3 +44,7 @@
     </div>
     <?php endif; ?>
 <?php endforeach; ?>
+
+
+
+
