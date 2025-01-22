@@ -40,7 +40,6 @@ Giulia (inserimento review sul singolo prodotto, eliminazione e modifica dell'or
 
 
 
-
 **COSE GIA' IMPLEMENTATE NELLE PAGINE:**
 asterisco se lo abbiamo implementato
 - HOME (**mockup**, **html**, **php**, **css**) GIULIA
