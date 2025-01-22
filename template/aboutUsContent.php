@@ -8,9 +8,9 @@
         </div>
         <div>
             <img src="<?php echo CAKES_DIR . 'caramelCake.png'; ?>" alt="caramelCake">
-            <img src="<?php echo COOKIES_DIR . 'jamCookie.png'; ?>" alt="jamCookie">
-            <img src="<?php echo CUPCAKES_DIR . 'berriesCupcake.png'; ?>" alt="berriesCupcake">
-            <img src="<?php echo GUMMIES_DIR . 'galatineGummy.png'; ?>" alt="galatineGummy">
+            <img class="no-display" src="<?php echo COOKIES_DIR . 'jamCookie.png'; ?>" alt="jamCookie">
+            <img class="no-display" src="<?php echo CUPCAKES_DIR . 'berriesCupcake.png'; ?>" alt="berriesCupcake">
+            <img class="no-display" src="<?php echo GUMMIES_DIR . 'galatineGummy.png'; ?>" alt="galatineGummy">
         </div>
     </div>
 
