@@ -1,19 +1,18 @@
-<nav>
-    <ul>
-        <?php if (isAdminLoggedIn()): ?>
+<nav class="centered-list">
+    <ul class="centered-list">
+        <?php if(isAdminLoggedIn()): ?>
             <li>
-                <a href="shop.php">Shop Products List</a>
+                <a class="nav-link btn btn-primary mx-1" href="shop.php">Shop Products List</a>
             </li>
         <?php endif; ?>
         <li>
-            <a href="account_orders.php">Orders</a>
+            <a class="nav-link btn btn-primary mx-1" href="account_orders.php">Orders</a>
         </li>
         <li>
-            <a href="account_notifications.php">Notifications</a>
+            <a class="nav-link btn btn-primary mx-1" href="account_notifications.php">Notifications</a>
         </li>
     </ul>
 </nav>
-
 <h2>Your Notifications:</h2>
 <?php if (empty($templateParams["notifiche"])): ?>
     <p>You have no notifications yet.</p>

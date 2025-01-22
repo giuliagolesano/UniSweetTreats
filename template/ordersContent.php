@@ -1,12 +1,15 @@
-<nav>
-    <ul>
+<nav class="centered-list">
+    <ul class="centered-list">
         <?php if(isAdminLoggedIn()): ?>
             <li>
-                <a href="shop.php">Shop Products List</a>
-            </li><?php endif; ?><li>
-            <a href="account_orders.php">Orders</a>
-        </li><li>
-            <a href="account_notifications.php">Notifications</a>
+                <a class="nav-link btn btn-primary mx-1" href="shop.php">Shop Products List</a>
+            </li>
+        <?php endif; ?>
+        <li>
+            <a class="nav-link btn btn-primary mx-1" href="account_orders.php">Orders</a>
+        </li>
+        <li>
+            <a class="nav-link btn btn-primary mx-1" href="account_notifications.php">Notifications</a>
         </li>
     </ul>
 </nav>

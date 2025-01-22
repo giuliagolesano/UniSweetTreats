@@ -1,6 +1,6 @@
 <?php if(isAdminLoggedIn()): ?>
-    <nav>
-    <ul>
+<nav class="centered-list">
+    <ul class="centered-list">
         <li>
             <a href="shop.php">Shop Products List</a>
         </li><li>
