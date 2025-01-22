@@ -352,7 +352,19 @@ class DatabaseHelper{
         return $stmt->execute();
     }
     
+    public function increaseOfQuantityCartProduct($codOrd, $codProd, $quantityToAdd) {
+        $stmt = $this->db->prepare("UPDATE FORMATO_DA SET quantita = quantita + ? WHERE codOrd = ? AND codProd = ?");
+        $stmt->bind_param('iss', $quantityToAdd, $codOrd, $codProd);
+        return $stmt->execute();
+    }
 
+    public function isProductInCart($codOrd, $codProd) {
+        $stmt = $this->db->prepare("SELECT * FROM FORMATO_DA WHERE codOrd = ? AND codProd = ? ");
+        $stmt->bind_param('ss', $codOrd, $codProd);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->num_rows > 0;
+    }
 }
 
 ?>

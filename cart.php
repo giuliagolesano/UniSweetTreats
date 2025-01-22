@@ -25,8 +25,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["codProd"], $_POST["qua
     if ($uploadPhoto && $uploadPhoto["error"] == UPLOAD_ERR_OK) {
         $photoName = basename($uploadPhoto["name"]);
     }
-
-    $db->addProductToCart($codOrd, $codProd, $quantita, $customText, $photoName, $topping);
+    
+    if($db->isProductInCart($codOrd, $codProd)) {
+        $db->increaseOfQuantityCartProduct($codOrd, $codProd, $quantita);
+    } else {
+        $db->addProductToCart($codOrd, $codProd, $quantita, $customText, $photoName, $topping);
+    }
 
     unset($_POST["codProd"], $_POST["quantita"], $_POST["custom-text"], $_FILES["upload-photo"], $_POST["topping"]);
 }
