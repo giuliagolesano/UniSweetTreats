@@ -17,7 +17,7 @@ if(isset($_POST["email"]) && isset($_POST["password"])){
         if($admin && password_verify($_POST["password"], $admin["password"])){
             registerLoggedAdmin($admin);
         } else {
-            $templateParams["errorelogin"] = "Username o password errati";
+            $templateParams["errore"] = "Username o password errati";
         }
     }
 }
