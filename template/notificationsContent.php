@@ -2,14 +2,14 @@
     <ul class="centered-list">
         <?php if(isAdminLoggedIn()): ?>
             <li>
-                <a class="nav-link btn btn-primary mx-1<?php isActive("shop.php");?>" href="shop.php">Shop Products List</a>
+                <a <?php isActive("shop.php");?> href="shop.php">Shop Products List</a>
             </li>
         <?php endif; ?>
         <li>
-            <a class="nav-link btn btn-primary mx-1<?php isActive("account_orders.php");?>" href="account_orders.php">Orders</a>
+            <a <?php isActive("account_orders.php");?> href="account_orders.php">Orders</a>
         </li>
         <li>
-            <a class="nav-link btn btn-primary mx-1<?php isActive("account_notifications.php");?>" href="account_notifications.php">Notifications</a>
+            <a <?php isActive("account_notifications.php");?> href="account_notifications.php">Notifications</a>
         </li>
     </ul>
 </nav>

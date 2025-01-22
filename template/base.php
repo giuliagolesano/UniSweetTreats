@@ -15,9 +15,9 @@
         <nav>
             <ul>
                 <li><a href="javascript:void(0);" class="menu-icon" tabindex="0"><img src="<?php echo ICONS_DIR . 'menu.png'; ?>" alt="Menu"></a></li>
-                <li><a href="shop.php">Shop</a></li>
-                <li><a href="bestSeller.php">Best Seller</a></li>
-                <li><a href="aboutUs.php">About Us</a></li>
+                <li><a <?php isActive("shop.php");?> href="shop.php">Shop</a></li>
+                <li><a <?php isActive("bestSeller.php");?> href="bestSeller.php">Best Seller</a></li>
+                <li><a <?php isActive("aboutUs.php");?> href="aboutUs.php">About Us</a></li>
             </ul>
         </nav>
         <div>

@@ -1073,3 +1073,7 @@ footer p {
     text-decoration: underline !important;
     background-color: #FFAFCC;
 }
+
+.active {
+    text-decoration: underline !important;
+}
