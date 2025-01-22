@@ -7,7 +7,7 @@
         </div>
         <h1>Freshly made sweets when you need it the most</h1>
         <p>"Fuel your all-nighters with the sweetest energy!"</p>
-        <a href="#shop">BUY NOW</a>
+        <a href="shop.php">BUY NOW</a>
     </div>
 
     <div class = "about">

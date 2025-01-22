@@ -47,5 +47,19 @@
                 </form>
             </div>
         </div>
+        <div class="reviews">
+            <h3>Reviews</h3>
+            <?php if(empty($templateParams["reviews"])): ?>
+                <p>No reviews available for this product.</p>
+            <?php else: ?>
+                <?php foreach($templateParams["reviews"] as $review): ?>
+                    <article>
+                        <h4><?php echo htmlspecialchars($review['e_mail']); ?></h4>
+                        <p>Rating: <?php echo str_repeat('★', $review['valutazione']); ?><?php echo str_repeat('☆', 5 - $review['valutazione']); ?></p>
+                        <p><?php echo htmlspecialchars($review['testo']); ?></p>
+                    </article>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
     </main>
 <?php endif; ?>

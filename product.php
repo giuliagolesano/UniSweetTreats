@@ -12,7 +12,7 @@ $userParams["product"] = current(array_filter($userParams["articoli"], function(
     return $product["codProd"] == $_REQUEST["codProd"];
 }));
 
-//$templateParams["reviews"] = $db->getReviewsByProduct($product['codProd']);
+$templateParams["reviews"] = $db->getReviewsByProduct($userParams["product"]["codProd"]);
 
 require("template/base.php");
 ?>

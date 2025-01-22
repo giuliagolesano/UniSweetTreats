@@ -360,7 +360,7 @@ class DatabaseHelper{
     }
 
     public function getReviewsByProduct($codProd) {
-        $stmt = $this->$db->prepare( "SELECT e_mail, testo, valutazione
+        $stmt = $this->db->prepare( "SELECT e_mail, testo, valutazione
                       FROM review
                       WHERE codProd = ?
                       ORDER BY valutazione DESC
