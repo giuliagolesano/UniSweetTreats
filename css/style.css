@@ -1068,3 +1068,8 @@ footer p {
 .centered-list a:hover {
     background-color: #FFC8DD;
 }
+
+.nav-link.active {
+    text-decoration: underline !important;
+    background-color: #FFAFCC;
+}

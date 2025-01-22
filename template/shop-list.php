@@ -2,11 +2,11 @@
 <nav class="centered-list">
     <ul class="centered-list">
         <li>
-            <a href="shop.php">Shop Products List</a>
+            <a class="nav-link btn btn-primary mx-1<?php isActive("shop.php");?>" href="shop.php">Shop Products List</a>
         </li><li>
-            <a href="account_orders.php">Orders</a>
+            <a class="nav-link btn btn-primary mx-1<?php isActive("account_orders.php");?>" href="account_orders.php">Orders</a>
         </li><li>
-            <a href="account_notifications.php">Notifications</a>
+            <a class="nav-link btn btn-primary mx-1<?php isActive("account_notifications.php");?>" href="account_notifications.php">Notifications</a>
         </li><li>
             <a href="addProduct.php"> Add Product </a>
         </li>
