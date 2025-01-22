@@ -388,22 +388,30 @@ class DatabaseHelper{
         $this->db->begin_transaction();
     
         try {
+            // Update the order status to 'placed'
             $stmt = $this->db->prepare("UPDATE ORDINE SET stato = 'placed' WHERE codOrd = ?");
-            $stmt->bind_param('i', $orderId);
+            $stmt->bind_param('s', $orderId);
             $stmt->execute();
+    
+            // Get the products in the order
             $stmt = $this->db->prepare("SELECT codProd, quantita FROM formato_da WHERE codOrd = ?");
-            $stmt->bind_param('i', $orderId);
+            $stmt->bind_param('s', $orderId);
             $stmt->execute();
             $result = $stmt->get_result();
             $products = $result->fetch_all(MYSQLI_ASSOC);
+    
+            // Reduce the quantity of each product
             foreach ($products as $product) {
                 $stmt = $this->db->prepare("UPDATE PRODOTTO SET quantita = quantita - ? WHERE codProd = ?");
-                $stmt->bind_param('ii', $product['quantita'], $product['codProd']);
+                $stmt->bind_param('is', $product['quantita'], $product['codProd']);
                 $stmt->execute();
             }
+    
+            // Commit the transaction
             $this->db->commit();
             return true;
         } catch (Exception $e) {
+            // Rollback the transaction if something failed
             $this->db->rollback();
             return false;
         }

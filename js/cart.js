@@ -70,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 .then(data => {
                     if(data.success) {
                         alert("Order placed successfully!");
-                        location.reload();
+                        window.location.href = "cart.php";
                     } else {
                         alert("Failed to place the order.");
                     }
