@@ -34,9 +34,9 @@ class DatabaseHelper{
     }
 
     // Function to login an admin
-    public function loginAdmin($email){
-        $stmt = $this->db->prepare("SELECT * FROM ADMIN WHERE e_mail = ?");
-        $stmt->bind_param('s', $email);
+    public function loginAdmin($email, $password){
+        $stmt = $this->db->prepare("SELECT * FROM ADMIN WHERE e_mail = ? AND password = ?");
+        $stmt->bind_param('ss', $email, $password);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_assoc();
@@ -67,6 +67,12 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
         return $row['count'] > 0;
+    }
+    
+    public function updateNewsletterConsent($email) {
+        $stmt = $this->db->prepare("UPDATE UTENTE SET consensoNews = 'S' WHERE e_mail = ?");
+        $stmt->bind_param('s', $email);
+        return $stmt->execute();
     }
     
 
