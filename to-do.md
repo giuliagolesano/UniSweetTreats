@@ -13,13 +13,10 @@
 
 **COSE DA FARE:**
 - 22/01 
-Giulia (eliminazione e modifica dell'ordine con bottoni, js e query) + CSS carrello, modifica prodotto, ordini e notifiche 
+Giulia (eliminazione e modifica dell'ordine con bottoni, js e query)
 
 
 **TO DO (pensate dalla Sofi, quindi non so se vanno bene ahahahha)**
-- PAGINA HOME:
-    - CSS:
-        - Il testo nella sezione Our Recipes non è centrato
 - PAGINA ABOUT US:
     - HTML e CSS:
         - Aggiungere le FAQs hard-coded

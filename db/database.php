@@ -25,18 +25,18 @@ class DatabaseHelper{
     }
 
     // Function to login a user
-    public function loginUser($email, $password){
-        $stmt = $this->db->prepare("SELECT * FROM UTENTE WHERE e_mail = ? AND password = ?");
-        $stmt->bind_param('ss', $email, $password);
+    public function loginUser($email){
+        $stmt = $this->db->prepare("SELECT * FROM UTENTE WHERE e_mail = ?");
+        $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_assoc();
     }
 
     // Function to login an admin
-    public function loginAdmin($email, $password){
-        $stmt = $this->db->prepare("SELECT * FROM ADMIN WHERE e_mail = ? AND password = ?");
-        $stmt->bind_param('ss', $email, $password);
+    public function loginAdmin($email){
+        $stmt = $this->db->prepare("SELECT * FROM ADMIN WHERE e_mail = ?");
+        $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_assoc();
@@ -318,27 +318,7 @@ class DatabaseHelper{
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
-    }
-
-    public function checkLoginUser($email, $password){
-        $query = "SELECT e_mail, nome, cognome, `password`, consensoNews  FROM utente WHERE e_mail = ? AND `password` = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$email, $password);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }    
-
-    public function checkLoginAdmin($email, $password){
-        $query = "SELECT e_mail, nome, cognome, `password`  FROM `admin` WHERE e_mail = ? AND `password` = ?";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$email, $password);
-        $stmt->execute();
-        $result = $stmt->get_result();
-
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }    
+    }   
 
     public function getAllOrders(){
         $stmt = $this->db->prepare("SELECT * FROM ORDINE");
