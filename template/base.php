@@ -45,7 +45,8 @@
 
     <div id="searchBar" style="display: none;">
         <form action="shop.php" method="GET" class="search-form">
-            <input type="text" name="search" placeholder="Search for products..." class="form-control" />
+            <label for="search" class="visually-hidden">Search for products</label>
+            <input type="text" id="search" name="search" placeholder="Search for products..." class="form-control" />
             <button type="submit" class="btn btn-primary">Search</button>
         </form>
     </div>
@@ -76,7 +77,8 @@
         <h2>Contact Us</h2>
         <form action="newsletter.php" method="POST">
             <div class="input-group">
-                <input type="email" name="newsletter_email" placeholder="Subscribe to our Newsletter" class="form-control" required>
+                <label for="newsletter_email" class="visually-hidden">Subscribe to our Newsletter</label>
+                <input type="email" id="newsletter_email" name="newsletter_email" placeholder="Enter your email" class="form-control" required>
                 <button type="submit" class="btn btn-primary">Subscribe</button>
             </div>
         </form>
