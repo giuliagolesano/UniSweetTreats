@@ -1,4 +1,4 @@
-<div class="container login-page mt-5">
+<div class="container login-page">
     <div class="row align-items-center">
         <div class="col-md-6 text-center d-none d-md-block">
             <img src="<?php echo GUMMIES_NOBG_DIR . 'sharkGummyNoBG.png'; ?>" alt="sharkGummy" class="img-fluid mb-4" />

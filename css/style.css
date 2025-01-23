@@ -1,42 +1,56 @@
 /* Debug: CSS file loaded */
 
-/* CSS general */
+/* Regola di reset */
+body, header, ul/*, h1, h2*/{
+    margin: 0;
+    padding: 0;
+}
 
 body {
     font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
     background-color: #FFC8DD;
     color: #333;
-}
-
-header {
-    background-color: #CDB4DB;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    
-}
-        
-header div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-    text-align: center;
-}
-
-header div img {
-    display: none;
-    max-width: 150px;
-    height: auto;
 }
 
 a {
     text-decoration: none;
 }
 
+ul, li {
+    list-style-type: none;
+}
+
+img {
+    max-width: 200px;
+    height: auto;
+}
+
+/* Stile Header */
+
+header {
+    background-color: #CDB4DB;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 10px 2%;
+}
+        
+header div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1; 
+    text-align: center;
+}
+
+/* Logo dell'header: quando lo schermo è piccolo, il logo non viene visualizzato */
+header div img { 
+    display: none;
+    max-width: 150px;
+    height: auto;
+}
+
+/* Testo dell'header */
 header div a h1 {
     display: inline;
     font-size: 1.5em;
@@ -46,7 +60,7 @@ header div a h1 {
 
 header nav {
     display: flex;
-    gap: 15px;
+    gap: 15px; 
 }
 
 header nav img {
@@ -64,134 +78,124 @@ header nav:last-of-type {
     justify-content: flex-end;
 }
 
+/* Bottoni shop, about us, best seller, search, cart e account*/
 header nav ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
     gap: 15px;
 }
 
-/* bottoni shop, about us, best seller, search, cart and account*/
 header nav ul li a {
-    text-decoration: none;
     color: white;
     background-color: #FFAFCC;
     padding: 10px 15px;
     border-radius: 5px;
     transition: background-color 0.3s; 
     display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-header nav:first-of-type ul li:not(:first-child) {
-    display: none;
-}
-
-header nav:last-of-type ul li:nth-child(3), header nav:last-of-type ul li:nth-child(4) {
-    display: none;
+    align-items: center; 
+    justify-content: center; 
 }
 
 header nav ul li a:hover {
     background-color: #FFC8DD;
 }
 
+/* Quando lo schermo è piccolo, nascondo i bottoni shop, about us, best seller */
+header nav:first-of-type ul li:not(:first-child) {
+    display: none;
+}
+
+/* Quando lo schermo è piccolo, nascondo il bottone il terzo e il quarto bottone del secondo nav */
+header nav:last-of-type ul li:nth-child(3), header nav:last-of-type ul li:nth-child(4) {
+    display: none;
+}
+
+.active {
+    text-decoration: underline !important;
+}
+
+/* Header quando lo schermo è grande */
+@media screen and (min-width: 1024px) {
+    header nav:first-of-type ul li:not(:first-child) {
+        display: inline;
+    }
+
+    /*Nascondo il primo bottone del primo nav quando lo schermo è grande*/
+    header nav:first-of-type ul li:first-child {
+        display: none;
+    }
+    
+    header nav:last-of-type ul li:nth-child(3), header nav:last-of-type ul li:nth-child(4) {
+        display: inline;
+    }
+
+    header div img {
+        display: inline;
+    }
+
+    /*Nascondo il titolo dell'header quando lo schermo è grande*/
+    header div a h1 {
+        display: none;
+    }
+}
+
 main {
     text-align: center;
-    padding: 40px 20px;
+    padding: 40px 2.5%;
     background-color: #BDE0FE;
 }
 
-/****/
+/* Stile Menù Laterale */
 
-img {
-    max-width: 200px;
-    height: auto;
-}
-
-ul, li {
-    list-style-type: none;
-}
-
-/* Home Page */
-
-.homepage div {
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 10px;
-    
-}
-
-.homepage .intro {
-    background-color: #BDE0FE;
-    text-align: center;
-}
-
-.homepage .intro h1 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.homepage .intro a {
-    text-decoration: none;
-    color: white;
-    background-color: #A2D2FF;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-}
-
-.homepage .intro a:hover {
+.sidenav {
+    height: 100%;
+    width: 0; /* Se non viene cliccata l'icona del menù laterale, il menù non viene visualizzato */
+    position: fixed;
+    z-index: 1; /* Posiziono il menù sopra gli altri elementi */
+    top: 0; /* Posiziono il menù in alto */
+    left: 0; /* Posiziono il menù a sinistra */
     background-color: #FFAFCC;
+    overflow-x: hidden; /* Nasconde il contenuto che va oltre la larghezza del menù */
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
-.homepage .about {
-    background-color: #FFC8DD;
-    text-align: center;
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px; 
+    font-size: 36px;
+    margin-left: 50px;
+    color: #818181;
+    transition: 0.3s;
 }
 
-.homepage .recipe {
-    background-color: #D4A59A;
-    color: #4A2C2A;
-    text-align: center;
+.sidenav .closebtn:hover {
+    color: #f1f1f1;
 }
 
-.homepage .recipe h2 {
-    color: #FAE5E1;
-    text-align: center;
+.sidenav ul li {
+    padding: 8px 5% 8px 5%;
 }
 
-.homepage .recipe div {
-    border-bottom: 1px solid #FFC8DD;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
+.sidenav ul li a {
+    padding: 8px 5% 8px 15%;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
 }
 
-.homepage .recipe div p:last-child {
-    color: #B99285;
-    font-size: 1.2rem;
+.sidenav ul li a:hover {
+    color: #f1f1f1;
 }
 
-.homepage .slogan {
-    background-color: #EED4C8;
-    color: #5A3E36;
-}
-
-.homepage .slogan h2 {
-    color: #D6B8A1;
-}
-
-.homepage .carosello img {
-    max-width: 150px;
-}
-
+/* Stile Footer */
 
 footer {
     background-color: #CDB4DB;
-    padding: 20px;
+    padding: 20px 2.5%;
     text-align: center;
     color: white;
 }
@@ -205,16 +209,327 @@ footer p {
     margin: 5px 0;
 }
 
+/* Stile Home Page e About-Us */
 
-/* Login and Signup pages */
+.homepage{
+    padding: 0 5%;
+}
+
+.homepage div {
+    padding: 20px 2.5%;
+    margin: 20px 0;
+    border-radius: 10px; 
+    text-align: center;
+}
+
+.homepage .intro h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.homepage .intro a {
+    color: white;
+    background-color: #7cbcf8;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.homepage .intro a:hover {
+    background-color: #FFAFCC;
+}
+
+.homepage .about {
+    background-color: #FFC8DD;
+}
+
+.homepage .recipe {
+    background-color: #D4A59A;
+    color: #4A2C2A;
+}
+
+.homepage .recipe h2 {
+    color: #FAE5E1;
+    text-align: center;
+}
+
+.homepage .recipe p a{
+    text-decoration: underline;
+}
+
+.homepage .slogan {
+    background-color: #EED4C8;
+    color: #5A3E36;
+}
+
+.homepage .slogan h2 {
+    color: #a38873;
+}
+
+.homepage .carosello img {
+    max-width: 150px;
+}
+
+.home-img, .carosello, .about-img {
+    display: none;
+}
+
+.about-us-section {
+    padding: 30px 13%;
+}
+
+.about-us-section > div {
+    margin-bottom: 20px;
+}
+
+.faq-section {
+    background-color: #FFC8DD;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin: 40px auto;
+    max-width: 800px;
+    text-align: left;
+}
+
+.faq-section h2 {
+    text-align: center;
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.faq {
+    margin-bottom: 20px;
+}
+
+.faq-question {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #444;
+}
+
+.faq-answer {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    margin-left: 10px;
+}
+
+@media (min-width: 800px) {
+    .home-img {
+        display: inline;
+    }
+}
+
+@media (min-width: 1030px) {
+    .carosello{
+        display: inline;
+    }
+
+    .about-img{
+        display: inline;
+    }
+
+    .faq-section {
+        padding: 30px 2.5%;
+    }
+
+    .faq-section h2 {
+        font-size: 2rem;
+    }
+
+    .faq-question {
+        font-size: 1.2rem;
+    }
+
+    .faq-answer {
+        font-size: 1rem;
+    }
+}
+
+/* Stile Best Seller */
+
+.bestSeller.text-center {
+    margin-bottom: 30px;
+    font-size: 1.8rem;
+    color: #333;
+    text-align: center;
+}
+
+.bestSeller .row {
+    justify-content: center; 
+    gap: 10px;
+}
+
+.bestSeller .card {
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    background-color: #FFC8DD;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bestSeller .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bestSeller .card img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    margin-top: 10px;
+}
+
+.bestSeller .card-body {
+    padding: 15px;
+}
+
+.bestSeller .card-title {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.bestSeller .card-text {
+    font-size: 1rem;
+    color: #666;
+    margin: 5px 0;
+}
+
+@media screen and (min-width: 575px) {
+    .bestSeller .row > .col-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media screen and (min-width: 767px) {
+    .bestSeller .row > .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media screen and (min-width: 991px) {
+    .bestSeller .row > .col-md-4 {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .bestSeller .row > .col-lg-3 {
+        flex: 0 0 22%; 
+        max-width: 22%;
+    }
+}
+
+/* Recipes */
+
+.recipes {
+    padding: 20px;
+    background-color: #FFC8DD;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.recipes .recipe {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recipes .recipe:last-child {
+    margin-bottom: 0;
+}
+
+.recipes h2 {
+    font-size: 1.8rem;
+    color: #333;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.recipes img {
+    max-width: 70%;
+    height: auto;
+    border-radius: 8px;
+    margin: 20px auto;
+    display: block;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.recipes .decorative-line {
+    border-top: 2px solid #CDB4DB;
+    margin: 20px 0;
+}
+
+.recipes h3 {
+    font-size: 1.5rem;
+    color: #444;
+    margin: 15px 0;
+}
+
+.recipes h4 {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 10px 0;
+}
+
+.recipes ul, .recipes ol {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.recipes ul li, .recipes ol li {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+@media screen and (min-width: 768px) {
+    .recipes {
+        padding: 15px;
+    }
+
+    .recipes h2, .recipes h3 {
+        font-size: 1.5rem;
+    }
+
+    .recipes h4 {
+        font-size: 1rem;
+    }
+
+    .recipes ul li, .recipes ol li {
+        font-size: 0.9rem;
+    }
+
+    .recipes img {
+        max-width: 100%;
+    }
+}
+
+/* Stile Login e Signup*/
+
 .login-page {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 85vh;
     gap: 30px;
 }
-
 
 .login-page img {
     max-width: 400px;
@@ -279,12 +594,6 @@ footer p {
     vertical-align: middle;
 }
 
-@media (max-width: 767px) {
-    .signup-image, .login-image, .no-display, .carosello{
-        display: none;
-    }
-}
-
 .form-check-input {
     width: 16px !important;
     height: 16px;
@@ -295,84 +604,6 @@ footer p {
 .form-check-label {
     margin: 0;
     font-size: 14px;
-}
-
-
-
-
-@media screen and (min-width: 1024px) {
-    header nav:first-of-type ul li:not(:first-child) {
-        display: inline;
-    }
-
-    header nav:first-of-type ul li:first-child {
-        display: none;
-    }
-    
-    header nav:last-of-type ul li:nth-child(3), header nav:last-of-type ul li:nth-child(4) {
-        display: inline;
-    }
-
-    header div img {
-        display: inline;
-    }
-
-    header div a h1 {
-        display: none;
-    }
-}
-
-/* Stile per il menù laterale */
-.sidenav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #FFAFCC;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-}
-
-.sidenav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidenav ul li {
-    padding: 8px 8px 8px 32px;
-}
-
-.sidenav ul li a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-}
-
-.sidenav ul li a:hover {
-    color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
-    color: #818181;
-    text-decoration: none;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.sidenav .closebtn:hover {
-    color: #f1f1f1;
 }
 
 /* Shop.php */
@@ -461,208 +692,34 @@ footer p {
     background-color: #FF5F81;
 }
 
-@media screen and (min-width: 992px) {
-    .shop .row > .col-lg-3 {
-        flex: 0 0 25%;
-        max-width: 25%;
-    }
-}
-
-@media screen and (max-width: 991px) {
-    .shop .row > .col-md-4 {
-        flex: 0 0 33.333%;
-        max-width: 33.333%;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .shop .row > .col-sm-6 {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-}
-
-@media screen and (max-width: 575px) {
+@media screen and (min-width: 575px) {
     .shop .row > .col-12 {
         flex: 0 0 100%;
         max-width: 100%;
     }
 }
 
-
-/* Best Seller */
-
-.bestSeller {
-    padding: 20px;
-}
-
-.bestSeller h3 {
-    margin: 20px 0;
-    font-size: 1.8rem;
-    color: #333;
-    text-align: center;
-}
-
-.bestSeller .row {
-    justify-content: center; 
-    gap: 20px;
-}
-
-.bestSeller .card {
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-    text-align: center;
-    background-color: #FFC8DD;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.bestSeller .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.bestSeller .card img {
-    height: 200px;
-    width: 100%;
-    object-fit: cover;
-    margin-top: 10px;
-}
-
-.bestSeller .card-body {
-    padding: 15px;
-}
-
-.bestSeller .card-title {
-    font-size: 1.2rem;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.bestSeller .card-text {
-    font-size: 1rem;
-    color: #666;
-    margin: 5px 0;
-}
-
-@media screen and (min-width: 992px) {
-    .bestSeller .row > .col-lg-3 {
-        flex: 0 0 25%; 
-        max-width: 25%;
-    }
-}
-
-@media screen and (max-width: 991px) {
-    .bestSeller .row > .col-md-4 {
-        flex: 0 0 33.333%;
-        max-width: 33.333%;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .bestSeller .row > .col-sm-6 {
+@media screen and (min-width: 767px) {
+    .shop .row > .col-sm-6 {
         flex: 0 0 50%;
         max-width: 50%;
     }
 }
 
-@media screen and (max-width: 575px) {
-    .bestSeller .row > .col-12 {
-        flex: 0 0 100%;
-        max-width: 100%;
+@media screen and (min-width: 991px) {
+    .shop .row > .col-md-4 {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
     }
 }
 
-/* Recipes */
-
-.recipes {
-    padding: 20px;
-    background-color: #FFC8DD;
-    border-radius: 10px;
-    margin: 20px auto;
-    max-width: 800px;
-}
-
-.recipes .recipe {
-    margin-bottom: 40px;
-    padding: 20px;
-    background-color: #FFF;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.recipes .recipe:last-child {
-    margin-bottom: 0;
-}
-
-.recipes h2 {
-    font-size: 1.8rem;
-    color: #333;
-    text-align: center;
-    margin: 20px 0;
-}
-
-.recipes img {
-    max-width: 70%;
-    height: auto;
-    border-radius: 8px;
-    margin: 20px auto;
-    display: block;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-}
-
-.recipes .decorative-line {
-    border-top: 2px solid #CDB4DB;
-    margin: 20px 0;
-}
-
-.recipes h3 {
-    font-size: 1.5rem;
-    color: #444;
-    margin: 15px 0;
-}
-
-.recipes h4 {
-    font-size: 1.2rem;
-    color: #555;
-    margin: 10px 0;
-}
-
-.recipes ul, .recipes ol {
-    padding-left: 20px;
-    margin: 10px 0;
-}
-
-.recipes ul li, .recipes ol li {
-    font-size: 1rem;
-    color: #333;
-    margin-bottom: 8px;
-}
-
-@media screen and (max-width: 768px) {
-    .recipes {
-        padding: 15px;
-    }
-
-    .recipes h2, .recipes h3 {
-        font-size: 1.5rem;
-    }
-
-    .recipes h4 {
-        font-size: 1rem;
-    }
-
-    .recipes ul li, .recipes ol li {
-        font-size: 0.9rem;
-    }
-
-    .recipes img {
-        max-width: 100%;
+@media screen and (min-width: 1000px) {
+    .shop .row > .col-lg-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
     }
 }
+
 
 /* Single product */
 
@@ -675,7 +732,7 @@ footer p {
 
 .product-container {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     gap: 20px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -684,9 +741,10 @@ footer p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.product-image {
+.product-image,
+.product-details {
+    max-width: 100%;
     flex: 1;
-    max-width: 40%; 
 }
 
 .product-image img {
@@ -697,7 +755,6 @@ footer p {
 }
 
 .product-details {
-    flex: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -723,7 +780,7 @@ footer p {
 }
 
 .add-to-cart {
-    background-color: #A2D2FF;
+    background-color: #6eb3f4;
     color: #fff;
     padding: 10px 15px;
     border: none;
@@ -752,19 +809,21 @@ footer p {
     margin-top: 10px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width: 768px) {
     .product-container {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
     }
 
-    .product-image,
+    .product-image {
+        max-width: 40%; 
+    }
+
     .product-details {
-        max-width: 100%;
-        flex: 1;
+        flex: 2;
     }
 }
 
-/* Orders */
+/* Stile Orders */
 
 .order-container {
     background-color: #FFC8DD;
@@ -775,11 +834,11 @@ footer p {
 }
 
 .order-container h2 {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     color: #333;
     margin-bottom: 15px;
+    font-weight: bold;
 }
-
 
 .order-info {
     margin-bottom: 20px;
@@ -789,29 +848,33 @@ footer p {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    justify-content: center;
 }
 
 .product {
     display: flex;
+    flex-direction: column;
     background-color: #FFF;
     border-radius: 8px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     width: 100%;
-    max-width: 45%;
+    max-width: 100%;
     padding: 10px;
     align-items: center;
+    margin: 0 auto;
 }
 
 .product img {
     width: 100px;
     height: auto;
     border-radius: 8px;
-    margin-right: 15px;
+    margin-bottom: 15px;
 }
 
 .product-details {
     flex: 1;
+    width: 100%;
 }
 
 .product-details h3 {
@@ -842,13 +905,23 @@ footer p {
     background-color: #90C9FF;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
     .products-container {
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .product {
-        max-width: 100%;
+        flex-direction: row;
+        max-width: 45%;
+    }
+
+    .product img {
+        margin-right: 15px; /* Modificato */
+        margin-bottom: 0; /* Aggiunto */
+    }
+
+    .order-container h2 {
+        font-size: 1.5rem;
     }
 }
 
@@ -918,32 +991,8 @@ footer p {
     background-color: #90C9FF;
 }
 
-/* Notifications */
-
-.notification-card {
-    background-color: #FFC8DD !important;
-    border-radius: 10px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    padding: 20px;
-    margin-bottom: 20px;
-}
-
-.notification-button {
-    background-color: #A2D2FF;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-}
-
-.notification-button:hover {
-    background-color: #90C9FF;
-}
-
 /*modal*/
+
 .modal {
     display: none;
     position: fixed;
@@ -980,81 +1029,101 @@ footer p {
     cursor: pointer;
 }
 
+/* Notifications */
 
-/* Faq */
-/* FAQ Section */
-.faq-section {
-    background-color: #FFC8DD;
-    padding: 30px 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    margin: 40px auto;
-    max-width: 800px;
-    text-align: left;
+.notification-card {
+    background-color: #FFC8DD !important;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 20px;
+    margin: 20px 2.5%;
 }
 
-.faq-section h2 {
-    text-align: center;
-    color: #333;
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.faq {
-    margin-bottom: 20px;
-}
-
-.faq-question {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #444;
-    margin-bottom: 10px;
-}
-
-.faq-answer {
+.notification-button {
+    background-color: #76b6f3;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
     font-size: 1rem;
-    color: #666;
-    line-height: 1.5;
-    margin-left: 10px;
+    transition: background-color 0.3s ease;
 }
 
-.faq:last-child {
-    margin-bottom: 0;
+.notification-button:hover {
+    background-color: #90C9FF;
 }
 
-@media screen and (max-width: 768px) {
-    .faq-section {
-        padding: 20px;
-    }
+/* Stile Write Review */
 
-    .faq-section h2 {
-        font-size: 1.5rem;
-    }
-
-    .faq-question {
-        font-size: 1rem;
-    }
-
-    .faq-answer {
-        font-size: 0.9rem;
-    }
+.review-form {
+    background-color: #FFAFCC;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto; 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-@media screen and (max-width: 768px) {
-    .centered-list {
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
-
-    .centered-list li {
-        width: 45%; /* Due elementi per riga, con uno spazio tra di loro */
-        margin-bottom: 10px;
-    }
-
-    .centered-list a {
-        width: 100%; /* Assicura che i link occupino tutto lo spazio disponibile nel contenitore */
-    }
+.review-form ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
+
+.review-form ul li {
+    margin-bottom: 20px;
+}
+
+.review-form ul li label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.review-form ul li textarea {
+    width: 100%;
+    height: 150px;
+    resize: both; /* Permette di ridimensionare sia in orizzontale che in verticale */
+    max-width: 100%; /* Limita la larghezza massima al 100% del contenitore */
+    max-height: 300px; /* Imposta un'altezza massima */
+}
+
+.review-form div {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.review-form div input {
+    padding: 8px 12px;
+    font-size: 0.9em;
+    color: #fff;
+    background-color: #be78e6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+  
+.review-form div input:hover {
+    background-color: #CDB4DB;
+}
+
+.review-form label[for="submit"],
+.review-form label[for="reset"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Stile Bottoni nelle pagine dell'Account */
 
 .centered-list {
     display: flex;
@@ -1091,6 +1160,20 @@ footer p {
     background-color: #FFAFCC;
 }
 
-.active {
-    text-decoration: underline !important;
+@media screen and (min-width: 768px) {
+    .centered-list {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .centered-list li {
+        width: 45%; 
+        margin-bottom: 10px;
+    }
+
+    .centered-list a {
+        width: 100%;
+    }
 }
+
+

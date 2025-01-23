@@ -1,4 +1,4 @@
-<h2 class="text-center">BEST SELLERS</h2>
+<h2 class="bestSeller text-center">BEST SELLERS</h2>
 <div class="bestSeller container">
     <div class="row">
         <?php foreach ($templateParams["bestSellers"] as $bestSeller): ?>

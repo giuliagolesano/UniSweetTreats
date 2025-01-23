@@ -1,8 +1,8 @@
 <div class="homepage">
     <div class="intro">
         <div>
-            <img class ="no-display" src="<?php echo CUPCAKES_DIR . 'chocolateCupcake.png'; ?>" alt="chocolateCupcake" />
-            <img class ="no-display" src="<?php echo CUPCAKES_DIR . 'blueberryCupcake.png'; ?>" alt="blueberryCupcake" />
+            <img class ="home-img" src="<?php echo CUPCAKES_DIR . 'chocolateCupcake.png'; ?>" alt="chocolateCupcake" />
+            <img class ="home-img" src="<?php echo CUPCAKES_DIR . 'blueberryCupcake.png'; ?>" alt="blueberryCupcake" />
             <img src="<?php echo CAKES_DIR . 'OreoCake.png'; ?>" alt="OreoCake" />
         </div>
         <h1>Freshly made sweets when you need it the most</h1>
