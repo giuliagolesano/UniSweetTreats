@@ -4,7 +4,7 @@
             <img src="<?php echo CAKES_NOBG_DIR . 'chocolateCakeNoBG.png'; ?>" alt="chocolateCake" class="img-fluid mb-4" />
         </div>
         <div class="col-md-6">
-            <form action="" method="POST">
+            <form method="POST">
                 <h2 class="text-center">Sign up</h2>
                 <?php if (isset($templateParams["errore"])): ?>
                     <p class="text-danger"><?php echo $templateParams["errore"]; ?></p>
