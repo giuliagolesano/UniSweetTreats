@@ -6,9 +6,6 @@
     - PHP:
         - Aggiunta di un prodotto
 
-- NOTIFICHE:
-    - Aggiornamenti all'admin quando la quantità di un prodotto è a 0
-
 
 -GENERAZIONE AUTOMATICA DI NOTIFICHE?? COME?? xdx
 -POPOLAMENTO COSA LASCIAMO? ORDINI ? ANCHE SENZA UTENTI?
