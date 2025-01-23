@@ -1,9 +1,9 @@
 <div class="homepage">
     <div class="intro">
         <div>
-            <img class ="no-display" src="<?php echo CUPCAKES_DIR . 'chocolateCupcake.png'; ?>" alt="chocolateCupcake">
-            <img class ="no-display" src="<?php echo CUPCAKES_DIR . 'blueberryCupcake.png'; ?>" alt="blueberryCupcake">
-            <img src="<?php echo CAKES_DIR . 'OreoCake.png'; ?>" alt="OreoCake">
+            <img class ="no-display" src="<?php echo CUPCAKES_DIR . 'chocolateCupcake.png'; ?>" alt="chocolateCupcake" />
+            <img class ="no-display" src="<?php echo CUPCAKES_DIR . 'blueberryCupcake.png'; ?>" alt="blueberryCupcake" />
+            <img src="<?php echo CAKES_DIR . 'OreoCake.png'; ?>" alt="OreoCake" />
         </div>
         <h1>Freshly made sweets when you need it the most</h1>
         <p>"Fuel your all-nighters with the sweetest energy!"</p>
@@ -29,12 +29,12 @@
 
     <div class = "carosello">
         <div>
-            <img src="<?php echo GUMMIES_DIR . 'bearGummy.png'; ?>" alt="bearGummy">
-            <img src="<?php echo GUMMIES_DIR . 'cocacolaGummy.png'; ?>" alt="cocacolaGummy">
-            <img src="<?php echo GUMMIES_DIR . 'frizzyGummy.png'; ?>" alt="frizzyGummy">
-            <img src="<?php echo GUMMIES_DIR . 'cherryGummy.png'; ?>" alt="cherryGummy">
-            <img src="<?php echo GUMMIES_DIR . 'egsGummy.png'; ?>" alt="egsGummy">
-            <img src="<?php echo GUMMIES_DIR . 'sharkGummy.png'; ?>" alt="sharkGummy">
+            <img src="<?php echo GUMMIES_DIR . 'bearGummy.png'; ?>" alt="bearGummy" />
+            <img src="<?php echo GUMMIES_DIR . 'cocacolaGummy.png'; ?>" alt="cocacolaGummy" />
+            <img src="<?php echo GUMMIES_DIR . 'frizzyGummy.png'; ?>" alt="frizzyGummy" />
+            <img src="<?php echo GUMMIES_DIR . 'cherryGummy.png'; ?>" alt="cherryGummy" />
+            <img src="<?php echo GUMMIES_DIR . 'egsGummy.png'; ?>" alt="egsGummy" />
+            <img src="<?php echo GUMMIES_DIR . 'sharkGummy.png'; ?>" alt="sharkGummy" />
         </div>
     </div>
 </div>

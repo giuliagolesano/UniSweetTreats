@@ -15,7 +15,7 @@
 <?php endif; ?>
 <div class="shop">
     <nav>
-        <h3>ALL PRODUCTS</h3>
+        <h2>ALL PRODUCTS</h2>
         <div>
             <button type="button" class="btn" data-bs-toggle="collapse" data-bs-target="#filterMenu" aria-expanded="false" aria-controls="filterMenu">
                 Filter
@@ -62,16 +62,16 @@
                             $lastCategory = $product["nomeTip"]; 
                         ?>
                             <div class="col-12">
-                                <h2 class="text-center"><?php echo ucfirst($lastCategory); ?></h2>
+                                <h3 class="text-center"><?php echo ucfirst($lastCategory); ?></h3>
                             </div>
                         <?php endif; ?>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
                             <div class="card">
                                 <a href="product.php?codProd=<?php echo $product["codProd"]; ?>">
-                                    <img src="<?php echo getImageProduct($product["nomeTip"], $product["foto"]); ?>" class="card-img-top" alt="<?php echo $product["descrizione"]; ?>">
+                                    <img src="<?php echo getImageProduct($product["nomeTip"], $product["foto"]); ?>" class="card-img-top" alt="<?php echo $product["descrizione"]; ?>" />
                                 </a>
                                 <div class="card-body text-center">
-                                    <h5 class="card-title"><?php echo $product["nomeGusto"]; ?> <?php echo $product["nomeTip"]; ?></h5>
+                                    <h4 class="card-title"><?php echo $product["nomeGusto"]; ?> <?php echo $product["nomeTip"]; ?></h4>
                                     <p class="card-text"><?php echo $product["descrizione"]; ?></p>
                                     <p class="card-text fw-bold">Price: €<?php echo getPrice($product["nomeGusto"], $product["nomeTip"], $db); ?> </p>
                                     <?php if (isAdminLoggedIn()): ?>
