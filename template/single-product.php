@@ -3,7 +3,7 @@
 <?php else: 
     $product = $userParams["product"];
 ?>
-    <main class="single-product">
+    <div class="single-product">
         <div class="product-container">
             <div class="product-image">
                 <img src="<?php echo getImageProduct($product['nomeTip'], $product['foto']); ?>" alt="<?php echo $product['descrizione']; ?>">
@@ -63,5 +63,5 @@
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
-    </main>
+    </div>
 <?php endif; ?>

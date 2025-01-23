@@ -33,7 +33,7 @@
         <div class="products-container">
             <?php foreach($db->getProductsByOrder($ordine["codOrd"]) as $prodotto): ?>
                 <div class="product">
-                    <img src="<?php echo getImageProduct($prodotto["nomeTip"], $prodotto["foto"]); ?>" alt="Product Image">
+                    <img src="<?php echo getImageProduct($prodotto["nomeTip"], $prodotto["foto"]); ?>" alt="Product Image" />
                     <div class="product-details">
                         <h3><?php echo $prodotto["nomeGusto"]; ?> <?php echo $prodotto["nomeTip"]; ?></h3>
                         <?php if($prodotto["fotoAggiunta"] != null): ?>

@@ -7,6 +7,6 @@
         <p><?php echo $prodotto["descrizione"]; ?></p>
         <p><?php echo $prodotto["prezzo"]; ?></p>
         <p><?php echo $prodotto["quantita"]; ?></p>
-        <img src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" alt="<?php echo $prodotto["nome"]; ?>">
+        <img src="<?php echo UPLOAD_DIR.$prodotto["immagine"]; ?>" alt="<?php echo $prodotto["nome"]; ?>" />
     </div>
 <?php endforeach; ?>

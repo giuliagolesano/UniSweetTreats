@@ -21,6 +21,7 @@ if (isset($_POST["submit"])) {
         } else {
             $passwordHashed = password_hash($password, PASSWORD_BCRYPT);
             $registration = $db->signUpUser($email, $name, $surname, $passwordHashed, $consent);
+            $_SESSION["user_email"] = $email;
             if ($registration) {
                 header("Location: account_orders.php");
                 exit;

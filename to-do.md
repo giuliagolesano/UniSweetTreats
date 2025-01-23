@@ -27,3 +27,8 @@ asterisco se lo abbiamo implementato
 - bestSellerContent.php
 - homepageContent.php
 - shop-list.php
+- ordersContent.php
+- notificationsContent.php
+- recipesContent.php
+- product-form.php
+- single-product.php
