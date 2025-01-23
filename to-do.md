@@ -1,4 +1,6 @@
 **TO DO (pensate dalla Sofi, quindi non so se vanno bene ahahahha)**
+- AGGIUNGERE MOCKUP ALLA REPO!!!!!!!!!!!!!!!!!!!!!
+
 - PAGINA SINGOLO PRODOTTO:
     - PHP:
         - E' gestito bene l'Upload della foto -> guardare lab 07-PHP del prof (registrazione ven 6 dicembre)
@@ -18,19 +20,3 @@ asterisco se lo abbiamo implementato
 - WRITE REVIEW (**mockup**, **html**, **php**, **css**, **js**) SOFI
 - RICETTE (**mockup**, **html**, **php**, **css**) GIULIA
 - PAGINA ADD PRODUCT (**mockup**, **html**, **php**, **css**) GIULIA
-- 
-
-**PAGINE CHE PASSANO CHECK ACCESSIBILITA E VALIDATOR(PER ORA LEVEL AA)**
-tutte fatte!!
-- base.php
-- cartContent.php
-- aboutUsContent.php
-- bestSellerContent.php
-- homepageContent.php
-- shop-list.php
-- ordersContent.php
-- notificationsContent.php
-- recipesContent.php
-- product-form.php
-- single-product.php
-- writeReviewContent.php
