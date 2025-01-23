@@ -15,6 +15,15 @@
             </div>
             <div class="col-md-8">
                 <h3 class="text-center text-md-start"><?php echo htmlspecialchars($item["descrizione"]); ?></h3>
+                <?php if($item["fotoAggiunta"] != null): ?>
+                    <p class="text-center text-md-start">Personalized Photo: <?php echo $item["fotoAggiunta"]; ?></p> 
+                    <?php endif; ?>
+                <?php if($item["testo"] != null): ?>
+                    <p class="text-center text-md-start">Personalized Text: <?php echo $item["testo"]; ?></p> 
+                <?php endif; ?>
+                <?php if($item["topping"] != "none"): ?>
+                    <p class="text-center text-md-start">Extra Topping: <?php echo $item["topping"]; ?></p> 
+                <?php endif; ?>
                 <p class="text-center text-md-start">Total: €<?php echo number_format($totalPrice, 2); ?></p>
                 <div class="d-flex align-items-center justify-content-center justify-content-md-start">
                     <button class="btn btn-primary decrease-quantity" data-prod-id="<?php echo $item["codProd"]; ?>" data-max-quantity="<?php echo $maxQuant; ?>">-</button>

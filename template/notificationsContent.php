@@ -36,7 +36,7 @@
                     </time>
                 </div>
                 <div class="col-12 mt-3">
-                    <p><?php echo $notifica["testo"]; ?></p>
+                    <p class="fs-5"><?php echo $notifica["testo"]; ?></p>
                     <form action="updateNotification.php" method="POST">
                         <input type="hidden" name="codNot" value="<?php echo $notifica["codNot"]; ?>">
                         <button type="submit" class="btn btn-primary notification-button">

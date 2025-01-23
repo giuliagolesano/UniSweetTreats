@@ -980,7 +980,7 @@ footer p {
 .cart-summary button {
     font-size: 1rem;
     padding: 10px 15px;
-    background-color: #A2D2FF;
+    background-color: #53a4ef;
     color: #FFF;
     border: none;
     border-radius: 5px;
@@ -1127,7 +1127,8 @@ footer p {
 
 .centered-list {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
     align-items: center;
     gap: 15px;
     list-style: none;
@@ -1137,6 +1138,8 @@ footer p {
 
 .centered-list li {
     display: flex;
+    width: 45%;
+    margin-bottom: 10px;
 }
 
 .centered-list a {
@@ -1149,6 +1152,7 @@ footer p {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .centered-list a:hover {
@@ -1162,17 +1166,16 @@ footer p {
 
 @media screen and (min-width: 768px) {
     .centered-list {
-        flex-wrap: wrap;
-        justify-content: space-around;
+        justify-content: center;
     }
 
     .centered-list li {
-        width: 45%; 
-        margin-bottom: 10px;
+        width: auto;
+        margin-bottom: 0;
     }
 
     .centered-list a {
-        width: 100%;
+        width: auto;
     }
 }
 

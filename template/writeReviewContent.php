@@ -1,13 +1,14 @@
-<nav>
-    <ul>
+<nav class="centered-list">
+    <ul class="centered-list">
         <li>
-            <a href="account_orders.php">Orders</a>
-        </li><li>
-            <a href="account_notifications.php">Notifications</a>
+            <a <?php isActive("account_orders.php");?> href="account_orders.php">Orders</a>
+        </li>
+        <li>
+            <a <?php isActive("account_notifications.php");?> href="account_notifications.php">Notifications</a>
         </li>
     </ul>
 </nav>
-<form action="processa_review.php" method="POST">
+<form class="review-form" action="processa_review.php" method="POST">
     <ul>
         <li>
             <label for="review">Review:</label> 

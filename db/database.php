@@ -41,7 +41,7 @@ class DatabaseHelper{
 
     // Function to get notifications for a specific user email
     public function getNotificationsByEmail($email){
-        $stmt = $this->db->prepare("SELECT * FROM NOTIFICA WHERE e_mail = ?");
+        $stmt = $this->db->prepare("SELECT * FROM NOTIFICA WHERE e_mail = ? ORDER BY giorno DESC, ora DESC");
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -50,7 +50,7 @@ class DatabaseHelper{
 
     // Function to get updates for a specific admin email
     public function getUpdatesByEmail($email){
-        $stmt = $this->db->prepare("SELECT * FROM AGGIORNAMENTO WHERE e_mail = ?");
+        $stmt = $this->db->prepare("SELECT * FROM AGGIORNAMENTO WHERE e_mail = ? ORDER BY giorno DESC, ora DESC");
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -255,7 +255,7 @@ class DatabaseHelper{
 
     // Functtion to get all the orders
     public function getAllOrders(){
-        $stmt = $this->db->prepare("SELECT * FROM ORDINE");
+        $stmt = $this->db->prepare("SELECT * FROM ORDINE ORDER BY giorno DESC, ora DESC");
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -371,16 +371,30 @@ class DatabaseHelper{
         return $result->num_rows > 0;
     }
 
+    //Quando elimino un prodotto devo anche eliminare la sua riga corrispondente in tariffario identificata da nomeTip e nomeGusto del prodotto
     // Function to delete a product from the db
     public function deleteProduct($codProd) {
         $this->db->begin_transaction();
         try {
+            // Get the product details to delete from TARIFFARIO
+            $stmt = $this->db->prepare("SELECT nomeTip, nomeGusto FROM PRODOTTO WHERE codProd = ?");
+            $stmt->bind_param('s', $codProd);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $product = $result->fetch_assoc();
+
             $stmt = $this->db->prepare("DELETE FROM formato_da WHERE codProd = ?");
             $stmt->bind_param('s', $codProd);
             $stmt->execute();
+
             $stmt = $this->db->prepare("DELETE FROM PRODOTTO WHERE codProd = ?");
             $stmt->bind_param('s', $codProd);
             $stmt->execute();
+
+            $stmt = $this->db->prepare("DELETE FROM TARIFFARIO WHERE nomeTip = ? AND nomeGusto = ?");
+            $stmt->bind_param('ss', $product['nomeTip'], $product['nomeGusto']);
+            $stmt->execute();
+
             $this->db->commit();
             return true;
         } catch (Exception $e) {

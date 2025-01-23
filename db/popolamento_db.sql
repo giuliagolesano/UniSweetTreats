@@ -2,9 +2,6 @@
 insert into ADMIN (e_mail, nome, cognome, password) 
 values ('unisweettreats@unibo.it', 'uni', 'sweettreats', '1234');
 
--- Inserting UTENTE records
-
-
 -- Inserting GUSTO records
 insert into GUSTO (nomeGusto) values ('bounty');
 insert into GUSTO (nomeGusto) values ('caramel');
@@ -50,7 +47,7 @@ values ('cake4', 50, 'Tasty Cherry Cake', 'cherryCake.png', 'cherry', 'cake');
 insert into PRODOTTO (codProd, quantita, descrizione, foto, nomeGusto, nomeTip)
 values ('cake5', 50, 'Delicious Chocolate Cake', 'chocolateCake.png', 'chocolate', 'cake');
 insert into PRODOTTO (codProd, quantita, descrizione, foto, nomeGusto, nomeTip)
-values ('cake6', 50, 'Oreo Infused Cake', 'oreoCake.png', 'oreo', 'cake');
+values ('cake6', 50, 'Oreo Crumble Cake', 'oreoCake.png', 'oreo', 'cake');
 insert into PRODOTTO (codProd, quantita, descrizione, foto, nomeGusto, nomeTip)
 values ('cake7', 50, 'Pistachio Cake', 'pistachioCake.png', 'pistachio', 'cake');
 insert into PRODOTTO (codProd, quantita, descrizione, foto, nomeGusto, nomeTip)
@@ -100,7 +97,6 @@ values ('gummy8', 50, 'Licorice Gummy', 'lecoriceGummy.png', 'lecorice', 'gummy'
 insert into PRODOTTO (codProd, quantita, descrizione, foto, nomeGusto, nomeTip)
 values ('gummy9', 50, 'Shark Gummy', 'sharkGummy.png', 'shark', 'gummy');
 
-
 -- Inserting TARIFFARIO records (Price ranges as per the product types)
 insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('bounty', 'cake', '28');
 insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('caramel', 'cake', '27');
@@ -130,69 +126,12 @@ insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('jelly', 'gummy', '9
 insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('lecorice', 'gummy', '7');
 insert into TARIFFARIO (nomeGusto, nomeTip, prezzo) values ('shark', 'gummy', '6');
 
--- Ordini per gli utenti
--- Giulia
-insert into ORDINE (codOrd, giorno, ora, stato, e_mail)
-values ('ord1', '2025-01-20', '12:30:00', 'placed', 'giulia.golesano@studio.unibo.it');
-insert into formato_da (codOrd, codProd, foto, testo, topping, quantita)
-values ('ord1', 'cake1', 'bountyCake.png', 'Delicious Bounty Cake', 'chocolateChips', 2),
-       ('ord1', 'cookie3', 'chocolateChipsCookie.png', 'ChocolateChips Cookie', 'vanilla topping', 3);
-
--- Enrico
-insert into ORDINE (codOrd, giorno, ora, stato, e_mail)
-values ('ord2', '2025-01-21', '15:00:00', 'waiting', 'enrico.cornacchia@studio.unibo.it');
-insert into formato_da (codOrd, codProd, foto, testo, topping, quantita)
-values ('ord2', 'cupcake2', 'blueberryCupcake.png', 'Blueberry Cupcake', 'none', 1),
-       ('ord2', 'gummy5', 'frizzyGummy.png', 'Frizzy Gummy', 'none', 4);
-
--- Sofia
-insert into ORDINE (codOrd, giorno, ora, stato, e_mail)
-values ('ord3', '2025-01-22', '16:45:00', 'delivering', 'sofia.caberletti@studio.unibo.it');
-insert into formato_da (codOrd, codProd, foto, testo, topping, quantita)
-values ('ord3', 'cake6', 'oreoCake.png', 'Oreo Infused Cake', 'chocolate drizzle', 2),
-       ('ord3', 'cookie2', 'chinnamonCookie.png', 'Cinnamon Cookie', 'sugar coating', 5);
-
--- Notifiche per gli ordini
--- Giulia
-insert into NOTIFICA (codNot, testo, stato, giorno, ora, e_mail, codOrd)
-values ('not1', 'Your order has been placed!', 'to_read', '2025-01-20', '12:30:00', 'giulia.golesano@studio.unibo.it', 'ord1'),
-       ('not2', 'Your order has been confirmed!', 'to_read', '2025-01-20', '13:00:00', 'giulia.golesano@studio.unibo.it', 'ord1'),
-       ('not3', 'Your order is being delivered.', 'to_read', '2025-01-21', '09:00:00', 'giulia.golesano@studio.unibo.it', 'ord1'),
-       ('not4', 'Your order has been delivered!', 'to_read', '2025-01-21', '12:00:00', 'giulia.golesano@studio.unibo.it', 'ord1');
-
--- Enrico
-
--- Sofia
-insert into NOTIFICA (codNot, testo, stato, giorno, ora, e_mail, codOrd)
-values ('not9', 'Your order has been placed!', 'to_read', '2025-01-22', '16:45:00', 'sofia.caberletti@studio.unibo.it', 'ord3'),
-       ('not10', 'Your order has been confirmed!', 'to_read', '2025-01-22', '17:00:00', 'sofia.caberletti@studio.unibo.it', 'ord3'),
-       ('not11', 'Your order is being delivered.', 'to_read', '2025-01-23', '11:00:00', 'sofia.caberletti@studio.unibo.it', 'ord3'),
-       ('not12', 'Your order has been delivered!', 'to_read', '2025-01-23', '14:00:00', 'sofia.caberletti@studio.unibo.it', 'ord3');
-
--- Review per alcuni prodotti
-insert into review (e_mail, testo, valutazione, codProd)
-values ('giulia.golesano@studio.unibo.it', 'Delicious and rich flavor, loved it!', 5, 'cake1'),
-       ('enrico.cornacchia@studio.unibo.it', 'Great taste but could use more filling.', 3, 'gummy5'),
-       ('sofia.caberletti@studio.unibo.it', 'The cake was too sweet for my liking.', 2, 'cake6');
-
 -- Creazione delle newsletter
 insert into NEWSLETTER (codNews, testo, giorno, ora, titolo)
 values ('news1', 'We are starting production for Carnevale sweets! Get ready for some festive treats!', '2025-01-25', '10:00:00', 'Carnevale Production'),
-       ('news2', 'Valentine Day is approaching! Sweeten up your celebration with our special treats!', '2025-02-01', '10:00:00', 'San Valentino Production');
-
--- Ricezione delle newsletter per gli utenti
-insert into riceve (codNews, e_mail)
-values ('news1', 'giulia.golesano@studio.unibo.it'),
-       ('news1', 'enrico.cornacchia@studio.unibo.it'),
-       ('news1', 'sofia.caberletti@studio.unibo.it'),
-       ('news2', 'giulia.golesano@studio.unibo.it'),
-       ('news2', 'enrico.cornacchia@studio.unibo.it'),
-       ('news2', 'sofia.caberletti@studio.unibo.it');
+       ('news2', 'Valentine Day is approaching! Sweeten up your celebration with our special treats!', '2025-02-01', '10:00:00', 'SanValentino Special');
 
 -- Congratulazioni per l'apertura del sito
 insert into AGGIORNAMENTO (codNot, testo, stato, giorno, ora, e_mail)
-values ('not1', 'Congratulations on the launch of the website! We are excited to offer sweet treats to all!', 'read', '2025-01-19', '13:30:00', 'unisweettreats@unibo.it');
-
--- Informazioni sulla disponibilità di 50 pezzi per prodotto
-insert into AGGIORNAMENTO (codNot, testo, stato, giorno, ora, e_mail)
-values ('not2', 'There are exactly 50 pieces available for each product. Get ready for orders!', 'read', '2025-01-19', '13:35:00', 'unisweettreats@unibo.it');
+values ('not1', 'Congratulations on the launch of the website! We are excited to offer sweet treats to all!', 'read', '2025-01-19', '13:30:00', 'unisweettreats@unibo.it'), 
+       ('not2', 'There are exactly 50 pieces available for each product. Get ready for orders!', 'read', '2025-01-19', '13:35:00', 'unisweettreats@unibo.it');

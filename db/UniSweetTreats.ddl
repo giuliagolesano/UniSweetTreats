@@ -68,8 +68,8 @@ create table NOTIFICA (
 
 create table ORDINE (
      codOrd varchar(10) not null,
-     giorno date not null,
-     ora varchar(10) not null,
+     giorno DATE not null,
+     ora TIME not null,
      stato varchar(10) not null,
      e_mail varchar(100) not null,
      constraint ID_ORDINE_ID primary key (codOrd));
