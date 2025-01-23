@@ -27,3 +27,9 @@ asterisco se lo abbiamo implementato
 - RICETTE (**mockup**, **html**, **php**, **css**) GIULIA
 - PAGINA ADD PRODUCT (**mockup**, **html**, **php**, **css**, js) GIULIA
 - 
+
+**PAGINE CHE PASSANO CHECK ACCESSIBILITA E VALIDATOR(PER ORA LEVEL AA)**
+- base.php
+- cartContent.php
+- aboutUsContent.php
+- bestSellerContent.php
