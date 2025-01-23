@@ -2,7 +2,7 @@
 require_once("bootstrap.php");
 
 if(!isUserLoggedIn()){
-    header("Location: login.php"); //Se l'utente non è loggato, lo reindirizzo alla pagina di login
+    header("Location: login.php");
 }
 
 if(isset($_GET["codProd"])){

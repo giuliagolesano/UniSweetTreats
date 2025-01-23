@@ -222,12 +222,12 @@ class DatabaseHelper{
     }
 
     public function createOrder($email) {
-        $result = $this->db->query("SELECT MAX(CAST(SUBSTRING(codOrd, 4) AS UNSIGNED)) AS maxCodOrd FROM ORDINE"); // get the last order code number
+        $result = $this->db->query("SELECT MAX(CAST(SUBSTRING(codOrd, 4) AS UNSIGNED)) AS maxCodOrd FROM ORDINE");
         $row = $result->fetch_assoc();
         if ($row['maxCodOrd'] == null) {
             $newCodOrd = 'ord1';
         }
-        $newCodOrd = 'ord' . ($row['maxCodOrd'] + 1); // create a new order code increasing the last one
+        $newCodOrd = 'ord' . ($row['maxCodOrd'] + 1);
         $stmt = $this->db->prepare("INSERT INTO ORDINE (codOrd, giorno, ora, stato, e_mail) 
                         VALUES (?, CURDATE(), CURTIME(), 'waiting', ?)");
         $stmt->bind_param('ss', $newCodOrd, $email);

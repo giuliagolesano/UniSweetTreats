@@ -39,11 +39,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
         try {
-            // Aggiungi il gusto se non esiste
             $db->addTasteIfNotExists($nomeGusto);
 
             if ($action === 'add') {
-                $codProd = $db->getNextProductCode($nomeTip); // Ottieni un nuovo codice prodotto univoco
+                $codProd = $db->getNextProductCode($nomeTip);
                 $db->addProduct($codProd, $name, $description, $price, $photoName, $nomeGusto, $nomeTip);
             } elseif ($action === 'modify') {
                 $codProd = $_POST['codProd'];
