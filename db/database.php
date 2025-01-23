@@ -17,13 +17,6 @@ class DatabaseHelper{
         return $stmt->execute();
     }
 
-    // Function to add a new admin
-    public function signUpAdmin($email, $nome, $cognome, $password){
-        $stmt = $this->db->prepare("INSERT INTO ADMIN (e_mail, nome, cognome, password) VALUES (?, ?, ?, ?)");
-        $stmt->bind_param('ssss', $email, $nome, $cognome, $password);
-        return $stmt->execute();
-    }
-
     //Function to login an user
     public function checkLoginUser($email){
         $query = "SELECT e_mail, nome, cognome, password, consensoNews  FROM utente WHERE e_mail = ?";
@@ -158,7 +151,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);       
     }
 
-    //
+    // Function to get the price of a pruduct
     public function getPriceByProduct($nomeGusto, $nomeTip) {
         $stmt = $this->db->prepare("SELECT prezzo
                                         FROM TARIFFARIO
@@ -170,7 +163,7 @@ class DatabaseHelper{
         return $row ? $row['prezzo'] : null;
     }
 
-    //
+    // Function to get all categories
     public function getCategories() {
         $stmt = $this->db->prepare("SELECT * FROM TIPOLOGIA");
         $stmt->execute();
@@ -178,7 +171,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    //
+    // Function to get the total price of an order
     public function getOrderPrice($codOrd) {
         $stmt = $this->db->prepare("SELECT SUM(T.prezzo * F.quantita) AS prezzoOrdineTot FROM ORDINE O
                                     JOIN FORMATO_DA F ON O.codOrd = F.codOrd
@@ -192,6 +185,7 @@ class DatabaseHelper{
         return $row['prezzoOrdineTot'];  
     }
 
+    // Function to get all the products of an order
     public function getProductsByOrder($codOrd) {
         $stmt = $this->db->prepare("SELECT P.codProd, P.descrizione, P.foto, T.prezzo, P.nomeGusto, P.nomeTip, F.foto AS fotoAggiunta, F.testo, F.topping, F.quantita, (F.quantita * T.prezzo) AS prezzoProdottoTot
                                     FROM PRODOTTO P JOIN TARIFFARIO T ON P.nomeGusto = T.nomeGusto AND P.nomeTip = T.nomeTip
@@ -203,6 +197,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    // Function to get the product by code
     public function getProductByCode($codProd) {
         $stmt = $this->db->prepare("SELECT P.*, T.prezzo
                                     FROM PRODOTTO P JOIN TARIFFARIO T ON P.nomeGusto = T.nomeGusto AND P.nomeTip = T.nomeTip
@@ -213,6 +208,7 @@ class DatabaseHelper{
         return $result->fetch_assoc();
     }
 
+    // Function to get the orders of a user in waiting state
     public function getOrderCart($email) {
         $stmt = $this->db->prepare("SELECT * FROM ORDINE WHERE stato = 'waiting' AND e_mail = ?");
         $stmt->bind_param('s', $email);
@@ -221,6 +217,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    // Function to create an order for a user
     public function createOrder($email) {
         $result = $this->db->query("SELECT MAX(CAST(SUBSTRING(codOrd, 4) AS UNSIGNED)) AS maxCodOrd FROM ORDINE");
         $row = $result->fetch_assoc();
@@ -235,6 +232,7 @@ class DatabaseHelper{
         return $newCodOrd;
     }
 
+    // Function to add a product to the cart
     public function addProductToCart($codOrd, $codProd, $quantita, $customText, $photoName, $topping) {
         $stmt = $this->db->prepare("INSERT INTO FORMATO_DA (codOrd, codProd, foto, testo, topping, quantita) 
                                     VALUES (?, ?, ?, ?, ?, ?)");
@@ -242,6 +240,7 @@ class DatabaseHelper{
         $stmt->execute();
     }
 
+    // Function to get the cart items
     public function getCartItems($codOrd) {
         $stmt = $this->db->prepare("SELECT P.codProd, P.descrizione, P.foto, T.prezzo, P.nomeGusto, P.nomeTip, F.foto AS fotoAggiunta, F.testo, F.topping, F.quantita
                                     FROM PRODOTTO P JOIN TARIFFARIO T ON P.nomeGusto = T.nomeGusto AND P.nomeTip = T.nomeTip
@@ -254,6 +253,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }   
 
+    // Functtion to get all the orders
     public function getAllOrders(){
         $stmt = $this->db->prepare("SELECT * FROM ORDINE");
         $stmt->execute();
@@ -261,12 +261,7 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function markNotificationAsRead($codNot) {
-        $stmt = $this->db->prepare("UPDATE NOTIFICA SET stato = 'read' WHERE codNot = ?");
-        $stmt->bind_param('s', $codNot);
-        return $stmt->execute();
-    }
-
+    // Function to get the 3 best reviews of a product
     public function getReviewsByProduct($codProd) {
         $stmt = $this->db->prepare( "SELECT e_mail, testo, valutazione
                       FROM review
@@ -280,18 +275,28 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    // Function to add a new review for a prduct by a user
     public function insertReview($email, $codProd, $testo, $valutazione) {
         $stmt = $this->db->prepare("INSERT INTO review (e_mail, codProd, testo, valutazione) VALUES (?, ?, ?, ?)");
         $stmt->bind_param('ssss', $email, $codProd, $testo, $valutazione);
         return $stmt->execute();
     }
 
+    // Function to change the state of a notification
     public function toggleNotificationState($codNot) {
         $stmt = $this->db->prepare("UPDATE NOTIFICA SET stato = CASE WHEN stato = 'read' THEN 'to_read' ELSE 'read' END WHERE codNot = ?");
         $stmt->bind_param('s', $codNot);
         return $stmt->execute();
     }
 
+    // Function to change the state of an update
+    public function toggleUpdateState($codNot) {
+        $stmt = $this->db->prepare("UPDATE AGGIORNAMENTO SET stato = CASE WHEN stato = 'read' THEN 'to_read' ELSE 'read' END WHERE codNot = ?");
+        $stmt->bind_param('s', $codNot);
+        return $stmt->execute();
+    }
+
+    // Function to place an order (it updates the order state to "placed" and the quantity of the products)
     public function placeOrder($orderId) {
         $this->db->begin_transaction();
     
@@ -317,6 +322,7 @@ class DatabaseHelper{
         }
     }
 
+    // Function to check if a product is already reviewed by a user
     public function isAlreadyReviewed($email, $codProd) {
         $stmt = $this->db->prepare("SELECT * FROM review WHERE e_mail = ? AND codProd = ?");
         $stmt->bind_param('ss', $email, $codProd);
@@ -342,19 +348,21 @@ class DatabaseHelper{
         return $stmt->execute();
     }
 
+    // Function to remove a product from the cart
     public function removeProductFromCart($codOrd, $prodId) {
         $stmt = $this->db->prepare("DELETE FROM FORMATO_DA WHERE codOrd = ? AND codProd = ?");
         $stmt->bind_param('ss', $codOrd, $prodId);
         return $stmt->execute();
     }
     
+    // Function to increase the quantity of a product in the cart by a specific quantity
     public function increaseOfQuantityCartProduct($codOrd, $codProd, $quantityToAdd) {
         $stmt = $this->db->prepare("UPDATE FORMATO_DA SET quantita = quantita + ? WHERE codOrd = ? AND codProd = ?");
         $stmt->bind_param('iss', $quantityToAdd, $codOrd, $codProd);
         return $stmt->execute();
     }
 
-    
+    // Function to check if a product is already in the cart
     public function isProductInCart($codOrd, $codProd) {
         $stmt = $this->db->prepare("SELECT * FROM FORMATO_DA WHERE codOrd = ? AND codProd = ? ");
         $stmt->bind_param('ss', $codOrd, $codProd);
@@ -455,7 +463,7 @@ class DatabaseHelper{
         return $nomeTip . ($row['maxCodProd'] + 1);
     }
 
-    // Function to check if a product insert alreary exists.
+    // Function to check if a product insert alreary exists
     public function productExists($nomeGusto, $nomeTip) {
         $stmt = $this->db->prepare("SELECT COUNT(*) as count FROM PRODOTTO WHERE nomeGusto = ? AND nomeTip = ?");
         $stmt->bind_param('ss', $nomeGusto, $nomeTip);
@@ -465,7 +473,7 @@ class DatabaseHelper{
         return $row['count'] > 0;
     }
 
-    // Function to add a new product in the db.
+    // Function to add a new product in the db
     public function addProduct($codProd, $name, $description, $price, $photo, $nomeGusto, $nomeTip) {
         if ($this->productExists($nomeGusto, $nomeTip)) {
             throw new Exception("Product with Taste '$nomeGusto' and type '$nomeTip' already exists.");
@@ -480,7 +488,7 @@ class DatabaseHelper{
         return $stmt->execute();
     }
 
-    // Function to add a new taste.
+    // Function to add a new taste
     public function addTasteIfNotExists($nomeGusto) {
         if (!$this->tasteExists($nomeGusto)) {
             $stmt = $this->db->prepare("INSERT INTO GUSTO (nomeGusto) VALUES (?)");
@@ -489,7 +497,7 @@ class DatabaseHelper{
         }
     }
 
-    // Function to check if the taste exists.
+    // Function to check if the taste exists
     public function tasteExists($nomeGusto) {
         $stmt = $this->db->prepare("SELECT COUNT(*) as count FROM GUSTO WHERE nomeGusto = ?");
         $stmt->bind_param('s', $nomeGusto);
@@ -498,9 +506,6 @@ class DatabaseHelper{
         $row = $result->fetch_assoc();
         return $row['count'] > 0;
     }
-    
-
-
 
 }
 

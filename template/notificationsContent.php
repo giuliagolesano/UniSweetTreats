@@ -21,7 +21,13 @@
         <?php foreach ($templateParams["notifiche"] as $notifica): ?>
             <div class="notification-card row align-items-center mb-4 p-3 bg-light shadow rounded">
                 <div class="col-md-6">
-                    <h2 class="mb-2">Order number: <?php echo isAdminLoggedIn() ? $notifica['codNot'] : $notifica['codOrd']; ?></h2>
+                    <h2 class="mb-2 text-start">
+                        <?php if (isAdminLoggedIn()): ?>
+                            Notification Code: <?php echo $notifica['codNot']?>
+                        <?php else: ?>
+                            Order Code: <?php echo $notifica['codOrd']; ?>
+                        <?php endif; ?>
+                    </h2>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <div class="stato mb-2">Status: <?php echo $notifica["stato"]; ?></div>
