@@ -14,7 +14,7 @@
     <header>
         <nav>
             <ul>
-                <li><a href="javascript:void(0);" class="menu-icon" tabindex="0"><img src="<?php echo ICONS_DIR . 'menu.png'; ?>" alt="Menu"></a></li>
+                <li><a href="javascript:void(0);" class="menu-icon" tabindex="0"><img src="<?php echo ICONS_DIR . 'menu.png'; ?>" alt="Menu" /></a></li>
                 <li><a <?php isActive("shop.php");?> href="shop.php">Shop</a></li>
                 <li><a <?php isActive("bestSeller.php");?> href="bestSeller.php">Best Seller</a></li>
                 <li><a <?php isActive("aboutUs.php");?> href="aboutUs.php">About Us</a></li>
@@ -22,21 +22,21 @@
         </nav>
         <div>
             <a href="index.php">
-            <img src="<?php echo ICONS_DIR . 'logo1.png'; ?>" alt="Uni Sweet Treats Logo">
+            <img src="<?php echo ICONS_DIR . 'logo1.png'; ?>" alt="Uni Sweet Treats Logo" />
             <h1>Uni Sweet Treats</h1>
             </a>
         </div>
         
         <nav>
             <ul>
-                <li><a id="searchToggle" href="javascript:void(0)" onclick="toggleSearch()"><img src="<?php echo ICONS_DIR . 'search.png'; ?>" alt="Search"></a></li>
+                <li><a id="searchToggle" href="javascript:void(0)" onclick="toggleSearch()"><img src="<?php echo ICONS_DIR . 'search.png'; ?>" alt="Search" /></a></li>
                 <?php if(!isAdminLoggedIn()): ?>
-                    <li><a href="cart.php"><img src="<?php echo ICONS_DIR . 'cart.png'; ?>" alt="Cart"></a></li>
+                    <li><a href="cart.php"><img src="<?php echo ICONS_DIR . 'cart.png'; ?>" alt="Cart" /></a></li>
                 <?php endif; ?>
                 
-                <li><a href="login.php?action=login"><img src="<?php echo ICONS_DIR . 'account.png'; ?>" alt="Login"></a></li>
+                <li><a href="login.php?action=login"><img src="<?php echo ICONS_DIR . 'account.png'; ?>" alt="Login" /></a></li>
                 <?php if(isAdminLoggedIn() || isUserLoggedIn()): ?>
-                    <li><a href="login.php?action=logout"><img src="<?php echo ICONS_DIR . 'logout.png'; ?>" alt="LogOut"></a></li>
+                    <li><a href="login.php?action=logout"><img src="<?php echo ICONS_DIR . 'logout.png'; ?>" alt="LogOut" /></a></li>
                 <?php endif; ?>
             </ul>
         </nav>

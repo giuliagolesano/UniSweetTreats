@@ -33,3 +33,5 @@ asterisco se lo abbiamo implementato
 - cartContent.php
 - aboutUsContent.php
 - bestSellerContent.php
+- homepageContent.php
+- shop-list.php
