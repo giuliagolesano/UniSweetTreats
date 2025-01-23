@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(response => response.text())
                 .then(data => {
                     if (data === "success") {
-                        button.closest("div").remove(); // Rimuove il prodotto dalla lista
+                        button.closest("div").remove(); 
                     } 
                 })
                 .catch(error => {

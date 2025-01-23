@@ -21,6 +21,7 @@ asterisco se lo abbiamo implementato
 - 
 
 **PAGINE CHE PASSANO CHECK ACCESSIBILITA E VALIDATOR(PER ORA LEVEL AA)**
+tutte fatte!!
 - base.php
 - cartContent.php
 - aboutUsContent.php
@@ -32,3 +33,4 @@ asterisco se lo abbiamo implementato
 - recipesContent.php
 - product-form.php
 - single-product.php
+- writeReviewContent.php
