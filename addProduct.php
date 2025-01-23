@@ -30,10 +30,34 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $nomeGusto = $_POST['nomeGusto'];
         $nomeTip = $_POST['nomeTip'];
         $photoName = '';
-
         if (isset($_FILES['upload-photo']) && $_FILES['upload-photo']['error'] === UPLOAD_ERR_OK) {
             $photoName = basename($_FILES['upload-photo']['name']);
-            move_uploaded_file($_FILES['upload-photo']['tmp_name'], UPLOAD_DIR . $photoName);
+    
+            $uploadPath = '';
+            switch (strtolower($nomeTip)) {
+                case 'cake':
+                    $uploadPath = CAKES_DIR;
+                    break;
+                case 'cookie':
+                    $uploadPath = COOKIES_DIR;
+                    break;
+                case 'gummy':
+                    $uploadPath = GUMMIES_DIR;
+                    break;
+                case 'cupcake':
+                    $uploadPath = CUPCAKES_DIR;
+                    break;
+                default:
+                    throw new Exception("Invalid product type: " . htmlspecialchars($nomeTip));
+            }
+
+            if (!is_dir($uploadPath)) {
+                mkdir($uploadPath, 0777, true);
+            }
+
+            if (!move_uploaded_file($_FILES['upload-photo']['tmp_name'], $uploadPath . $photoName)) {
+                throw new Exception("Failed to upload the image. Please try again.");
+            }
         } elseif ($action === 'modify') {
             $photoName = $product['foto'];
         }
