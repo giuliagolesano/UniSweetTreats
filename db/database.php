@@ -471,7 +471,7 @@ class DatabaseHelper{
             throw new Exception("Product with Taste '$nomeGusto' and type '$nomeTip' already exists.");
         }
 
-        $stmt = $this->db->prepare("INSERT INTO PRODOTTO (codProd, nomeGusto, descrizione, foto, nomeTip) VALUES (?, ?, ?, ?, ?)");
+        $stmt = $this->db->prepare("INSERT INTO PRODOTTO (codProd, nomeGusto, descrizione, foto, nomeTip, quantita) VALUES (?, ?, ?, ?, ?, 50)");
         $stmt->bind_param('sssss', $codProd, $nomeGusto, $description, $photo, $nomeTip);
         $stmt->execute();
         
