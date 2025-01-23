@@ -21,6 +21,15 @@ if(isset($data["orderId"])) {
             $testoAgg = "$email has placed an order $orderId";
             $db->createUpdateAdmin($codAgg, $testoAgg, $stato, $giorno, $ora, $adminEmail);
         }
+        $productsWithZeroQuantity = $db->getProductsWithZeroQuantity();
+        foreach ($productsWithZeroQuantity as $product) {
+            foreach ($adminEmails as $admin) {
+                $adminEmail = $admin["e_mail"];
+                $codAgg = $db->getNextUpdateCode();
+                $testoAgg = "Product {$product['codProd']} is out of stock.";
+                $db->createUpdateAdmin($codAgg, $testoAgg, $stato, $giorno, $ora, $adminEmail);
+            }
+        }
     }
     echo json_encode(["success" => $result]);
 } else {

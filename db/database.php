@@ -442,6 +442,14 @@ class DatabaseHelper{
         $stmt->bind_param('ssssss', $codAgg, $testo, $stato, $giorno, $ora, $email);
         return $stmt->execute();
     }
+
+    // Function to get each product with a quantity of 0
+    public function getProductsWithZeroQuantity() {
+        $stmt = $this->db->prepare("SELECT codProd FROM PRODOTTO WHERE quantita = 0");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 
 ?>
