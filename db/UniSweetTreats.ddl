@@ -96,10 +96,10 @@ create table riceve (
      constraint ID_riceve_ID primary key (codNews, e_mail));
 
 create table TARIFFARIO (
-     nomeGusto varchar(30) not null,
-     nomeTip varchar(25) not null,
-     prezzo varchar(5) not null,
-     constraint ID_TARIFFARIO_ID primary key (nomeTip, nomeGusto));
+    nomeGusto varchar(30) not null,
+    nomeTip varchar(25) not null,
+    prezzo decimal(10, 2) not null,
+    constraint ID_TARIFFARIO_ID primary key (nomeTip, nomeGusto));
 
 create table TIPOLOGIA (
      nomeTip varchar(25) not null,

@@ -6,8 +6,16 @@
                 echo ($action === 'modify') ? 'Modify Product' : (($action === 'delete') ? 'Delete Product' : 'Add New Product');
                 ?>
             </h2>
+            <?php if (isset($templateParams["errore"])): ?>
+                <div class="alert alert-danger">
+                    <?php echo $templateParams["errore"]; ?>
+                </div>
+            <?php endif; ?>
             <?php if ($action === 'delete'): ?>
                 <p>Are you sure you want to delete this product?</p>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                </div>
             <?php else: ?>
                 <div class="photo-upload mb-3">
                     <label for="upload-photo">Upload photo:</label>
@@ -25,39 +33,47 @@
                         value="<?php echo ($action === 'modify' && !empty($product)) 
                             ? htmlspecialchars($product['nomeGusto'] . ' ' . $product['nomeTip']) 
                             : ''; ?>" 
-                        required 
-                        class="form-control" 
-                        <?php echo ($action === 'delete') ? 'readonly' : ''; ?>>
+                        class="form-control">
                 </div>
                 <div class="customization mb-3">
                     <label for="description">Description:</label>
-                    <textarea 
-                        id="description" 
-                        name="description" 
-                        rows="5" 
-                        class="form-control" 
-                        <?php echo ($action === 'delete') ? 'readonly' : ''; ?>><?php echo ($action === 'modify' && !empty($product)) 
-                            ? htmlspecialchars($product['descrizione']) 
-                            : ''; ?></textarea>
+                    <textarea id="description" name="description" class="form-control"><?php echo ($action === 'modify' && !empty($product)) ? htmlspecialchars($product['descrizione']) : ''; ?></textarea>
                 </div>
-                <div class="quantity mb-3">
+                <div class="customization mb-3">
                     <label for="price">Price:</label>
                     <input 
                         type="text" 
                         id="price" 
                         name="price" 
-                        value="<?php echo ($action === 'modify' && !empty($product)) 
-                            ? htmlspecialchars($product['prezzo']) 
-                            : ''; ?>" 
-                        required 
-                        class="form-control" 
-                        <?php echo ($action === 'delete') ? 'readonly' : ''; ?>>
+                        value="<?php echo ($action === 'modify' && !empty($product)) ? htmlspecialchars($product['prezzo']) : ''; ?>" 
+                        class="form-control">
+                </div>
+                <div class="customization mb-3">
+                    <label for="nomeGusto">Taste:</label>
+                    <input 
+                        type="text" 
+                        id="nomeGusto" 
+                        name="nomeGusto" 
+                        value="<?php echo ($action === 'modify' && !empty($product)) ? htmlspecialchars($product['nomeGusto']) : ''; ?>" 
+                        class="form-control">
+                </div>
+                <div class="customization mb-3">
+                    <label for="nomeTip">Type:</label>
+                    <select id="nomeTip" name="nomeTip" class="form-control">
+                        <option value="cake" <?php echo ($action === 'modify' && $product['nomeTip'] === 'cake') ? 'selected' : ''; ?>>Cake</option>
+                        <option value="cookie" <?php echo ($action === 'modify' && $product['nomeTip'] === 'cookie') ? 'selected' : ''; ?>>Cookie</option>
+                        <option value="gummy" <?php echo ($action === 'modify' && $product['nomeTip'] === 'gummy') ? 'selected' : ''; ?>>Gummy</option>
+                        <option value="cupcake" <?php echo ($action === 'modify' && $product['nomeTip'] === 'cupcake') ? 'selected' : ''; ?>>Cupcake</option>
+                    </select>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             <?php endif; ?>
-            <input type="hidden" name="codProd" value="<?php echo isset($product['codProd']) ? htmlspecialchars($product['codProd']) : ''; ?>">
-            <button type="submit" name="action" value="<?php echo $action; ?>" class="btn btn-<?php echo ($action === 'delete') ? 'danger' : 'primary'; ?>">
-                <?php echo ($action === 'delete') ? 'Delete' : (($action === 'modify') ? 'Save' : 'Add Product'); ?>
-            </button>
+            <input type="hidden" name="action" value="<?php echo $action; ?>">
+            <?php if ($action === 'modify' || $action === 'delete'): ?>
+                <input type="hidden" name="codProd" value="<?php echo htmlspecialchars($product['codProd']); ?>">
+            <?php endif; ?>
         </form>
     </div>
 </div>

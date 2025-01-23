@@ -1,10 +1,9 @@
 <?php
 require_once("bootstrap.php");
 
+$action = isset($_GET['action']) ? $_GET['action'] : 'add';
 $templateParams["titolo"] = "Uni Sweet Treats - " . ucfirst($action) . " Product";
 $templateParams["nome"] = "product-form.php";
-
-$action = isset($_GET['action']) ? $_GET['action'] : 'add';
 $product = null;
 
 if (($action === 'modify' || $action === 'delete') && isset($_GET['codProd'])) {
@@ -28,6 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $name = $_POST['name'];
         $description = $_POST['description'];
         $price = $_POST['price'];
+        $nomeGusto = $_POST['nomeGusto'];
+        $nomeTip = $_POST['nomeTip'];
         $photoName = '';
 
         if (isset($_FILES['upload-photo']) && $_FILES['upload-photo']['error'] === UPLOAD_ERR_OK) {
@@ -37,14 +38,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $photoName = $product['foto'];
         }
 
-        if ($action === 'add') {
-            $db->addProduct($name, $description, $price, $photoName);
-        } elseif ($action === 'modify') {
-            $db->updateProductFields($codProd, $name, $description, $price, $photoName);
-        }
+        try {
+            // Aggiungi il gusto se non esiste
+            $db->addTasteIfNotExists($nomeGusto);
 
-        header("Location: shop.php");
-        exit;
+            if ($action === 'add') {
+                $codProd = $db->getNextProductCode($nomeTip); // Ottieni un nuovo codice prodotto univoco
+                $db->addProduct($codProd, $name, $description, $price, $photoName, $nomeGusto, $nomeTip);
+            } elseif ($action === 'modify') {
+                $codProd = $_POST['codProd'];
+                $db->updateProductFields($codProd, $name, $description, $price, $photoName, $nomeGusto, $nomeTip);
+            }
+
+            header("Location: shop.php");
+            exit;
+        } catch (Exception $e) {
+            $templateParams["errore"] = $e->getMessage();
+        }
     }
 }
 

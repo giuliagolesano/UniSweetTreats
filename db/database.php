@@ -382,23 +382,14 @@ class DatabaseHelper{
     }
 
     // Function to update a product in the db    
-    public function updateProductFields($codProd, $name, $description, $price, $photo) {
-        $stmt = $this->db->prepare("
-            UPDATE PRODOTTO
-            SET descrizione = ?, quantita = quantita, foto = ?, nomeGusto = nomeGusto, nomeTip = nomeTip
-            WHERE codProd = ?
-        ");
-        $stmt->bind_param('sss', $description, $photo, $codProd);
+    public function updateProductFields($codProd, $name, $description, $price, $photo, $nomeGusto, $nomeTip) {
+        $stmt = $this->db->prepare("UPDATE PRODOTTO SET nomeGusto = ?, descrizione = ?, foto = ?, nomeTip = ? WHERE codProd = ?");
+        $stmt->bind_param('sssss', $nomeGusto, $description, $photo, $nomeTip, $codProd);
         $stmt->execute();
     
-        $stmtTariffario = $this->db->prepare("
-            UPDATE TARIFFARIO
-            SET prezzo = ?
-            WHERE nomeGusto = (SELECT nomeGusto FROM PRODOTTO WHERE codProd = ?)
-              AND nomeTip = (SELECT nomeTip FROM PRODOTTO WHERE codProd = ?)
-        ");
-        $stmtTariffario->bind_param('sss', $price, $codProd, $codProd);
-        return $stmtTariffario->execute();
+        $stmt = $this->db->prepare("UPDATE TARIFFARIO SET prezzo = ? WHERE nomeGusto = ? AND nomeTip = ?");
+        $stmt->bind_param('dss', $price, $nomeGusto, $nomeTip);
+        return $stmt->execute();
     }
        
     // Function to get the next notification code
@@ -450,6 +441,67 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    // Function to get the new codProd for the new product insert by the admin
+    public function getNextProductCode($nomeTip) {
+        $stmt = $this->db->prepare("SELECT MAX(CAST(SUBSTRING(codProd, LENGTH(?) + 1) AS UNSIGNED)) AS maxCodProd FROM PRODOTTO WHERE codProd LIKE CONCAT(?, '%')");
+        $stmt->bind_param('ss', $nomeTip, $nomeTip);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        if ($row['maxCodProd'] == null) {
+            return $nomeTip . '1';
+        }
+        return $nomeTip . ($row['maxCodProd'] + 1);
+    }
+
+    // Function to check if a product insert alreary exists.
+    public function productExists($nomeGusto, $nomeTip) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) as count FROM PRODOTTO WHERE nomeGusto = ? AND nomeTip = ?");
+        $stmt->bind_param('ss', $nomeGusto, $nomeTip);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['count'] > 0;
+    }
+
+    // Function to add a new product in the db.
+    public function addProduct($codProd, $name, $description, $price, $photo, $nomeGusto, $nomeTip) {
+        if ($this->productExists($nomeGusto, $nomeTip)) {
+            throw new Exception("Product with Taste '$nomeGusto' and type '$nomeTip' already exists.");
+        }
+
+        $stmt = $this->db->prepare("INSERT INTO PRODOTTO (codProd, nomeGusto, descrizione, foto, nomeTip) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param('sssss', $codProd, $nomeGusto, $description, $photo, $nomeTip);
+        $stmt->execute();
+        
+        $stmt = $this->db->prepare("INSERT INTO TARIFFARIO (nomeGusto, nomeTip, prezzo) VALUES (?, ?, ?)");
+        $stmt->bind_param('ssd', $nomeGusto, $nomeTip, $price);
+        return $stmt->execute();
+    }
+
+    // Function to add a new taste.
+    public function addTasteIfNotExists($nomeGusto) {
+        if (!$this->tasteExists($nomeGusto)) {
+            $stmt = $this->db->prepare("INSERT INTO GUSTO (nomeGusto) VALUES (?)");
+            $stmt->bind_param('s', $nomeGusto);
+            $stmt->execute();
+        }
+    }
+
+    // Function to check if the taste exists.
+    public function tasteExists($nomeGusto) {
+        $stmt = $this->db->prepare("SELECT COUNT(*) as count FROM GUSTO WHERE nomeGusto = ?");
+        $stmt->bind_param('s', $nomeGusto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['count'] > 0;
+    }
+    
+
+
+
 }
 
 ?>
