@@ -1,7 +1,7 @@
 /* Debug: CSS file loaded */
 
 /* Regola di reset */
-body, header, ul/*, h1, h2*/{
+body, header, ul {
     margin: 0;
     padding: 0;
 }
@@ -145,7 +145,7 @@ main {
     background-color: #BDE0FE;
 }
 
-/* Stile Menù Laterale */
+/* Stile Side Menu */
 
 .sidenav {
     height: 100%;
@@ -433,7 +433,7 @@ footer p {
     }
 }
 
-/* Recipes */
+/* Stile Recipes */
 
 .recipes {
     padding: 20px;
@@ -606,7 +606,7 @@ footer p {
     font-size: 14px;
 }
 
-/* Shop.php */
+/* Stile Shop */
 
 .shop {
     padding: 20px;
@@ -721,7 +721,7 @@ footer p {
 }
 
 
-/* Single product */
+/* Stile Single Product */
 
 .single-product {
     padding: 20px;
@@ -916,8 +916,8 @@ footer p {
     }
 
     .product img {
-        margin-right: 15px; /* Modificato */
-        margin-bottom: 0; /* Aggiunto */
+        margin-right: 15px;
+        margin-bottom: 0;
     }
 
     .order-container h2 {
@@ -925,7 +925,7 @@ footer p {
     }
 }
 
-/* Cart css */
+/* Stile Cart */
 
 .cart h2 {
     color: #333;
@@ -1029,7 +1029,7 @@ footer p {
     cursor: pointer;
 }
 
-/* Notifications */
+/* Stile Notifications */
 
 .notification-card {
     background-color: #FFC8DD !important;
@@ -1084,9 +1084,9 @@ footer p {
 .review-form ul li textarea {
     width: 100%;
     height: 150px;
-    resize: both; /* Permette di ridimensionare sia in orizzontale che in verticale */
-    max-width: 100%; /* Limita la larghezza massima al 100% del contenitore */
-    max-height: 300px; /* Imposta un'altezza massima */
+    resize: both;
+    max-width: 100%;
+    max-height: 300px;
 }
 
 .review-form div {
